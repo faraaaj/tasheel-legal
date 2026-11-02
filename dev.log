@@ -1,0 +1,174 @@
+
+> tasheel-legal@0.1.0 dev
+> next dev -p 7001
+
+   Γû▓ Next.js 15.5.28
+   - Local:        http://localhost:7001
+   - Network:      http://192.168.0.179:7001
+
+ Γ£ô Starting...
+ Γ£ô Ready in 5.9s
+ Γ£ô Compiled /middleware in 384ms (118 modules)
+ Γùï Compiling /[locale] ...
+ Γ£ô Compiled /[locale] in 7.6s (1611 modules)
+ GET /en 200 in 14260ms
+ GET /ar 200 in 1119ms
+ GET /ar 200 in 752ms
+ GET /ar 200 in 7076ms
+ GET /ar 200 in 9537ms
+ Γ£ô Compiled in 4.4s (1625 modules)
+ GET /ar 200 in 2663ms
+ GET /ar 200 in 2715ms
+ Γ£ô Compiled in 7.9s (1625 modules)
+ GET /ar 200 in 819ms
+ GET /ar 200 in 851ms
+ Γ£ô Compiled in 1103ms (1625 modules)
+ GET /ar 200 in 529ms
+ GET /ar 200 in 539ms
+ Γ£ô Compiled in 1878ms (1625 modules)
+ GET /ar 200 in 690ms
+ GET /ar 200 in 674ms
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+ Γ¿» [TypeError: __webpack_modules__[moduleId] is not a function] {
+  digest: '1165445218'
+}
+ Γ¿» Error: Could not find the module "C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\next-devtools\userspace\app\segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '534292203'
+}
+[TypeError: __webpack_modules__[moduleId] is not a function]
+ Γ¿» [TypeError: __webpack_modules__[moduleId] is not a function]
+ Γ¿» [TypeError: __webpack_modules__[moduleId] is not a function] {
+  page: '/en'
+}
+ Γùï Compiling /_error ...
+ Γ£ô Compiled /_error in 2.3s (1974 modules)
+ GET /ar 200 in 2891ms
+ GET /ar 200 in 2905ms
+ Γ¿» Failed to generate static paths for /[locale]:
+[Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Failed to generate static paths for /[locale]:
+[Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en 500 in 13547ms
+ Γ¿» [Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/ar'
+}
+ Γ¿» [Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/ar'
+}
+ Γ¿» [Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/ar'
+}
+ GET /ar 500 in 2717ms
+ GET /ar 500 in 1854ms
+ GET /ar 500 in 1733ms
+ Γ¿» [Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/ar'
+}
+ Γ¿» [Error: Cannot find module './vendor-chunks/motion-dom.js'
+Require stack:
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\webpack-runtime.js
+- C:\Users\FARAA\Projects\tasheel-legal\.next\server\app\[locale]\page.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\require.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\load-components.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\build\utils.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\server\dev\static-paths-worker.js
+- C:\Users\FARAA\Projects\tasheel-legal\node_modules\next\dist\compiled\jest-worker\processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/ar'
+}
+ GET /ar 500 in 1826ms
+ GET /ar 500 in 1777ms

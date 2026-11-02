@@ -1,0 +1,22 @@
+
+> tasheel-legal@0.1.0 dev
+> next dev -p 7001
+
+   Γû▓ Next.js 15.5.28
+   - Local:        http://localhost:7001
+   - Network:      http://192.168.0.179:7001
+
+ Γ£ô Starting...
+ Γ£ô Ready in 18.5s
+ Γ£ô Compiled /middleware in 1955ms
+ Γ£ô Compiled (118 modules)
+ Γùï Compiling /[locale] ...
+ Γ£ô Compiled /[locale] in 15.1s (1611 modules)
+ GET /en 200 in 26652ms
+ GET /ar 200 in 2373ms
+ GET /ar 200 in 2371ms
+ GET /favicon.ico 404 in 1558ms
+ GET /ar 200 in 11023ms
+ Γ£ô Compiled in 57.5s (1625 modules)
+ GET /ar 200 in 2005ms
+ GET /ar 200 in 1344ms

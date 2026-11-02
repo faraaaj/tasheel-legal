@@ -1,0 +1,130 @@
+"use client";
+
+import Image from "next/image";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useState } from "react";
+import Button from "@/components/ui/Button";
+import { heroHeadlines } from "@/data/heroHeadlines";
+import type { Dictionary, Locale } from "@/lib/dictionaries";
+
+type HeroProps = {
+  locale: Locale;
+  dict: Dictionary;
+};
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const ROTATE_MS = 6000;
+
+export default function Hero({ locale, dict }: HeroProps) {
+  const reduce = useReducedMotion() ?? false;
+  const [index, setIndex] = useState(0);
+
+  const { scrollY } = useScroll();
+  const textY = useTransform(scrollY, [0, 600], [0, reduce ? 0 : 90]);
+  const textOpacity = useTransform(scrollY, [0, 560], [1, reduce ? 1 : 0]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      setIndex((current) => (current + 1) % heroHeadlines.length);
+    }, ROTATE_MS);
+
+    return () => window.clearInterval(id);
+  }, []);
+
+  const headline = heroHeadlines[index][locale];
+  const headlineClasses = `font-serif-en text-center text-5xl lg:text-7xl leading-[1.1] tracking-[-0.02em] text-cream rtl:font-sans-ar rtl:text-4xl lg:rtl:text-6xl rtl:leading-[1.3]`;
+
+  return (
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+    >
+      <div aria-hidden="true" className="fixed inset-0 -z-10 bg-navy">
+        <Image
+          src="https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?auto=format&fit=crop&w=2400&q=85"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center saturate-[1.15] animate-[slow-zoom_20s_ease-in-out_infinite_alternate]"
+        />
+        <div className="absolute inset-0 bg-navy/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/55 to-navy/5 rtl:bg-gradient-to-l" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-navy/90 to-transparent" />
+      </div>
+
+      <motion.div
+        style={reduce ? undefined : { y: textY, opacity: textOpacity }}
+        className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 pt-24 pb-12"
+      >
+        <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          >
+            <span className="eyebrow justify-center">{dict.hero.eyebrow}</span>
+          </motion.div>
+
+          <div className="mt-4 flex w-full items-center justify-center">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.h1
+                key={`${locale}-${index}`}
+                lang={locale}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
+                className={headlineClasses}
+              >
+                {headline}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
+            className="mt-4 w-full max-w-2xl"
+          >
+            <p className="text-lg lg:text-xl leading-[1.9] text-cream/80 text-justify text-left rtl:text-right">
+              {dict.hero.subtext}
+            </p>
+
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row w-full">
+              <Button 
+                href={`/${locale}/contact`} 
+                variant="gold"
+                className="!min-w-[240px] !justify-center"
+              >
+                {dict.hero.primaryCta}
+              </Button>
+              <Button 
+                href={`/${locale}#practice`} 
+                variant="outline"
+                className="!min-w-[240px] !justify-center"
+              >
+                {dict.hero.secondaryCta}
+              </Button>
+            </div>
+
+            <div className="mt-16 flex items-center justify-center gap-4 text-[10px] uppercase tracking-[0.24em] text-cream/40 rtl:tracking-normal rtl:normal-case">
+              <span className="h-px w-10 bg-gold/50" />
+              {locale === "ar"
+                ? "الرياض · المملكة العربية السعودية"
+                : "Riyadh · Kingdom of Saudi Arabia"}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}

@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans-en text-navy antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif-en font-normal;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-gold text-navy;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c5a880;
+    outline-offset: 3px;
+  }
+
+  html[dir="rtl"] body,
+  html[dir="rtl"] button,
+  html[dir="rtl"] input,
+  html[dir="rtl"] select,
+  html[dir="rtl"] textarea {
+    font-family: var(--font-tajawal), var(--font-tajawal-latin), Tahoma,
+      sans-serif;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4 {
+    font-family: var(--font-tajawal), var(--font-tajawal-latin), Tahoma,
+      sans-serif;
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 md:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-mega text-gold;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-8 bg-gold;
+  }
+
+  html[dir="rtl"] .eyebrow {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 0.8125rem;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 ease-out hover:scale-[1.02];
+  }
+
+  html[dir="rtl"] .btn {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 0.875rem;
+  }
+
+  .field {
+    @apply w-full border border-navy/15 bg-white px-4 py-3.5 text-sm text-navy outline-none transition-colors duration-300 placeholder:text-navy/35 focus:border-gold;
+  }
+
+  .nav-link {
+    @apply relative text-[11px] font-medium uppercase tracking-[0.16em] text-cream/80 transition-colors duration-300 hover:text-gold;
+  }
+
+  html[dir="rtl"] .nav-link {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 0.875rem;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  /* Arabic display copy: override the Latin serif where it is applied
+     explicitly, so headings and quotes resolve to Tajawal. */
+  html[dir="rtl"] .font-serif-en {
+    font-family: var(--font-tajawal), var(--font-tajawal-latin), Tahoma,
+      sans-serif;
+    letter-spacing: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* News-ticker marquee: 1000px == one content chunk period (CHUNK_WIDTH in
+   Ticker.tsx), so both keyframes loop seamlessly. LTR crawls left, RTL
+   crawls right. Compositor-driven: runs smoothly even under main-thread
+   load or rAF throttling. */
+@keyframes ticker-scroll-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1000px);
+  }
+}
+
+@keyframes ticker-scroll-rtl {
+  from {
+    transform: translateX(-1000px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,37 @@
+
+> tasheel-legal@0.1.0 dev
+> next dev -p 7001
+
+   Γû▓ Next.js 15.5.28
+   - Local:        http://localhost:7001
+   - Network:      http://192.168.0.179:7001
+
+ Γ£ô Starting...
+ Γ£ô Ready in 4s
+ Γùï Compiling /middleware ...
+ Γ£ô Compiled /middleware in 609ms (118 modules)
+ Γùï Compiling /[locale] ...
+ Γ£ô Compiled /[locale] in 5.7s (1611 modules)
+ GET /en 200 in 10058ms
+ GET /ar 200 in 1005ms
+ GET /ar 200 in 1629ms
+ Γ£ô Compiled in 65.7s (1743 modules)
+ Γ£ô Compiled in 6.6s (1625 modules)
+ GET /ar 200 in 4132ms
+ GET /ar 200 in 1495ms
+ Γ£ô Compiled in 7.9s (1625 modules)
+ GET /ar 200 in 2779ms
+ Γ£ô Compiled in 9s (1743 modules)
+ GET /ar 200 in 4114ms
+[Error: UNKNOWN: unknown error, open 'C:\Users\FARAA\Projects\tasheel-legal\.next\app-build-manifest.json'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\FARAA\\Projects\\tasheel-legal\\.next\\app-build-manifest.json'
+}
+[Error: UNKNOWN: unknown error, open 'C:\Users\FARAA\Projects\tasheel-legal\.next\app-build-manifest.json'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\FARAA\\Projects\\tasheel-legal\\.next\\app-build-manifest.json'
+}
