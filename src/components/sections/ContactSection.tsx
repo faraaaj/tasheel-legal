@@ -274,10 +274,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
             </a>
           </div>
         </div>
-
-        <p className="mt-12 text-[11px] leading-relaxed text-navy/40">
-          {dict.footer.disclaimer}
-        </p>
       </div>
     </section>
   );
