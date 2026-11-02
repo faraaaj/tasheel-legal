@@ -17,8 +17,8 @@ type ContactSectionProps = {
 };
 
 export default function ContactSection({ locale, dict }: ContactSectionProps) {
-  const [sent, setSent] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const copy = dict.contact;
 
   const telHref = `tel:${copy.phone.replace(/[^\d+]/g, "")}`;
@@ -29,37 +29,46 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
     copy.address,
   )}&z=15&output=embed`;
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const subject = String(data.get("subject") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
+    const formData = new FormData(e.target as HTMLFormElement);
+    formData.append("access_key", "8c9c78fe-dd3a-4b2b-82b6-5b3363bfcf5a");
+    formData.append("subject", "New Consultation Request - Tasheel Legal");
+    formData.append("from_name", "Tasheel Legal Website");
 
-    if (!name || !email || !subject || !message) {
-      setError(copy.form.required);
-      return;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert(
+          locale === "ar"
+            ? "حدث خطأ. يرجى المحاولة مرة أخرى."
+            : "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      alert(
+        locale === "ar"
+          ? "حدث خطأ. يرجى التواصل عبر واتساب."
+          : "Error sending message. Please try WhatsApp instead."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      setError(copy.form.invalidEmail);
-      return;
-    }
-
-    // No backend is connected yet: the request is acknowledged locally.
-    setError(null);
-    setSent(true);
-    form.reset();
-  }
+  };
 
   return (
     <section id="contact" className="bg-[#FAF9F6] py-20 scroll-mt-24 lg:py-28">
       <div className="shell">
-        {/* Section heading spans the full width so both columns start
-            at the exact same vertical position */}
         <span className="eyebrow">{copy.eyebrow}</span>
         <h2 className="mt-6 font-serif-en text-[2.2rem] leading-[1.1] text-navy sm:text-[2.75rem] rtl:text-[1.9rem] rtl:leading-[1.4]">
           {copy.headline}
@@ -74,7 +83,7 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
         <div className="mt-12 grid grid-cols-1 gap-12 items-stretch lg:grid-cols-2">
           {/* Form Column */}
           <div className="flex h-full flex-col bg-white p-8 lg:p-10 border border-gray-100 shadow-sm">
-            {sent ? (
+            {submitted ? (
               <div className="flex min-h-[420px] flex-col items-start justify-center">
                 <span className="grid h-12 w-12 place-items-center rounded-full border border-gold/50 text-gold">
                   <Check size={20} strokeWidth={2} />
@@ -87,98 +96,99 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                 </p>
                 <button
                   type="button"
-                  onClick={() => setSent(false)}
+                  onClick={() => setSubmitted(false)}
                   className="mt-8 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy/45 transition-colors hover:text-gold rtl:tracking-normal rtl:normal-case rtl:text-xs"
                 >
-                  {copy.form.submit}
+                  {locale === "ar" ? "إرسال رسالة أخرى" : "Send another message"}
                   <ArrowUpRight size={13} className="rtl:-scale-x-100" />
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="grid gap-5">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy/45 rtl:tracking-normal rtl:normal-case rtl:text-[11px]">
-                      {copy.form.name}
-                    </span>
+              <>
+                <form onSubmit={onSubmit} className="space-y-6">
+                  {/* Name Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {locale === "ar" ? "الاسم الكامل" : "Full Name"}
+                    </label>
                     <input
-                      id="contact-name"
-                      name="name"
                       type="text"
-                      autoComplete="name"
+                      name="name"
                       required
-                      className="field mt-2"
+                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
                     />
-                  </label>
+                  </div>
 
-                  <label className="block">
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy/45 rtl:tracking-normal rtl:normal-case rtl:text-[11px]">
-                      {copy.form.email}
-                    </span>
+                  {/* Email Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {locale === "ar" ? "البريد الإلكتروني" : "Email Address"}
+                    </label>
                     <input
-                      id="contact-email"
-                      name="email"
                       type="email"
-                      dir="ltr"
-                      autoComplete="email"
+                      name="email"
                       required
-                      className="field mt-2"
+                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
                     />
-                  </label>
-                </div>
+                  </div>
 
-                <label className="block">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy/45 rtl:tracking-normal rtl:normal-case rtl:text-[11px]">
-                    {copy.form.subject}
-                  </span>
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    defaultValue=""
-                    required
-                    className="field mt-2"
+                  {/* Phone Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {locale === "ar" ? "رقم الهاتف" : "Phone Number"}
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
+                    />
+                  </div>
+
+                  {/* Message Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {locale === "ar" ? "رسالتك" : "Your Message"}
+                    </label>
+                    <textarea
+                      name="message"
+                      rows={5}
+                      required
+                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] resize-none transition-colors"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[11px] py-4 px-8 transition-all duration-300 hover:bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <option value="" disabled>
-                      {copy.form.subjectPlaceholder}
-                    </option>
-                    {dict.practiceAreas.items.map((area) => (
-                      <option key={area.id} value={area.title}>
-                        {area.title}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                    {isSubmitting
+                      ? locale === "ar"
+                        ? "جاري الإرسال..."
+                        : "Sending..."
+                      : locale === "ar"
+                      ? "أرسل"
+                      : "Send"}
+                  </button>
+                </form>
 
-                <label className="block">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy/45 rtl:tracking-normal rtl:normal-case rtl:text-[11px]">
-                    {copy.form.message}
-                  </span>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="field mt-2 resize-none"
-                  />
-                </label>
-
-                {error ? (
-                  <p role="alert" className="text-xs text-[#9c3b2e]">
-                    {error}
+                {/* WhatsApp Alternative */}
+                <div className="mt-8 flex flex-col items-center gap-4 border-t border-gray-200 pt-8">
+                  <p className="text-sm text-gray-500 uppercase tracking-wider">
+                    {locale === "ar" ? "أو تواصل معنا مباشرة" : "Or contact us directly"}
                   </p>
-                ) : null}
-
-                <button
-                  type="submit"
-                  className="btn w-full bg-yellow-400 text-[#070D19] hover:bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"
-                >
-                  {copy.form.submit}
-                </button>
-
-                <p className="text-[11px] leading-relaxed text-navy/40">
-                  {copy.form.hint}
-                </p>
-              </form>
+                  <a
+                    href="https://wa.me/966583331600?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-bold py-4 px-8 transition-all hover:bg-[#128C7E] uppercase tracking-widest text-[11px]"
+                  >
+                    {locale === "ar" ? "تواصل عبر واتساب" : "Message on WhatsApp"}
+                  </a>
+                </div>
+              </>
             )}
           </div>
 
