@@ -17,7 +17,7 @@ export const teamMembers: TeamMember[] = [
     nameAr: "المهندس فرج الحوطي",
     roleEn: "Chief Executive Officer | Strategic Business & Institutional Development",
     roleAr: "الرئيس التنفيذي | التطوير المؤسسي والأعمال الاستراتيجية",
-    image: "/team/FARAJ.jpg",
+    image: "/team/faraj.jpg",
     bioEn: [
       "Eng. Faraj Alhouty is a senior executive with more than 35 years of experience across Saudi Arabia's public, private, and non-profit sectors. His expertise spans corporate strategy, governance, complex commercial transactions, public-private partnerships, investment structuring, and large-scale project execution.",
       "Throughout his career, he has held senior leadership and advisory positions with Saudi Aramco, Boeing Saudi Arabia, the Ministry of Housing, and leading real estate, industrial, and technology enterprises. His experience includes contributing to strategic programmes valued at hundreds of billions of Saudi riyals, structuring international partnerships, leading multidisciplinary organisations, and advancing digital transformation initiatives.",
