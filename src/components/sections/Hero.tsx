@@ -105,7 +105,7 @@ export default function Hero({ locale, dict }: HeroProps) {
 
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row w-full">
                 <a
-                  href={`https://wa.me/966590964157?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation.`}
+                  href={`https://wa.me/966583331600?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn !min-w-[220px] !justify-center bg-yellow-400 text-[#070D19] hover:bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(250,204,21,0.35)] transition-all duration-300"

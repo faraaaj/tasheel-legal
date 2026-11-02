@@ -238,7 +238,7 @@ export const en: Dictionary = {
     addressLabel: "Address",
     address: "7790 Abu Bakr Al-Siddiq Rd, Al-Nafal, Riyadh 13312, Saudi Arabia",
     phoneLabel: "Phone",
-    phone: "+966590964157",
+    phone: "+966583331600",
     emailLabel: "Email",
     email: "info@tasheel.law",
     hoursLabel: "Hours",

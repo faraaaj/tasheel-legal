@@ -238,7 +238,7 @@ export const ar: Dictionary = {
     addressLabel: "العنوان",
     address: "٧٧٩٠ طريق أبي بكر الصديق، حي النفل، الرياض ١٣٣١٢",
     phoneLabel: "الهاتف",
-    phone: "+966590964157",
+    phone: "+966583331600",
     emailLabel: "البريد الإلكتروني",
     email: "info@tasheel.law",
     hoursLabel: "ساعات العمل",
