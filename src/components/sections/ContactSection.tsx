@@ -21,14 +21,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const copy = dict.contact;
 
-  const telHref = `tel:${copy.phone.replace(/[^\d+]/g, "")}`;
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    copy.address,
-  )}`;
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    copy.address,
-  )}&z=15&output=embed`;
-
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -47,7 +39,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
       const data = await response.json();
       if (data.success) {
         setSubmitted(true);
-        (e.target as HTMLFormElement).reset();
       } else {
         alert(
           locale === "ar"
@@ -65,6 +56,27 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
       setIsSubmitting(false);
     }
   };
+
+  const expertiseOptions = [
+    { value: "", label: locale === "ar" ? "اختر التخصص" : "Select Expertise" },
+    { value: "Corporate Law", label: locale === "ar" ? "قانون الشركات" : "Corporate Law" },
+    { value: "Commercial Disputes", label: locale === "ar" ? "المنازعات التجارية" : "Commercial Disputes" },
+    { value: "Real Estate", label: locale === "ar" ? "العقارات" : "Real Estate" },
+    { value: "Labor Law", label: locale === "ar" ? "قانون العمل" : "Labor Law" },
+    { value: "Family Law", label: locale === "ar" ? "قانون الأسرة" : "Family Law" },
+    { value: "Criminal Defense", label: locale === "ar" ? "الدفاع عن النفس" : "Criminal Defense" },
+    { value: "Immigration", label: locale === "ar" ? "الهجرة" : "Immigration" },
+    { value: "Intellectual Property", label: locale === "ar" ? "الملكية الفكرية" : "Intellectual Property" },
+    { value: "Tax Law", label: locale === "ar" ? "قانون الضرائب" : "Tax Law" },
+    { value: "Waqf Planning", label: locale === "ar" ? "هيكلة الوقف" : "Waqf Planning" },
+    { value: "Endowment Management", label: locale === "ar" ? "إدارة الأوقاف" : "Endowment Management" },
+    { value: "Non-Profit", label: locale === "ar" ? "المنظمات غير الربحية" : "Non-Profit" },
+    { value: "Partnership", label: locale === "ar" ? "شراكة" : "Partnership" },
+    { value: "Joint Venture", label: locale === "ar" ? "المشاريع المشتركة" : "Joint Venture" },
+    { value: "Merger & Acquisition", label: locale === "ar" ? "الاندماج والاستحواذ" : "Merger & Acquisition" },
+    { value: "Corporate Governance", label: locale === "ar" ? "حوكمة الشركات" : "Corporate Governance" },
+    { value: "ESG", label: locale === "ar" ? "الاستدامة البيئية والاجتماعية والحوكمة" : "ESG" },
+  ];
 
   return (
     <section id="contact" className="bg-[#FAF9F6] py-20 scroll-mt-24 lg:py-28">
@@ -104,94 +116,117 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                 </button>
               </div>
             ) : (
-              <>
-                <form onSubmit={onSubmit} className="space-y-6">
-                  {/* Name Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {locale === "ar" ? "الاسم الكامل" : "Full Name"}
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {locale === "ar" ? "البريد الإلكتروني" : "Email Address"}
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
-                    />
-                  </div>
-
-                  {/* Phone Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {locale === "ar" ? "رقم الهاتف" : "Phone Number"}
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
-                    />
-                  </div>
-
-                  {/* Message Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {locale === "ar" ? "رسالتك" : "Your Message"}
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={5}
-                      required
-                      className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] resize-none transition-colors"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[11px] py-4 px-8 transition-all duration-300 hover:bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting
-                      ? locale === "ar"
-                        ? "جاري الإرسال..."
-                        : "Sending..."
-                      : locale === "ar"
-                      ? "أرسل"
-                      : "Send"}
-                  </button>
-                </form>
-
-                {/* WhatsApp Alternative */}
-                <div className="mt-8 flex flex-col items-center gap-4 border-t border-gray-200 pt-8">
-                  <p className="text-sm text-gray-500 uppercase tracking-wider">
-                    {locale === "ar" ? "أو تواصل معنا مباشرة" : "Or contact us directly"}
-                  </p>
-                  <a
-                    href="https://wa.me/966583331600?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-bold py-4 px-8 transition-all hover:bg-[#128C7E] uppercase tracking-widest text-[11px]"
-                  >
-                    {locale === "ar" ? "تواصل عبر واتساب" : "Message on WhatsApp"}
-                  </a>
+              <form onSubmit={onSubmit} className="space-y-6">
+                {/* Name Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {locale === "ar" ? "الاسم الكامل" : "Full Name"}
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  />
                 </div>
-              </>
-            )}
-          </div>
 
+                {/* Email Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {locale === "ar" ? "البريد الإلكتروني" : "Email Address"}
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  />
+                </div>
+
+                {/* Phone Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {locale === "ar" ? "رقم الهاتف" : "Phone Number"}
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  />
+                </div>
+
+                {/* Expertise Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {locale === "ar" ? "نوع الاستشارة" : "Type of Consultation"}
+                  </label>
+                  <select
+                    name="expertise"
+                    className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] transition-colors bg-white"
+                  >
+                    {expertiseOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Message Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {locale === "ar" ? "رسالتك" : "Your Message"}
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    required
+                    className="w-full border border-gray-300 p-4 focus:outline-none focus:border-[#C5A880] resize-none transition-colors"
+                  ></textarea>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[11px] py-4 px-8 transition-all duration-300 hover:bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting
+                    ? locale === "ar"
+                      ? "جاري الإرسال..."
+                      : "Sending..."
+                    : locale === "ar"
+                    ? "أرسل"
+                    : "Send"}
+                </button>
+              </form>
+            )}
+            
+            {/* WhatsApp Alternative */}
+            <div className="mt-8 flex flex-col items-center gap-4 border-t border-gray-200 pt-8">
+              <p className="text-sm text-gray-500 uppercase tracking-wider">
+                {locale === "ar" ? "أو تواصل معنا مباشرة" : "Or contact us directly"}
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  const form = document.querySelector('form') as HTMLFormElement;
+                  const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value || '';
+                  const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value || '';
+                  const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value || '';
+                  const expertise = (form.querySelector('[name="expertise"]') as HTMLSelectElement)?.value || '';
+                  
+                  const text = `Hello Tasheel Legal,%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AExpertise: ${expertise}`;
+                  window.open(`https://wa.me/966583331600?text=${text}`, '_blank');
+                }}
+                className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-bold py-4 px-8 transition-all hover:bg-[#128C7E] uppercase tracking-widest text-[11px]"
+              >
+                {locale === "ar" ? "تواصل عبر واتساب" : "Message on WhatsApp"}
+              </button>
+            </div>
+          </div>
+          
           {/* Address Column */}
           <div className="flex h-full flex-col pt-2">
             <dl className="grid gap-6 sm:grid-cols-2">
@@ -208,7 +243,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                   </dd>
                 </div>
               </div>
-
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center border border-navy/10 text-gold">
                   <Phone size={15} />
@@ -219,7 +253,7 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                   </dt>
                   <dd className="mt-1.5 text-[13px] text-navy/75">
                     <a
-                      href={telHref}
+                      href={`tel:${copy.phone.replace(/[^\d+]/g, "")}`}
                       dir="ltr"
                       className="transition-colors hover:text-gold"
                     >
@@ -228,7 +262,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                   </dd>
                 </div>
               </div>
-
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center border border-navy/10 text-gold">
                   <Mail size={15} />
@@ -248,7 +281,6 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                   </dd>
                 </div>
               </div>
-
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center border border-navy/10 text-gold">
                   <Clock size={15} />
@@ -263,18 +295,17 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                 </div>
               </div>
             </dl>
-
             <div className="mt-10 border border-navy/10 bg-white p-2">
               <iframe
                 title={copy.mapLabel}
-                src={mapSrc}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(copy.address)}&z=15&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-60 w-full grayscale-[35%]"
               />
             </div>
             <a
-              href={mapsHref}
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(copy.address)}`}
               target="_blank"
               rel="noreferrer"
               className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy/45 transition-colors hover:text-gold rtl:tracking-normal rtl:normal-case rtl:text-xs"
