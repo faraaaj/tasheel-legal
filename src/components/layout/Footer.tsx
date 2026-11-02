@@ -84,7 +84,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               ))}
               <div className="flex justify-between gap-6 border-b border-cream/10 pb-1">
                 <span className="text-gold/60">{dict.contact.phoneLabel}</span>
-                <span dir="ltr" className="text-left">+966583331600</span>
+                <span dir="ltr" className="text-left">+966590964157</span>
               </div>
               <div className="flex justify-between gap-6 border-b border-cream/10 pb-1">
                 <span className="text-gold/60">{dict.contact.emailLabel}</span>

@@ -88,7 +88,7 @@ export default function Header({ locale, dict }: HeaderProps) {
           )}
           
           <a
-            href="https://wa.me/966583331600?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation."
+            href="https://wa.me/966590964157?text=Hello%20Tasheel%20Legal,%20I%20would%20like%20to%20request%20a%20consultation."
             target="_blank"
             rel="noopener noreferrer"
             className="btn hidden !px-5 !py-2.5 !text-[10px] !bg-yellow-400 !text-[#070D19] hover:!bg-yellow-500 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(250,204,21,0.35)] transition-all lg:inline-flex !min-w-[220px] !justify-center"

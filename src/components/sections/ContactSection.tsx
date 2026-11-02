@@ -218,7 +218,7 @@ export default function ContactSection({ locale, dict }: ContactSectionProps) {
                   const expertise = (form.querySelector('[name="expertise"]') as HTMLSelectElement)?.value || '';
                   
                   const text = `Hello Tasheel Legal,%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AExpertise: ${expertise}`;
-                  window.open(`https://wa.me/966583331600?text=${text}`, '_blank');
+                  window.open(`https://wa.me/966590964157?text=${text}`, '_blank');
                 }}
                 className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-bold py-4 px-8 transition-all hover:bg-[#128C7E] uppercase tracking-widest text-[11px]"
               >
