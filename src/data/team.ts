@@ -2,8 +2,8 @@ export type TeamMember = {
   slug: string;
   nameEn: string;
   nameAr: string;
-  fullNameEn?: string;
-  fullNameAr?: string;
+  fullNameEn: string;
+  fullNameAr: string;
   roleEn: string;
   roleAr: string;
   tier: 'executive' | 'partner' | 'associate';
@@ -19,6 +19,8 @@ export const teamMembers: TeamMember[] = [
     slug: "faraj-alhouty",
     nameEn: "Eng. Faraj Alhouty",
     nameAr: "المهندس فرج الحوطي",
+    fullNameEn: "Eng. Faraj Alhouty",
+    fullNameAr: "المهندس فرج الحوطي",
     roleEn: "Chief Executive Officer",
     roleAr: "الرئيس التنفيذي",
     tier: "executive",
@@ -48,6 +50,8 @@ export const teamMembers: TeamMember[] = [
     slug: "dr-meshaan-bin-ejrif",
     nameEn: "Dr. Meshaan Bin Ejrif",
     nameAr: "د. مشعان بن عجرف",
+    fullNameEn: "Dr. Meshaan Bin Ejrif",
+    fullNameAr: "د. مشعان بن عجرف",
     roleEn: "Managing Partner",
     roleAr: "الشريك المؤسس",
     tier: "executive",
@@ -60,6 +64,8 @@ export const teamMembers: TeamMember[] = [
     slug: "dr-mohammed-bin-ejrim",
     nameEn: "Dr. Mohammed Bin Ejrim",
     nameAr: "د. محمد بن عجرف",
+    fullNameEn: "Dr. Mohammed Bin Ejrim",
+    fullNameAr: "د. محمد بن عجرف",
     roleEn: "Managing Partner",
     roleAr: "الشريك المؤسس",
     tier: "executive",
@@ -128,6 +134,8 @@ export const teamMembers: TeamMember[] = [
     slug: "bandar-al-mutairi",
     nameEn: "Dr. Bandar Salem Al-Mutairi",
     nameAr: "د. بندر سالم المطيري",
+    fullNameEn: "Dr. Bandar Salem Al-Mutairi",
+    fullNameAr: "د. بندر سالم المطيري",
     roleEn: "Associate | Commercial Law & International Investments",
     roleAr: "محامي أول | القانون التجاري والاستثمارات الدولية",
     tier: "associate",
@@ -147,6 +155,8 @@ export const teamMembers: TeamMember[] = [
     slug: "ibrahim-al-balawi",
     nameEn: "Ibrahim Al-Balawi",
     nameAr: "إبراهيم البلوي",
+    fullNameEn: "Ibrahim Al-Balawi",
+    fullNameAr: "إبراهيم البلوي",
     roleEn: "Associate | Legal Consultant",
     roleAr: "محامي | مستشار قانوني",
     tier: "associate",
