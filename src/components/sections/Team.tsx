@@ -11,6 +11,8 @@ type TeamMember = {
   slug: string;
   nameEn: string;
   nameAr: string;
+  fullNameEn?: string;
+  fullNameAr?: string;
   roleEn: string;
   roleAr: string;
   tier: "executive" | "partner" | "associate";
@@ -81,9 +83,20 @@ export default function Team({ locale, dict }: TeamProps) {
                       )}
                     </div>
                     <div className="p-6 text-left rtl:text-right">
-                      <h4 className="font-serif-en text-xl text-white">
-                        {locale === 'ar' ? member.nameAr : member.nameEn}
-                      </h4>
+                      {member.fullNameEn && member.fullNameAr ? (
+                        <>
+                          <p className="text-[11px] uppercase tracking-wider text-[#C5A880] mb-1">
+                            {locale === 'ar' ? member.nameAr : member.nameEn}
+                          </p>
+                          <h4 className="font-serif-en text-xl text-white">
+                            {locale === 'ar' ? member.fullNameAr : member.fullNameEn}
+                          </h4>
+                        </>
+                      ) : (
+                        <h4 className="font-serif-en text-xl text-white">
+                          {locale === 'ar' ? member.nameAr : member.nameEn}
+                        </h4>
+                      )}
                       <p className="mt-2 text-[11px] uppercase tracking-wider text-[#C5A880]">
                         {locale === 'ar' ? member.roleAr : member.roleEn}
                       </p>
@@ -119,7 +132,7 @@ export default function Team({ locale, dict }: TeamProps) {
               
               <div className="p-8 md:p-12 md:w-3/5 flex flex-col h-full overflow-hidden">
                 <h3 className="font-serif-en text-3xl text-[#FAF9F6]">
-                  {locale === 'ar' ? selectedMember.nameAr : selectedMember.nameEn}
+                  {locale === 'ar' ? (selectedMember.fullNameAr ?? selectedMember.nameAr) : (selectedMember.fullNameEn ?? selectedMember.nameEn)}
                 </h3>
                 <p className="mt-2 text-sm text-[#C5A880] uppercase tracking-wider">
                   {locale === 'ar' ? selectedMember.roleAr : selectedMember.roleEn}

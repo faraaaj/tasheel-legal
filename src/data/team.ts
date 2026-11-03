@@ -2,6 +2,8 @@ export type TeamMember = {
   slug: string;
   nameEn: string;
   nameAr: string;
+  fullNameEn?: string;
+  fullNameAr?: string;
   roleEn: string;
   roleAr: string;
   tier: 'executive' | 'partner' | 'associate';
@@ -70,8 +72,10 @@ export const teamMembers: TeamMember[] = [
   // --- TIER 2: PARTNERS / SENIOR COUNSEL ---
   {
     slug: "ibrahim-al-sayari",
-    nameEn: "Partner, His Excellency Sheikh Ibrahim Nasser Al-Sayari",
-    nameAr: "الشريك الشيخ إبراهيم بن ناصر السياري",
+    nameEn: "Partner, His Excellency",
+    nameAr: "الشريك الشيخ",
+    fullNameEn: "Sheikh Ibrahim Nasser Al-Sayari",
+    fullNameAr: "إبراهيم بن ناصر السياري",
     roleEn: "Senior Counselor | Former Appeals Court President",
     roleAr: "مستشار أعلى | رئيس محكمة استئناف سابق",
     tier: "partner",
@@ -95,8 +99,10 @@ export const teamMembers: TeamMember[] = [
   },
   {
     slug: "abdulrahman-al-obeid",
-    nameEn: "Partner, His Excellency Sheikh Abdulrahman Sulaiman Alobaid",
-    nameAr: "الشريك الشيخ عبدالرحمن سليمان العبيد",
+    nameEn: "Partner, His Excellency",
+    nameAr: "الشريك الشيخ",
+    fullNameEn: "Sheikh Abdulrahman Sulaiman Alobaid",
+    fullNameAr: "عبدالرحمن سليمان العبيد",
     roleEn: "Senior Counselor | Corporate and Business Law",
     roleAr: "مستشار أعلى | قانون الشركات والأعمال",
     tier: "partner",
