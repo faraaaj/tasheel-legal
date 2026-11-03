@@ -70,8 +70,8 @@ export const teamMembers: TeamMember[] = [
   // --- TIER 2: PARTNERS / SENIOR COUNSEL ---
   {
     slug: "ibrahim-al-sayari",
-    nameEn: "His Excellency Counselor Ibrahim bin Nasser Al-Sayari",
-    nameAr: "الشيخ المستشار إبراهيم بن ناصر السياري",
+    nameEn: "Partner, His Excellency Sheikh Ibrahim Nasser Al-Sayari",
+    nameAr: "الشريك الشيخ إبراهيم بن ناصر السياري",
     roleEn: "Senior Counselor | Former Appeals Court President",
     roleAr: "مستشار أعلى | رئيس محكمة استئناف سابق",
     tier: "partner",
