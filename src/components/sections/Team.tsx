@@ -44,8 +44,9 @@ export default function Team({ locale, dict }: TeamProps) {
             {dict.team.eyebrow || "Our Team"}
           </span>
           <h2 className="mt-4 font-serif-en text-4xl text-white sm:text-5xl">
-            {dict.team.headline}
+            {dict.team.title}
           </h2>
+          <p className="mt-2 text-lg text-gray-300">{dict.team.subtitle}</p>
         </div>
 
         {tiers.map((tier) => {

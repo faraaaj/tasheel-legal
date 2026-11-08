@@ -103,6 +103,8 @@ export interface Dictionary {
     steps: MethodStep[];
   };
   team: {
+    title: string;
+    subtitle: string;
     eyebrow: string;
     headline: string;
     note: string;

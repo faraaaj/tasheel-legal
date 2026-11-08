@@ -177,6 +177,8 @@ export const en: Dictionary = {
     ],
   },
   team: {
+    title: "The Leadership of Tasheel Legal.",
+    subtitle: "Executive management, partners, and associates.",
     eyebrow: "Our Team",
     headline: "The attorneys who will handle your file.",
     note: "All client files are coordinated directly by firm leadership, guaranteeing strict confidentiality, unified institutional quality, and structured accountability.",
