@@ -56,9 +56,18 @@ export const teamMembers: TeamMember[] = [
     roleAr: "الشريك المؤسس",
     tier: "executive",
     image: "/team/meshaan.jpg",
-    bioEn: ["Full profile coming soon."],
-    bioAr: ["السيرة الذاتية الكاملة قريباً."],
-    comingSoon: true
+    bioEn: [
+      "Dr. Meshaan Bin Ejrif is a highly specialized corporate and regulatory lawyer, bringing a unique blend of academic excellence and high-stakes practical experience to Tasheel Legal. He holds a Ph.D. in Law (Commercial Disputes & Arbitration) and a Master of Laws (LLM), equipping him with a deep understanding of complex legal frameworks and their application in the Saudi market.",
+      "His practice is defined by his exceptional ability to structure, license, and ensure the regulatory compliance of large corporations. He has successfully guided multinational Fortune 500 companies through the complexities of Saudi business law, structuring their market entry and expansions with strategic precision. His expertise in M&A, tax strategies, and contract negotiations is specifically designed to meet the unique needs of large enterprises.",
+      "At Tasheel Legal, Dr. Meshaan embodies the firm's **Preventative Engineering** pillar. He specializes in identifying regulatory bottlenecks and compliance gaps before they escalate, ensuring that his clients' legal structures are not just compliant, but strategically favorable for sustainable growth. He is an active member of the academic community at Imam Muhammad ibn Saud Islamic University, constantly updating his knowledge to provide clients with the most current legal insights.",
+      "Dr. Meshaan's approach aligns perfectly with our **Growth Co-Development** philosophy. As Managing Partner, he leads the firm's strategic direction, ensuring that Tasheel Legal remains at the forefront of regulatory compliance and corporate law in the Kingdom. He is not just a legal advisor, but a strategic business partner to our clients, guiding them through complex transformations and empowering them to achieve sustainable growth. His leadership, combined with his deep analytical skills, is the driving force behind our mission to protect and elevate large institutions in Saudi Arabia."
+    ],
+    bioAr: [
+      "الدكتور مشعان بن عجرف هو محامٍ متخصص في قانون الشركات والامتثال التنظيمي، يجلب إلى شركة تسهيل مزيجاً فريداً من التميز الأكاديمي والخبرة العملية عالية المستوى. يحمل درجة الدكتوراه في القانون (الوساطة في حل النزاعات التجارية) وماجستير في القانون (LLM)، مما يمنحه فهماً عميقاً للأطر القانونية المعقدة وتطبيقها في السوق السعودي.",
+      "تتميز ممارسته بقدرته الاستثنائية على هيكلة وترخيص وضمان الامتثال التنظيمي للشركات الكبرى. لقد نجح في توجيه شركات Fortune 500 العالمية عبر تعقيدات نظام الأعمال السعودي، وهيكلة دخولها وتوسعها بدقة استراتيجية. وتشمل خبرته في عمليات الاندماج والاستحواذ، والاستراتيجيات الضريبية، والمفاوضات التعاقدية، المصممة خصيصاً لتلبية الاحتياجات الفريدة للمؤسسات الكبيرة.",
+      "في شركة تسهيل، يجسد الدكتور مشعان ركن **الهندسة الوقائية** في الشركة. ويتخصص في تحديد الاختناقات التنظيمية والثغرات في الامتثال قبل تفاقمها، مما يضمن أن هياكل عملائه القانونية ليست متوافقة فحسب، بل مواتية استراتيجياً للنمو المستدام. وهو عضو نشط في المجتمع الأكاديمي بجامعة الإمام محمد بن سعود الإسلامية، ويقوم بتحديث معرفته باستمرار لتقديم أحدث الرؤى القانونية لعملائه.",
+      "يتماشى نهج الدكتور مشعان تماماً مع فلسفة **تنمية وتطوير الأعمال** لدينا. وبصفته الشريك المؤسس، فإنه يقود التوجه الاستراتيجي للشركة، مما يضمن بقاء شركة تسهيل في طليعة الامتثال التنظيمي وقانون الشركات في المملكة. وهو ليس مجرد مستشار قانوني، بل شريك أعمال استراتيجي لعملائنا، يوجههم عبر التحولات المعقدة ويمكنهم من تحقيق النمو المستدام. إن قيادته، إلى جانب مهاراته التحليلية العميقة، هي القوة الدافعة وراء مهمتنا لحماية وتمكين المؤسسات الكبيرة في المملكة العربية السعودية."
+    ]
   },
   {
     slug: "dr-mohammed-bin-ejrim",
