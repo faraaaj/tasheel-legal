@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { Menu, X, User, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import CurrencySelector from "@/components/ui/CurrencySelector";
+import { supabase } from "@/lib/supabase";
+import { ADMIN_ROLES } from "@/lib/admin";
 
 type HeaderProps = {
   locale: Locale;
@@ -23,8 +25,50 @@ export default function Header({ locale, dict }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { cartItems } = useCart();
   const cartCount = cartItems.length;
+
+  // Show the Admin link only for signed-in users with an admin role. This is
+  // cosmetic only — every /api/admin/* route re-verifies the bearer token and
+  // the role server-side.
+  useEffect(() => {
+    let cancelled = false;
+
+    const checkRole = async (userId: string | undefined) => {
+      if (!userId) {
+        if (!cancelled) setIsAdmin(false);
+        return;
+      }
+
+      const { data } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", userId)
+        .maybeSingle();
+
+      if (!cancelled) {
+        setIsAdmin(
+          !!data?.role && (ADMIN_ROLES as readonly string[]).includes(data.role),
+        );
+      }
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      checkRole(session?.user?.id);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkRole(session?.user?.id);
+    });
+
+    return () => {
+      cancelled = true;
+      subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -64,6 +108,10 @@ export default function Header({ locale, dict }: HeaderProps) {
       },
     },
   ];
+
+  if (isAdmin) {
+    navLinks.push({ href: `/${locale}/admin`, label: dict.nav.admin });
+  }
 
   const otherLocale = locale === "en" ? "ar" : "en";
   const pathname = usePathname();

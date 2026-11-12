@@ -336,8 +336,10 @@ export default async function StorePage({ params }: StorePageProps) {
             </div>
           ) : null}
 
-          <div className="mx-auto mt-20 max-w-3xl border-t border-white/10 pt-8 text-center">
-            <p className="text-xs leading-relaxed text-gray-500">{disclaimer}</p>
+          <div className="mx-auto mt-20 max-w-3xl text-center">
+            <p className="mt-8 text-[14px] leading-[1.8] text-white font-medium border-t border-white/10 pt-6">
+              {disclaimer}
+            </p>
           </div>
         </div>
       </section>

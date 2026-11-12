@@ -23,6 +23,7 @@ export const ar: Dictionary = {
     insights: "الرؤى",
     contact: "اتصل بنا",
     login: "تسجيل الدخول / التسجيل",
+    admin: "الإدارة",
   },
   a11y: {
     skip: "تخطَّ إلى المحتوى",

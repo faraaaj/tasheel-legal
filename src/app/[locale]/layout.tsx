@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import "../globals.css";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import {
@@ -69,18 +68,11 @@ export default async function LocaleLayout({
       className={`${cormorant.variable} ${inter.variable} ${tajawal.variable} ${tajawalLatin.variable}`}
     >
       <body className={locale === "ar" ? "font-sans-ar" : "font-sans-en"}>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:bg-gold focus:px-5 focus:py-3 focus:text-[11px] focus:font-semibold focus:uppercase focus:tracking-[0.18em] focus:text-navy"
-        >
-          {dict.a11y.skip}
-        </a>
-
         <CurrencyProvider>
           <CartProvider>
-            <Header locale={locale} dict={dict} />
-            <main id="main">{children}</main>
-            <Footer locale={locale} dict={dict} />
+            <SiteChrome locale={locale} dict={dict}>
+              {children}
+            </SiteChrome>
           </CartProvider>
         </CurrencyProvider>
       </body>

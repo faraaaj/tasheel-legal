@@ -23,6 +23,7 @@ export const en: Dictionary = {
     insights: "Insights",
     contact: "Contact",
     login: "Login / Register",
+    admin: "Admin",
   },
   a11y: {
     skip: "Skip to content",

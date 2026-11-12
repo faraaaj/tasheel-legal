@@ -65,6 +65,7 @@ export interface Dictionary {
     insights: string;
     contact: string;
     login: string;
+    admin: string;
   };
   a11y: { skip: string; menu: string; close: string; nav: string };
   lang: { label: string; switchTo: "en" | "ar" };
