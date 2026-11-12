@@ -34,7 +34,7 @@ const PREMIUM_NAMES = [
 const TRADE_NAMES = [
   "Import-Export Compliance",
   "Distribution & Agency Agreement",
-  "GCC Trade Expansion Advisory",
+  "GCC Regional Trade Expansion Advisory",
 ] as const;
 
 // New real-estate-focused section, added after Trade Opportunities. Same
@@ -42,7 +42,7 @@ const TRADE_NAMES = [
 const REAL_ESTATE_NAMES = [
   "Off-Plan Delivery Disputes & Claims",
   "Landowner Protection & Development Partnerships",
-  "Real Estate Developer Advisory",
+  "Real Estate Development & Investment Advisory",
 ] as const;
 
 function toStringArray(value: unknown): string[] | undefined {
