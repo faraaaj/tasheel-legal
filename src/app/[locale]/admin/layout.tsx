@@ -9,10 +9,23 @@ import {
   Package,
   Megaphone,
   ShoppingBag,
+  DollarSign,
+  Receipt,
+  FileText,
+  Calculator,
+  BarChart3,
+  Users2,
+  Mail,
+  Globe,
+  FileEdit,
+  Wrench,
+  Headphones,
+  FileBarChart,
+  Settings,
+  ShieldCheck,
   LogOut,
   Menu,
   X,
-  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
@@ -110,37 +123,30 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
   const base = `/${locale}/admin`;
   const navItems: NavItem[] = [
-    {
-      href: base,
-      label: isAr ? "نظرة عامة" : "Dashboard",
-      icon: LayoutDashboard,
-    },
+    { href: base, label: isAr ? "لوحة التحكم" : "Dashboard", icon: LayoutDashboard },
     ...(admin && canManageUsers(admin.role)
-      ? [
-          {
-            href: `${base}/users`,
-            label: isAr ? "المستخدمون" : "Users",
-            icon: Users,
-          },
-        ]
+      ? [{ href: `${base}/users`, label: isAr ? "المستخدمون" : "Users & Access", icon: Users }]
       : []),
-    {
-      href: `${base}/packages`,
-      label: isAr ? "الباقات" : "Packages",
-      icon: Package,
-    },
-    {
-      href: `${base}/ticker`,
-      label: isAr ? "الشريط الإخباري" : "Ticker",
-      icon: Megaphone,
-      soon: true,
-    },
-    {
-      href: `${base}/orders`,
-      label: isAr ? "الطلبات" : "Orders",
-      icon: ShoppingBag,
-      soon: true,
-    },
+    { href: `${base}/packages`, label: isAr ? "الباقات" : "Packages & Services", icon: Package },
+    { href: `${base}/ticker`, label: isAr ? "الشريط" : "Ticker & Announcements", icon: Megaphone, soon: true },
+    { href: `${base}/orders`, label: isAr ? "الطلبات" : "Orders", icon: ShoppingBag, soon: true },
+    { href: `${base}/sales`, label: isAr ? "المبيعات" : "Sales", icon: DollarSign, soon: true },
+    { href: `${base}/payments`, label: isAr ? "المدفوعات" : "Payments", icon: DollarSign, soon: true },
+    { href: `${base}/invoices`, label: isAr ? "الفواتير" : "Invoices", icon: Receipt, soon: true },
+    { href: `${base}/finance`, label: isAr ? "المالية" : "Finance", icon: DollarSign, soon: true },
+    { href: `${base}/accounting`, label: isAr ? "المحاسبة" : "Accounting", icon: Calculator, soon: true },
+    { href: `${base}/crm`, label: isAr ? "العملاء" : "CRM", icon: Users2, soon: true },
+    { href: `${base}/marketing`, label: isAr ? "التسويق" : "Marketing", icon: Mail, soon: true },
+    { href: `${base}/analytics`, label: isAr ? "التحليلات" : "Analytics", icon: BarChart3 },
+    { href: `${base}/website`, label: isAr ? "الموقع" : "Website Mgmt", icon: Globe, soon: true },
+    { href: `${base}/content`, label: isAr ? "المحتوى" : "Content Mgmt", icon: FileEdit, soon: true },
+    { href: `${base}/team`, label: isAr ? "الفريق" : "Legal Team", icon: Users2, soon: true },
+    { href: `${base}/support`, label: isAr ? "الدعم" : "Support", icon: Headphones, soon: true },
+    { href: `${base}/reports`, label: isAr ? "التقارير" : "Reports", icon: FileBarChart, soon: true },
+    { href: `${base}/settings`, label: isAr ? "الإعدادات" : "Settings", icon: Settings, soon: true },
+    ...(admin?.role === "superadmin"
+      ? [{ href: `${base}/control`, label: isAr ? "التحكم" : "SuperAdmin Control", icon: ShieldCheck }]
+      : []),
   ];
 
   if (status !== "ready" || !admin) {

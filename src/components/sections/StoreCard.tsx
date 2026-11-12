@@ -324,6 +324,16 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08, duration: 0.3 }}
                 >
+                  {pkg.originalPriceSar && pkg.originalPriceSar > pkg.priceSar && (
+                    <div className="relative mb-6 pt-8">
+                      <DiscountBanner
+                        label={locale === "ar" ? (pkg.discountLabelAr ?? "") : (pkg.discountLabelEn ?? "")}
+                        originalPrice={pkg.originalPriceSar}
+                        discountedPrice={pkg.priceSar}
+                        locale={locale}
+                      />
+                    </div>
+                  )}
                   {badge ? (
                     <span className="mb-4 inline-flex w-fit items-center border border-[#C5A880]/50 bg-[#C5A880]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#C5A880] rtl:tracking-normal">
                       {badge}

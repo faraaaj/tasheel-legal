@@ -16,6 +16,7 @@ export default function DashboardPage() {
 
   const [status, setStatus] = useState<DashboardStatus>("loading");
   const [profileName, setProfileName] = useState<string | null>(null);
+  const [profileRole, setProfileRole] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function DashboardPage() {
       }
 
       setProfileName(profile.full_name);
+      setProfileRole(profile.role);
       setStatus(profile.is_approved ? "approved" : "pending");
     };
 
@@ -120,6 +122,14 @@ export default function DashboardPage() {
             >
               {isAr ? "استكشاف الموقع" : "Explore the Website"}
             </Link>
+            {profileRole && ["superadmin", "admin", "marketing_admin", "support_admin", "freelancer_admin"].includes(profileRole) && (
+              <Link
+                href={`/${locale}/admin`}
+                className="mt-4 inline-flex items-center justify-center !min-w-[180px] h-[40px] bg-[#C5A880] text-[#070D19] font-bold uppercase tracking-widest text-[10px] hover:bg-[#D4A05A] transition-all"
+              >
+                {isAr ? "لوحة التحكم" : "Admin Dashboard"}
+              </Link>
+            )}
           </>
         )}
       </motion.div>

@@ -5,15 +5,15 @@ import ComingSoon from "@/components/admin/ComingSoon";
 
 export default function AdminTickerPage() {
   const params = useParams();
-  const isAr = params?.locale === "ar";
-
+  const locale = params?.locale === "ar" ? "ar" : "en";
+  const isAr = locale === "ar";
   return (
     <ComingSoon
-      eyebrow={isAr ? "الشريط الإخباري" : "Ticker"}
-      title={isAr ? "إدارة الشريط الإخباري" : "Ticker management"}
+      locale={locale}
+      title={isAr ? "إدارة الشريط الإخباري" : "Ticker Management"}
       description={
         isAr
-          ? "سيتمكن فريق التسويق من إدارة العناوين المتحركة في الصفحة الرئيسية من هنا. هذه الوحدة قيد التطوير."
+          ? "ستدير فريق التسويق عناوين الشريط الإخباري هنا. هذه الوحدة قيد التطوير."
           : "The marketing team will manage the homepage ticker headlines here. This module is under development."
       }
     />

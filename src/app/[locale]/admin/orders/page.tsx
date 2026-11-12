@@ -5,15 +5,15 @@ import ComingSoon from "@/components/admin/ComingSoon";
 
 export default function AdminOrdersPage() {
   const params = useParams();
-  const isAr = params?.locale === "ar";
-
+  const locale = params?.locale === "ar" ? "ar" : "en";
+  const isAr = locale === "ar";
   return (
     <ComingSoon
-      eyebrow={isAr ? "الطلبات" : "Orders"}
-      title={isAr ? "إدارة الطلبات" : "Order management"}
+      locale={locale}
+      title={isAr ? "إدارة الطلبات" : "Order Management"}
       description={
         isAr
-          ? "لا يوجد جدول طلبات في قاعدة البيانات بعد. ستظهر الطلبات هنا بمجرد تفعيل الدفع وإنشاء الطلبات."
+          ? "لا توجد جداول طلبات في قاعدة البيانات بعد. ستظهر الطلبات هنا بعد تفعيل نظام الطلبات."
           : "There is no orders table in the database yet. Orders will appear here once checkout and order creation are enabled."
       }
     />
