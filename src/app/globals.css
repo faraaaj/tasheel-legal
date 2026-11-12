@@ -160,3 +160,17 @@
     animation: none !important;
   }
 }
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: inline-flex;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.rtl .animate-ticker {
+  animation-direction: reverse;
+}

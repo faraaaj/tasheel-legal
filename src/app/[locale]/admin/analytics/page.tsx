@@ -2,171 +2,77 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { supabase } from "@/lib/supabase";
 import { adminFetch } from "@/lib/admin-client";
 
-type KpiCard = {
-  label: string;
-  value: string | number;
-  source: "live" | "pending";
-  note?: string;
+type Summary = {
+  period: string;
+  overview: {
+    totalEvents: number;
+    uniqueSessions: number;
+    uniqueUsers: number;
+    pageViews: number;
+    packageViews: number;
+    popupOpens: number;
+    cartAdds: number;
+    tickerClicks: number;
+    whatsappClicks: number;
+    phoneClicks: number;
+    emailClicks: number;
+    consultationRequests: number;
+  };
+  eventCounts: Record<string, number>;
+  deviceBreakdown: Record<string, number>;
+  trafficSources: Record<string, number>;
+  localeBreakdown: Record<string, number>;
+  topPackages: { id: string; name: string; views: number; cartAdds: number; popupOpens: number }[];
+  dailyMetrics: { date: string; metric_name: string; metric_value: number }[];
 };
 
-type KpiSection = {
-  title: string;
-  kpis: KpiCard[];
-};
+function KpiCard({ label, value, live }: { label: string; value: string | number; live: boolean }) {
+  return (
+    <div className="border border-white/10 bg-[#070D19] p-4">
+      <p className="text-[9px] uppercase tracking-[0.14em] text-gray-500 truncate">{label}</p>
+      <p className={`mt-2 text-xl font-bold ${live ? "text-white" : "text-gray-500"}`}>{value}</p>
+    </div>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="border border-white/10 bg-[#0A1120] p-6">
+      <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#C5A880] mb-4">{title}</h3>
+      {children}
+    </section>
+  );
+}
 
 export default function AnalyticsPage() {
   const params = useParams();
   const locale = params?.locale === "ar" ? "ar" : "en";
   const isAr = locale === "ar";
 
-  const [sections, setSections] = useState<KpiSection[]>([]);
+  const [data, setData] = useState<Summary | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-
-    const load = async () => {
-      const kpis: Record<string, KpiCard[]> = {
-        traffic: [],
-        engagement: [],
-        conversions: [],
-        users: [],
-        legal: [],
-        marketing: [],
-      };
-
-      // --- Users & Accounts (real data from profiles) ---
+    (async () => {
       try {
-        const { count: totalUsers } = await supabase
-          .from("profiles")
-          .select("id", { count: "exact", head: true });
-        const { count: pendingUsers } = await supabase
-          .from("profiles")
-          .select("id", { count: "exact", head: true })
-          .eq("is_approved", false);
-        const { count: approvedUsers } = await supabase
-          .from("profiles")
-          .select("id", { count: "exact", head: true })
-          .eq("is_approved", true);
-        const { count: adminUsers } = await supabase
-          .from("profiles")
-          .select("id", { count: "exact", head: true })
-          .in("role", ["superadmin", "admin", "marketing_admin", "support_admin", "freelancer_admin"]);
-
-        kpis.users = [
-          { label: isAr ? "إجمالي المستخدمين" : "Total Users", value: totalUsers ?? 0, source: "live" },
-          { label: isAr ? "المستخدمون المعتمدون" : "Approved Users", value: approvedUsers ?? 0, source: "live" },
-          { label: isAr ? "المستخدمون المعلقون" : "Pending Users", value: pendingUsers ?? 0, source: "live" },
-          { label: isAr ? "مستخدمو الإدارة" : "Admin Users", value: adminUsers ?? 0, source: "live" },
-          { label: isAr ? "معدل النمو (شهري)" : "Growth Rate (Monthly)", value: "—", source: "pending", note: isAr ? "يحتاج إلى بيانات تاريخية" : "Requires historical data" },
-          { label: isAr ? "معدل الاحتفاظ" : "Retention Rate", value: "—", source: "pending", note: isAr ? "يحتاج إلى بيانات تاريخية" : "Requires historical data" },
-          { label: isAr ? "متوسط وقت الجلسة" : "Avg. Session Duration", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "معدل الارتداد" : "Bounce Rate", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-        ];
-      } catch {
-        kpis.users = [{ label: isAr ? "خطأ" : "Error", value: "—", source: "pending" }];
+        const res = await adminFetch<Summary>("/api/admin/analytics/summary");
+        if (!cancelled) { setData(res); setLoading(false); }
+      } catch (err) {
+        if (!cancelled) { setError(err instanceof Error ? err.message : "Failed to load"); setLoading(false); }
       }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
-      // --- Packages & Engagement (real data from service_packages) ---
-      try {
-        const { count: totalPackages } = await supabase
-          .from("service_packages")
-          .select("id", { count: "exact", head: true });
-        const { count: activePackages } = await supabase
-          .from("service_packages")
-          .select("id", { count: "exact", head: true })
-          .eq("active", true);
-        const { count: discountedPackages } = await supabase
-          .from("service_packages")
-          .select("id", { count: "exact", head: true })
-          .not("original_price_sar", "is", null);
+  if (loading) return <p className="text-gray-400">{isAr ? "جارٍ التحميل..." : "Loading..."}</p>;
+  if (error) return <p className="text-red-400">{error}</p>;
+  if (!data) return null;
 
-        kpis.engagement = [
-          { label: isAr ? "إجمالي الباقات" : "Total Packages", value: totalPackages ?? 0, source: "live" },
-          { label: isAr ? "الباقات النشطة" : "Active Packages", value: activePackages ?? 0, source: "live" },
-          { label: isAr ? "الباقات المخفضة" : "Discounted Packages", value: discountedPackages ?? 0, source: "live" },
-          { label: isAr ? "مشاهدات الباقات" : "Package Views", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "فتحات النوافذ" : "Popup Opens", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "إضافات إلى السلة" : "Cart Adds", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "نقرات الشريط" : "Ticker Clicks", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "نقرات واتساب" : "WhatsApp Clicks", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "نقرات الهاتف" : "Phone Clicks", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-          { label: isAr ? "طلبات الاستشارة" : "Consultation Requests", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-        ];
-      } catch {
-        kpis.engagement = [{ label: isAr ? "خطأ" : "Error", value: "—", source: "pending" }];
-      }
-
-      // --- Conversions & Revenue (placeholder — no orders table yet) ---
-      kpis.conversions = [
-        { label: isAr ? "إجمالي التحويلات" : "Total Conversions", value: 0, source: "live", note: isAr ? "لا توجد طلبات بعد" : "No orders yet" },
-        { label: isAr ? "إجمالي الإيرادات" : "Total Revenue", value: "0 SAR", source: "live" },
-        { label: isAr ? "متوسط قيمة الطلب" : "Avg. Order Value", value: "—", source: "pending" },
-        { label: isAr ? "الإيرادات حسب الباقة" : "Revenue by Package", value: "—", source: "pending" },
-        { label: isAr ? "المبالغ المستردة" : "Refunds", value: 0, source: "live" },
-        { label: isAr ? "معدل التحويل" : "Conversion Rate", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-        { label: isAr ? "تكلفة اكتساب العميل" : "Customer Acquisition Cost", value: "—", source: "pending", note: isAr ? "يحتاج إلى بيانات تسويق" : "Requires marketing data" },
-        { label: isAr ? "القيمة الدائمة للعميل" : "Customer Lifetime Value", value: "—", source: "pending", note: isAr ? "يحتاج إلى بيانات تاريخية" : "Requires historical data" },
-        { label: isAr ? "معدل التخلي عن السلة" : "Cart Abandonment Rate", value: "—", source: "pending", note: isAr ? "يحتاج إلى تحليلات" : "Requires analytics integration" },
-        { label: isAr ? "معدل النمو (شهري)" : "Revenue Growth (Monthly)", value: "—", source: "pending" },
-        { label: isAr ? "الإيرادات حسب القناة" : "Revenue by Channel", value: "—", source: "pending" },
-        { label: isAr ? "الإيرادات حسب المنطقة" : "Revenue by Region", value: "—", source: "pending" },
-      ];
-
-      // --- Traffic & Acquisition (requires analytics integration) ---
-      const trafficLabels = isAr
-        ? ["الجلسات", "الزوار", "المصادر", "الروابط المرجعية", "صفحات الهبوط", "معدل الارتداد", "الزوار الجدد", "الزوار العائدون", "متوسط مدة الجلسة", "الصفحات لكل جلسة", "الزيارات من الجوال", "الزيارات من سطح المكتب"]
-        : ["Sessions", "Visitors", "Traffic Sources", "Referrers", "Landing Pages", "Bounce Rate", "New Visitors", "Returning Visitors", "Avg. Session Duration", "Pages per Session", "Mobile Traffic", "Desktop Traffic"];
-      kpis.traffic = trafficLabels.map((l) => ({
-        label: l,
-        value: "—",
-        source: "pending" as const,
-        note: isAr ? "يحتاج إلى تحليلات" : "Data source not connected",
-      }));
-
-      // --- Legal-Specific Metrics ---
-      const legalLabels = isAr
-        ? ["طلبات الاستشارة", "استفسارات الباقات", "نقرات واتساب", "نقرات الهاتف", "نقرات البريد الإلكتروني", "مشاهدات الباقات", "فتحات النوافذ", "إضافات إلى السلة"]
-        : ["Consultation Requests", "Package Inquiries", "WhatsApp Clicks", "Phone Clicks", "Email Clicks", "Package Views", "Popup Opens", "Cart Adds"];
-      kpis.legal = legalLabels.map((l) => ({
-        label: l,
-        value: "—",
-        source: "pending" as const,
-        note: isAr ? "يحتاج إلى تحليلات" : "Data source not connected",
-      }));
-
-      // --- Marketing & SEO ---
-      const marketingLabels = isAr
-        ? ["الزيارات العضوية", "الكلمات المفتاحية", "الروابط الخلفية", "معدل فتح البريد", "تكلفة اكتساب العميل", "القيمة الدائمة", "الوصول عبر وسائل التواصل", "التفاعلات", "التحويلات من البريد", "التحويلات من وسائل التواصل"]
-        : ["Organic Traffic", "Keywords", "Backlinks", "Email Open Rate", "Cost per Acquisition", "Customer Lifetime Value", "Social Reach", "Social Engagement", "Email Conversions", "Social Conversions"];
-      kpis.marketing = marketingLabels.map((l) => ({
-        label: l,
-        value: "—",
-        source: "pending" as const,
-        note: isAr ? "يحتاج إلى تحليلات" : "Data source not connected",
-      }));
-
-      if (cancelled) return;
-
-      setSections([
-        { title: isAr ? "الزيارات والاقتناء" : "Traffic & Acquisition", kpis: kpis.traffic },
-        { title: isAr ? "التفاعل والمحتوى" : "Engagement & Content", kpis: kpis.engagement },
-        { title: isAr ? "التحويلات والإيرادات" : "Conversions & Revenue", kpis: kpis.conversions },
-        { title: isAr ? "المستخدمون والحسابات" : "Users & Accounts", kpis: kpis.users },
-        { title: isAr ? "المقاييس القانونية" : "Legal-Specific Metrics", kpis: kpis.legal },
-        { title: isAr ? "التسويق وSEO" : "Marketing & SEO", kpis: kpis.marketing },
-      ]);
-      setLoading(false);
-    };
-
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [isAr]);
+  const o = data.overview;
 
   return (
     <div className="space-y-8">
@@ -175,48 +81,124 @@ export default function AnalyticsPage() {
           {isAr ? "التحليلات" : "Analytics"}
         </p>
         <h2 className="mt-1 font-serif-en text-2xl text-white">
-          {isAr ? "لوحة التحليلات (60+ مؤشر)" : "Analytics Dashboard (60+ KPIs)"}
+          {isAr ? "لوحة التحليلات (30 يوماً)" : "Analytics Dashboard (Last 30 Days)"}
         </h2>
         <p className="mt-2 text-sm text-gray-400">
-          {isAr
-            ? "المؤشرات الحية من Supabase. المؤشرات التي تتطلب تكاملات خارجية تظهر كـ 'مصدر البيانات غير متصل'."
-            : "Live metrics from Supabase. Metrics requiring external integrations show as 'Data source not connected'."}
+          {isAr ? "بيانات حقيقية من Supabase. المؤشرات التي تتطلب تكاملات خارجية تظهر كـ 'مصدر البيانات غير متصل'." : "Live data from Supabase. Metrics requiring external integrations show as 'Data source not connected'."}
         </p>
       </div>
 
-      {loading ? (
-        <p className="text-gray-400">{isAr ? "جارٍ التحميل..." : "Loading..."}</p>
-      ) : (
-        sections.map((section) => (
-          <section key={section.title} className="border border-white/10 bg-[#0A1120] p-6">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#C5A880] mb-4">
-              {section.title}
-            </h3>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {section.kpis.map((kpi, i) => (
-                <div
-                  key={i}
-                  className="border border-white/10 bg-[#070D19] p-4"
-                >
-                  <p className="text-[9px] uppercase tracking-[0.14em] text-gray-500 truncate">
-                    {kpi.label}
-                  </p>
-                  <p
-                    className={`mt-2 text-xl font-bold ${
-                      kpi.source === "live" ? "text-white" : "text-gray-500"
-                    }`}
-                  >
-                    {kpi.value}
-                  </p>
-                  {kpi.note && (
-                    <p className="mt-1 text-[9px] text-gray-600">{kpi.note}</p>
-                  )}
+      {/* Traffic & Acquisition */}
+      <Section title={isAr ? "الزيارات والاقتناء (12)" : "Traffic & Acquisition (12)"}>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <KpiCard label={isAr ? "إجمالي الأحداث" : "Total Events"} value={o.totalEvents} live />
+          <KpiCard label={isAr ? "الجلسات الفريدة" : "Unique Sessions"} value={o.uniqueSessions} live />
+          <KpiCard label={isAr ? "المستخدمون الفريدون" : "Unique Users"} value={o.uniqueUsers} live />
+          <KpiCard label={isAr ? "مشاهدات الصفحات" : "Page Views"} value={o.pageViews} live />
+          <KpiCard label={isAr ? "مشاهدات الباقات" : "Package Views"} value={o.packageViews} live />
+          <KpiCard label={isAr ? "فتحات النوافذ" : "Popup Opens"} value={o.popupOpens} live />
+          <KpiCard label={isAr ? "إضافات إلى السلة" : "Cart Adds"} value={o.cartAdds} live />
+          <KpiCard label={isAr ? "نقرات الشريط" : "Ticker Clicks"} value={o.tickerClicks} live />
+          <KpiCard label={isAr ? "نقرات واتساب" : "WhatsApp Clicks"} value={o.whatsappClicks} live />
+          <KpiCard label={isAr ? "نقرات الهاتف" : "Phone Clicks"} value={o.phoneClicks} live />
+          <KpiCard label={isAr ? "نقرات البريد" : "Email Clicks"} value={o.emailClicks} live />
+          <KpiCard label={isAr ? "طلبات الاستشارة" : "Consultation Requests"} value={o.consultationRequests} live />
+        </div>
+      </Section>
+
+      {/* Device & Traffic Source Breakdown */}
+      <Section title={isAr ? "الأجهزة ومصادر الزيارات" : "Devices & Traffic Sources"}>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-gray-500 mb-2">{isAr ? "الأجهزة" : "Devices"}</p>
+            <div className="space-y-1">
+              {Object.entries(data.deviceBreakdown).map(([k, v]) => (
+                <div key={k} className="flex justify-between text-sm text-gray-300">
+                  <span>{k}</span><span className="text-white font-bold">{v}</span>
                 </div>
               ))}
+              {Object.keys(data.deviceBreakdown).length === 0 && <p className="text-gray-500 text-sm">{isAr ? "لا توجد بيانات" : "No data"}</p>}
             </div>
-          </section>
-        ))
-      )}
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-gray-500 mb-2">{isAr ? "مصادر الزيارات" : "Traffic Sources"}</p>
+            <div className="space-y-1">
+              {Object.entries(data.trafficSources).map(([k, v]) => (
+                <div key={k} className="flex justify-between text-sm text-gray-300">
+                  <span>{k}</span><span className="text-white font-bold">{v}</span>
+                </div>
+              ))}
+              {Object.keys(data.trafficSources).length === 0 && <p className="text-gray-500 text-sm">{isAr ? "لا توجد بيانات" : "No data"}</p>}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Top Packages */}
+      <Section title={isAr ? "أفضل الباقات (حسب المشاهدات)" : "Top Packages (by Views)"}>
+        {data.topPackages.length === 0 ? (
+          <p className="text-gray-500 text-sm">{isAr ? "لا توجد بيانات بعد. تبدأ التتبع عند زيارة المستخدمين للباقات." : "No data yet. Tracking begins when users view packages."}</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/10 text-[10px] uppercase tracking-[0.14em] text-gray-500">
+                  <th className="px-3 py-2 text-start">{isAr ? "الباقة" : "Package"}</th>
+                  <th className="px-3 py-2 text-end">{isAr ? "مشاهدات" : "Views"}</th>
+                  <th className="px-3 py-2 text-end">{isAr ? "فتحات" : "Popups"}</th>
+                  <th className="px-3 py-2 text-end">{isAr ? "سلة" : "Cart Adds"}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.topPackages.map((p) => (
+                  <tr key={p.id} className="border-b border-white/5">
+                    <td className="px-3 py-2 text-gray-300">{p.name}</td>
+                    <td className="px-3 py-2 text-end text-white font-bold">{p.views}</td>
+                    <td className="px-3 py-2 text-end text-white font-bold">{p.popupOpens}</td>
+                    <td className="px-3 py-2 text-end text-white font-bold">{p.cartAdds}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Section>
+
+      {/* Locale Breakdown */}
+      <Section title={isAr ? "التوزيع حسب اللغة" : "Locale Breakdown"}>
+        <div className="space-y-1">
+          {Object.entries(data.localeBreakdown).map(([k, v]) => (
+            <div key={k} className="flex justify-between text-sm text-gray-300">
+              <span>{k}</span><span className="text-white font-bold">{v}</span>
+            </div>
+          ))}
+          {Object.keys(data.localeBreakdown).length === 0 && <p className="text-gray-500 text-sm">{isAr ? "لا توجد بيانات" : "No data"}</p>}
+        </div>
+      </Section>
+
+      {/* Pending integrations */}
+      <Section title={isAr ? "المؤشرات المعلقة (تكاملات خارجية)" : "Pending KPIs (External Integrations)"}>
+        <p className="text-sm text-gray-400 mb-3">
+          {isAr ? "المؤشرات التالية تتطلب تكاملات خارجية (Google Search Console, Resend, Web3Forms) وتظهر كـ 'مصدر البيانات غير متصل'." : "The following KPIs require external integrations (Google Search Console, Resend, Web3Forms) and show as 'Data source not connected'."}
+        </p>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {[
+            "Organic Traffic", "Keywords", "Backlinks", "Email Open Rate",
+            "Cost per Acquisition", "Customer Lifetime Value", "Social Reach",
+            "Social Engagement", "Email Conversions", "Social Conversions",
+            "Bounce Rate", "Avg. Session Duration", "Pages per Session",
+            "New Visitors", "Returning Visitors", "Mobile Traffic", "Desktop Traffic",
+            "Revenue Growth", "Revenue by Channel", "Revenue by Region",
+            "Cart Abandonment Rate", "Retention Rate",
+          ].map((label) => (
+            <div key={label} className="border border-white/10 bg-[#070D19] p-4">
+              <p className="text-[9px] uppercase tracking-[0.14em] text-gray-500 truncate">{label}</p>
+              <p className="mt-2 text-xl font-bold text-gray-500">—</p>
+              <p className="mt-1 text-[9px] text-gray-600">{isAr ? "مصدر البيانات غير متصل" : "Data source not connected"}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
     </div>
   );
 }

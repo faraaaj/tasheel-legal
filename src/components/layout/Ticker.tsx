@@ -1,280 +1,125 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, EyeOff, Settings2, X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { supabase } from "@/lib/supabase";
-import type { Dictionary, Locale } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/dictionaries";
 
-type TickerProps = {
-  locale: Locale;
-  dict: Dictionary;
+type TickerItem = {
+  id: string;
+  headline_en: string;
+  headline_ar: string;
+  summary_en: string | null;
+  summary_ar: string | null;
+  source_url: string | null;
+  source_name: string | null;
+  category: string;
 };
 
-type TickerSettings = {
-  hidden: boolean;
-  textColor: string;
-  bgColor: string;
-  speed: number;
-};
-
-const DEFAULTS: TickerSettings = {
-  hidden: false,
-  textColor: "#FFFFFF",
-  bgColor: "#070D19",
-  speed: 20,
-};
-
-/* v2: navy/white defaults + RTL direction support */
-const STORAGE_KEY = "tasheel-ticker-settings-v2";
-
-/* Each chunk is a fixed 1000px period, so an x: [0, -1000] loop is seamless. */
-const CHUNK_WIDTH = 1000;
-const COPY_COUNT = 6;
-
-export default function Ticker({ locale, dict }: TickerProps) {
-  const [settings, setSettings] = useState<TickerSettings>(DEFAULTS);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const popoverRef = useRef<HTMLDivElement>(null);
+export default function Ticker({ locale }: { locale: Locale }) {
+  const isAr = locale === "ar";
+  const [items, setItems] = useState<TickerItem[]>([]);
+  const [selectedItem, setSelectedItem] = useState<TickerItem | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as Partial<TickerSettings>;
-        setSettings({ ...DEFAULTS, ...parsed });
-      }
-    } catch {
-      /* ignore corrupted settings */
-    }
+    supabase
+      .from("ticker_items")
+      .select("*")
+      .eq("is_active", true)
+      .order("sort_order")
+      .then(({ data }) => {
+        if (data) setItems(data as TickerItem[]);
+      });
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
-    } catch {
-      /* storage may be unavailable */
-    }
-  }, [settings, mounted]);
-
-  useEffect(() => {
-    if (!settingsOpen) return;
-    const onDocClick = (event: MouseEvent) => {
-      if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
-        setSettingsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onDocClick);
-    return () => document.removeEventListener("mousedown", onDocClick);
-  }, [settingsOpen]);
-
-  const [discountItems, setDiscountItems] = useState<
-    { text: string; href: string; isDiscount: boolean }[]
-  >([]);
-
-  useEffect(() => {
-    let active = true;
-    (async () => {
-      try {
-        const { data } = await supabase
-          .from("service_packages")
-          .select("id, name_en, name_ar, price_sar, original_price_sar")
-          .not("original_price_sar", "is", null)
-          .eq("active", true);
-        if (!active || !data) return;
-        const items = data
-          .filter((p: any) => p.original_price_sar && p.original_price_sar > p.price_sar)
-          .map((p: any) => ({
-            text: `${locale === "ar" ? p.name_ar : p.name_en} — ${Number(p.price_sar).toLocaleString()} SAR`,
-            href: `/${locale}/store`,
-            isDiscount: true,
-          }));
-        setDiscountItems(items);
-      } catch {
-        /* ignore */
-      }
-    })();
-    return () => {
-      active = false;
-    };
-  }, [locale]);
-
-  const updates = [
-    { en: "New Saudi Companies Law: What international investors need to know.", ar: "نظام الشركات السعودي الجديد: ما يجب أن يعرفه المستثمرون الدوليون." },
-    { en: "Vision 2030 update: New incentives for tech localization.", ar: "تحديثات رؤية 2030: حوافز جديدة لتوطين التقنية." },
-    { en: "Tasheel Legal expands advisory services for cross-border M&A.", ar: "شركة تسهيل للمحاماة والاستشارات القانونية توسّع خدماتها الاستشارية لعمليات الاندماج والاستحواذ العابرة للحدود." },
-    { en: "Strategic legal framework for regional headquarters (RHQ) in Riyadh.", ar: "الإطار القانوني الاستراتيجي للمقار الإقليمية (RHQ) في الرياض." },
-  ];
-
-  const newsItems = updates.map((u) => ({ text: u[locale], href: `/${locale}#insights`, isDiscount: false }));
-  const allItems = [...newsItems, ...discountItems];
-  const content = allItems.map((i) => i.text).join("  •  ");
-
-  const patch = (partial: Partial<TickerSettings>) =>
-    setSettings((current) => ({ ...current, ...partial }));
-
-  // Restore button when the ticker is hidden
-  if (mounted && settings.hidden) {
-    return (
-      <button
-        type="button"
-        onClick={() => patch({ hidden: false })}
-        aria-label={locale === "ar" ? "إظهار الشريط الإخباري" : "Show ticker"}
-        className="fixed bottom-3 right-3 z-50 flex h-9 w-9 items-center justify-center rounded-full shadow-lg transition-transform hover:scale-110"
-        style={{ backgroundColor: DEFAULTS.bgColor, color: DEFAULTS.textColor }}
-      >
-        <Eye size={18} />
-      </button>
-    );
-  }
+  if (items.length === 0) return null;
 
   return (
-    <div
-      className="fixed bottom-0 left-0 z-50 w-full shadow-[0_-6px_24px_rgba(0,0,0,0.35)]"
-      style={{ backgroundColor: settings.bgColor, color: settings.textColor }}
-    >
-      {/* Controls rail (right side) */}
-      <div className="absolute inset-y-0 right-0 z-10 flex items-center gap-1 px-3">
-        <button
-          type="button"
-          onClick={() => patch({ hidden: true })}
-          aria-label={locale === "ar" ? "إخفاء الشريط الإخباري" : "Hide ticker"}
-          className="flex h-7 w-7 items-center justify-center rounded-sm opacity-60 transition-opacity hover:opacity-100"
-        >
-          <EyeOff size={15} />
-        </button>
-        <button
-          type="button"
-          onClick={() => setSettingsOpen((open) => !open)}
-          aria-label={locale === "ar" ? "إعدادات الشريط الإخباري" : "Ticker settings"}
-          className={`flex h-7 w-7 items-center justify-center rounded-sm transition-opacity hover:opacity-100 ${
-            settingsOpen ? "opacity-100" : "opacity-60"
-          }`}
-        >
-          <Settings2 size={15} />
-        </button>
-      </div>
-
-      {/* Scroll content */}
-      <div
-        className="relative z-0 w-full overflow-hidden py-2 cursor-pointer"
-        onClick={() => {
-          if (discountItems.length > 0) {
-            window.location.href = `/${locale}/store`;
-          }
-        }}
-      >
-        <div
-          /* Remount on speed/locale change so the CSS animation restarts
-             with the new duration and direction. */
-          key={`${locale}-${settings.speed}`}
-          dir="ltr"
-          className="ticker-track flex w-max whitespace-nowrap"
-          style={{
-            animationName: locale === "ar" ? "ticker-scroll-rtl" : "ticker-scroll-ltr",
-            animationDuration: `${settings.speed}s`,
-            animationTimingFunction: "linear",
-            animationIterationCount: "infinite",
-            willChange: "transform",
-          }}
-        >
-          {Array.from({ length: COPY_COUNT }).map((_, copyIdx) => (
-            <div
-              key={copyIdx}
-              style={{ width: CHUNK_WIDTH }}
-              className="flex shrink-0 items-center px-6"
-            >
-              <span
-                dir={locale === "ar" ? "rtl" : "ltr"}
-                className="w-full text-[11px] font-bold uppercase tracking-widest truncate rtl:text-right rtl:tracking-normal rtl:normal-case rtl:text-[13px]"
-              >
-                {content}
-              </span>
+    <>
+      {isVisible && (
+        <div className="fixed bottom-0 left-0 w-full z-50 bg-[#070D19] border-t border-[#C5A880]/30 h-10">
+          <div className="flex items-center h-full overflow-hidden">
+            <div className="animate-ticker whitespace-nowrap">
+              {items.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setSelectedItem(item)}
+                  className="inline-flex items-center gap-2 px-6 text-[11px] font-bold uppercase tracking-wider text-[#C5A880] hover:text-white transition-colors"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+                  {isAr ? item.headline_ar : item.headline_en}
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Settings popover */}
-      <AnimatePresence>
-        {settingsOpen && (
-          <motion.div
-            ref={popoverRef}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.25 }}
-            className="absolute bottom-full right-2 z-20 mb-3 w-72 border border-gold/40 bg-[#0A1120] p-5 text-cream shadow-2xl"
+          </div>
+          <button
+            onClick={() => setIsVisible(false)}
+            className="absolute right-0 top-0 h-full px-4 bg-[#0A1120] text-[10px] font-bold uppercase tracking-widest text-[#C5A880]"
           >
-            <div className="flex items-center justify-between">
-              <h4 className="font-serif-en text-sm text-gold">
-                {locale === "ar" ? "إعدادات الشريط" : "Ticker Settings"}
-              </h4>
-              <button
-                type="button"
-                onClick={() => setSettingsOpen(false)}
-                aria-label={locale === "ar" ? "إغلاق" : "Close"}
-                className="text-cream/50 transition-colors hover:text-cream"
-              >
-                <X size={16} />
-              </button>
-            </div>
+            {isAr ? "إخفاء" : "Hide"}
+          </button>
+        </div>
+      )}
 
-            <div className="mt-5 space-y-5">
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[12px] text-cream/80">
-                  {locale === "ar" ? "لون النص" : "Text color"}
+      <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#070D19]/90 backdrop-blur-xl p-4"
+            onClick={() => setSelectedItem(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              className="relative w-full max-w-2xl bg-[#0A1120] border border-[#C5A880]/30 p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={`absolute top-4 ${isAr ? "left-4" : "right-4"}`}>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#C5A880]">
+                  {selectedItem.category}
                 </span>
-                <input
-                  type="color"
-                  value={settings.textColor}
-                  onChange={(event) => patch({ textColor: event.target.value })}
-                  className="h-8 w-14 cursor-pointer border border-cream/20 bg-transparent"
-                />
-              </div>
-
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-[12px] text-cream/80">
-                  {locale === "ar" ? "لون الخلفية" : "Background color"}
-                </span>
-                <input
-                  type="color"
-                  value={settings.bgColor}
-                  onChange={(event) => patch({ bgColor: event.target.value })}
-                  className="h-8 w-14 cursor-pointer border border-cream/20 bg-transparent"
-                />
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between text-[12px] text-cream/80">
-                  <span>{locale === "ar" ? "سرعة التمرير" : "Scroll speed"}</span>
-                  <span className="text-gold">{settings.speed}s</span>
-                </div>
-                <input
-                  type="range"
-                  min={5}
-                  max={60}
-                  step={1}
-                  value={settings.speed}
-                  onChange={(event) => patch({ speed: Number(event.target.value) })}
-                  className="mt-3 w-full accent-yellow-400"
-                />
               </div>
 
               <button
-                type="button"
-                onClick={() => setSettings(DEFAULTS)}
-                className="w-full border border-cream/20 py-2 text-[11px] uppercase tracking-widest text-cream/60 transition-colors hover:border-gold hover:text-gold"
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 text-white/70 hover:text-gold"
+                aria-label={isAr ? "إغلاق" : "Close"}
               >
-                {locale === "ar" ? "استعادة الافتراضي" : "Reset to default"}
+                <X size={20} />
               </button>
-            </div>
+
+              <h3 className="mt-6 font-serif-en text-2xl text-white">
+                {isAr ? selectedItem.headline_ar : selectedItem.headline_en}
+              </h3>
+              <p className="mt-4 text-[15px] leading-[1.8] text-gray-300">
+                {isAr ? selectedItem.summary_ar : selectedItem.summary_en}
+              </p>
+
+              <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+                <span className="text-[11px] text-gray-500 uppercase tracking-wider">
+                  {selectedItem.source_name}
+                </span>
+                {selectedItem.source_url && (
+                  <a
+                    href={selectedItem.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#C5A880] text-[#070D19] px-6 py-2 font-bold uppercase tracking-widest text-[10px]"
+                  >
+                    {isAr ? "المصدر" : "Source"}
+                    <ExternalLink size={12} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

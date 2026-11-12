@@ -8,6 +8,7 @@ import type { Locale } from "@/lib/dictionaries";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { supabase } from "@/lib/supabase";
+import { trackEvent } from "@/lib/analytics";
 
 export type StorePackage = {
   id: string;
@@ -67,6 +68,7 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
   const isAr = locale === "ar";
 
   useEffect(() => {
+    trackEvent("package_view", { packageId: pkg.id, locale });
     let active = true;
     (async () => {
       const { data: userData } = await supabase.auth.getUser();
@@ -130,6 +132,7 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
     : "Your account is pending approval. Access to detailed package content will be enabled once your account is approved.";
 
   const handleAdd = () => {
+    trackEvent("cart_add", { packageId: pkg.id, locale });
     addToCart({
       id: pkg.id,
       nameEn: pkg.nameEn,
@@ -217,6 +220,7 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
               type="button"
               onClick={() => {
                 setSelected(true);
+                trackEvent("popup_open", { packageId: pkg.id, locale });
                 if (isApproved && !gatedContent && !gatedLoading) {
                   setGatedLoading(true);
                   setGatedError(false);

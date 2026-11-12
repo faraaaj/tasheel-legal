@@ -38,7 +38,7 @@ export default function Footer({ locale, dict }: FooterProps) {
   return (
     <footer className="bg-[#070D19] text-cream border-t border-gold/20">
       {/* Fixed bottom ticker is mounted here (it position-fixes itself) */}
-      <Ticker locale={locale} dict={dict} />
+      <Ticker locale={locale} />
 
       <div className="shell py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 items-start">
