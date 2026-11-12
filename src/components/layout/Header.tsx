@@ -148,7 +148,7 @@ export default function Header({ locale, dict }: HeaderProps) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <nav className="hidden items-center gap-5 xl:gap-6 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -163,7 +163,7 @@ export default function Header({ locale, dict }: HeaderProps) {
           </nav>
 
           {/* Right Side (Desktop Lang + Login Icon + CTA + Mobile Toggle) */}
-          <div className="flex items-center gap-4 z-50 shrink-0">
+          <div className="flex items-center gap-3 z-50 shrink-0">
             {/* Desktop Language Toggle */}
             {mounted && (
               <Link
@@ -208,7 +208,7 @@ export default function Header({ locale, dict }: HeaderProps) {
                 e.preventDefault();
                 setContactOpen(true);
               }}
-              className="hidden lg:inline-flex items-center justify-center !px-6 h-[40px] bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-500 transition-all whitespace-nowrap"
+              className="hidden lg:inline-flex items-center justify-center !min-w-[220px] h-[40px] px-4 bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-500 transition-all whitespace-nowrap"
             >
               {dict.cta.consultation}
             </Link>

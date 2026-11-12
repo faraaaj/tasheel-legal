@@ -14,18 +14,19 @@ export function DiscountBanner({
   const isFree = discountedPrice === 0;
 
   return (
-    <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20 w-auto">
-      <div className="relative flex items-center gap-4 px-8 py-2.5 bg-gradient-to-r from-[#EAB308] via-[#F97316] to-[#DC2626] shadow-xl rounded-full border-2 border-white/20">
-        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-white whitespace-nowrap">
+    <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-30 w-[280px]">
+      <div className="flex items-center justify-center h-12 bg-gradient-to-r from-[#C5A880] via-[#D4A05A] to-[#B8642A] shadow-[0_10px_25px_-5px_rgba(0,0,0,0.5)] border border-white/20">
+        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-[#070D19] whitespace-nowrap">
           {label}
         </span>
-        <div className="flex items-center gap-2 pl-4 border-l border-white/30">
+        <div className="h-5 w-px bg-[#070D19]/30 mx-3" />
+        <div className="flex items-center gap-2">
           {!isFree && (
-            <span className="text-[11px] font-medium text-white/70 line-through decoration-white/50">
-              {originalPrice.toLocaleString()} SAR
+            <span className="text-[11px] font-medium text-[#070D19]/60 line-through">
+              {originalPrice.toLocaleString()}
             </span>
           )}
-          <span className="text-[16px] font-black text-white whitespace-nowrap">
+          <span className="text-[15px] font-black text-white">
             {isFree
               ? locale === "ar"
                 ? "مجاناً"

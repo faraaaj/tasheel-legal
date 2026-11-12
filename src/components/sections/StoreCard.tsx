@@ -141,15 +141,7 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
 
   return (
     <>
-      <motion.div
-        whileHover={{ y: -8, scale: 1.02 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className={`group relative flex h-full flex-col overflow-hidden border p-8 text-start transition-colors duration-300 ${
-          pkg.featured
-            ? "border-[#C5A880]/50 bg-[#0C1426] shadow-[0_0_0_1px_rgba(197,168,128,0.15)] hover:border-[#C5A880] hover:shadow-[0_24px_60px_-15px_rgba(197,168,128,0.4)]"
-            : "border-white/10 bg-[#0A1120] hover:border-[#C5A880]/50 hover:shadow-[0_24px_60px_-18px_rgba(197,168,128,0.3)]"
-        }`}
-      >
+      <div className="relative overflow-visible pt-10 h-full">
         {pkg.originalPriceSar && pkg.originalPriceSar > pkg.priceSar && (
           <DiscountBanner
             label={locale === "ar" ? (pkg.discountLabelAr ?? "") : (pkg.discountLabelEn ?? "")}
@@ -158,6 +150,15 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
             locale={locale}
           />
         )}
+        <motion.div
+        whileHover={{ y: -8, scale: 1.02 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className={`group relative flex h-full flex-col overflow-hidden border p-8 text-start transition-colors duration-300 ${
+          pkg.featured
+            ? "border-[#C5A880]/50 bg-[#0C1426] shadow-[0_0_0_1px_rgba(197,168,128,0.15)] hover:border-[#C5A880] hover:shadow-[0_24px_60px_-15px_rgba(197,168,128,0.4)]"
+            : "border-white/10 bg-[#0A1120] hover:border-[#C5A880]/50 hover:shadow-[0_24px_60px_-18px_rgba(197,168,128,0.3)]"
+        }`}
+      >
         {/* Top accent bar: reveals left-to-right on hover */}
         <span
           aria-hidden
@@ -273,6 +274,7 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
           </div>
         </div>
       </motion.div>
+      </div>
 
       <AnimatePresence>
         {selected && (

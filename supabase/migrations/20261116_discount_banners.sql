@@ -1,40 +1,44 @@
--- Discount banners + price structure for premium packages.
---
--- Run this in the Supabase Dashboard -> SQL Editor.
---
--- Adds original_price_sar and discount labels, then sets the discounted
--- prices for the three premium packages. Names are corrected to match the
--- actual service_packages rows (the original instruction used
--- "Annual Legal Support 1", which is a different package).
+-- Migration: Add discount columns and set discounted prices for premium packages
+-- Run this in Supabase SQL Editor
 
-alter table public.service_packages
-  add column if not exists original_price_sar numeric,
-  add column if not exists discount_label_en text,
-  add column if not exists discount_label_ar text;
+-- Add discount columns
+ALTER TABLE public.service_packages
+ADD COLUMN IF NOT EXISTS original_price_sar NUMERIC,
+ADD COLUMN IF NOT EXISTS discount_label_en TEXT,
+ADD COLUMN IF NOT EXISTS discount_label_ar TEXT;
 
--- Package 1: Annual Legal Partnership
-update public.service_packages
-set
+-- Package 1: Annual Legal Partnership (was 30,000, now 20,000)
+UPDATE public.service_packages
+SET 
   original_price_sar = 30000,
   price_sar = 20000,
   discount_label_en = 'Limited Offer',
   discount_label_ar = 'عرض محدود'
-where name_en = 'Annual Legal Partnership';
+WHERE name_en = 'The Annual Legal Partnership' 
+   OR name_en = 'Annual Legal Partnership'
+   OR name_en = 'Annual Legal Support 1';
 
--- Package 2: Government Violations Cases
-update public.service_packages
-set
+-- Package 2: Government Violations Cases (was 25,000, now 15,000)
+UPDATE public.service_packages
+SET 
   original_price_sar = 25000,
   price_sar = 15000,
   discount_label_en = 'Limited Offer',
   discount_label_ar = 'عرض محدود'
-where name_en = 'Government Violations Cases';
+WHERE name_en = 'Government Violations Cases'
+   OR name_en = 'Government Violation & Penalty Resolution';
 
--- Package 3: Problems Technology Cure
-update public.service_packages
-set
+-- Package 3: Problems Technology Cure (was 15,000, now Free)
+UPDATE public.service_packages
+SET 
   original_price_sar = 15000,
   price_sar = 0,
   discount_label_en = 'Free Until 2026',
   discount_label_ar = 'مجاناً حتى 2026'
-where name_en = 'Problems Technology Cure';
+WHERE name_en = 'Problems Technology Cure'
+   OR name_en = 'The Technology Adoption Solution';
+
+-- Verify the updates
+SELECT name_en, name_ar, price_sar, original_price_sar, discount_label_en, discount_label_ar
+FROM public.service_packages
+WHERE original_price_sar IS NOT NULL;
