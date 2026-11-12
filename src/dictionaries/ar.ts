@@ -16,10 +16,13 @@ export const ar: Dictionary = {
     companyName: "تسهيل للمحاماة والاستشارات القانونية",
     home: "الرئيسية",
     about: "من نحن",
-    practice: "مجالات الممارسة",
+    practice: "المجالات",
+    packages: "الباقات",
     team: "فريق العمل",
+    marketplace: "المتجر",
     insights: "الرؤى",
     contact: "اتصل بنا",
+    login: "تسجيل الدخول / التسجيل",
   },
   a11y: {
     skip: "تخطَّ إلى المحتوى",
@@ -204,6 +207,13 @@ export const ar: Dictionary = {
           "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=80",
       },
     ],
+  },
+  store: {
+    eyebrow: "الباقات",
+    headline: "خدمات قانونية مبتكرة",
+    subtitle: "حلول قانونية لعملائنا من المؤسسات والأفراد. اختر برنامجاً أو باقة مدفوعة مسبقاً حسب احتياجك.",
+    purchase: "أضف إلى السلة",
+    noPackages: "لا توجد باقات متاحة بعد.",
   },
   insights: {
     eyebrow: "الرؤى",

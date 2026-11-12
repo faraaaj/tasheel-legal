@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import Ticker from "./Ticker";
+import ContactModal from "@/components/modals/ContactModal";
 import type { Dictionary, Locale } from "@/lib/dictionaries";
 
 type FooterProps = {
@@ -9,14 +13,26 @@ type FooterProps = {
 };
 
 export default function Footer({ locale, dict }: FooterProps) {
+  const [contactOpen, setContactOpen] = useState(false);
   const practiceAreas = dict.practiceAreas.items;
 
-  const navLinks = [
+  const navLinks: {
+    href: string;
+    label: string;
+    onClick?: (e: { preventDefault: () => void }) => void;
+  }[] = [
     { href: `/${locale}#about`, label: dict.nav.about },
     { href: `/${locale}#practice`, label: dict.nav.practice },
     { href: `/${locale}#team`, label: dict.nav.team },
     { href: `/${locale}#insights`, label: dict.nav.insights },
-    { href: `/${locale}#contact`, label: dict.nav.contact },
+    {
+      href: `/${locale}#contact`,
+      label: dict.nav.contact,
+      onClick: (e) => {
+        e.preventDefault();
+        setContactOpen(true);
+      },
+    },
   ];
 
   return (
@@ -94,6 +110,17 @@ export default function Footer({ locale, dict }: FooterProps) {
           </div>
         </div>
 
+        {/* Contact Us — opens the premium modal */}
+        <div className="mt-20 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setContactOpen(true)}
+            className="inline-flex items-center justify-center !min-w-[220px] h-[48px] bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[11px] hover:bg-yellow-500 transition-all"
+          >
+            {dict.cta.consultation}
+          </button>
+        </div>
+
         {/* Bottom bar — extra bottom padding clears the fixed ticker */}
         <div className="mt-20 border-t border-gold/10 pt-10 pb-16">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
@@ -116,6 +143,8 @@ export default function Footer({ locale, dict }: FooterProps) {
           </div>
         </div>
       </div>
+
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} locale={locale} />
     </footer>
   );
 }

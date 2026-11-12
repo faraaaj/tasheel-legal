@@ -8,6 +8,7 @@
     "start": "next start -p 7001"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "clsx": "^2.1.1",
     "framer-motion": "^14.9.0",
     "lucide-react": "^1.66.0",

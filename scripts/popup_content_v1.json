@@ -1,0 +1,1015 @@
+{
+  "Annual Legal Partnership": {
+    "description_en": "Give your business a dependable legal and business advisory partner throughout the year. The Annual Legal & Business Partnership combines continuing legal guidance with practical commercial advice, contract support and proactive risk management. It is designed for companies that need regular access to professional guidance, a clear view of emerging issues and a structured way to address legal and business decisions before they become costly problems. The package includes up to 60 professional hours annually, subject to the agreed service limits and exclusions.",
+    "description_ar": "شراكة سنوية تمنح المنشأة دعماً قانونياً وتجارياً مستمراً، يشمل الاستشارات ومراجعة العقود ومتابعة المخاطر والالتزامات، مع إتاحة خبرات قانونية وإدارية متخصصة لدعم القرارات وتحسين الأداء وحماية المصالح التجارية.",
+    "outcomes_en": [
+      "Up to 60 professional hours per year for eligible advisory and legal support.",
+      "Up to four contract reviews per month, subject to agreed document length, complexity and turnaround limits.",
+      "Up to four routine consultations per month.",
+      "Quarterly legal and business risk summary identifying material issues, priorities and recommended actions.",
+      "Guidance on commercial arrangements, employment matters, governance, regulatory questions and day-to-day business decisions within the agreed scope."
+    ],
+    "outcomes_ar": [
+      "1\\. الاستشارات القانونية والتجارية:",
+      "الاستشارات المتعلقة بالأنشطة والعمليات التجارية.",
+      "توضيح الحقوق والالتزامات والمسؤوليات التعاقدية.",
+      "تقديم الرأي المهني في القرارات والمسائل ذات الأثر القانوني والتجاري.",
+      "2\\. مراجعة العقود والاتفاقيات:",
+      "مراجعة ما يصل إلى أربعة عقود شهرياً.",
+      "تحديد المخاطر والثغرات التعاقدية.",
+      "اقتراح التعديلات التي تحمي مصالح المنشأة.",
+      "3\\. الدعم القانوني المستمر:",
+      "ما يصل إلى أربع استشارات اعتيادية شهرياً.",
+      "متابعة المسائل القانونية المتكررة.",
+      "تقديم التوجيه بشأن الإجراءات والمراسلات الرسمية.",
+      "4\\. إدارة المخاطر والحوكمة:",
+      "إعداد ملخص ربع سنوي للمخاطر القانونية والتنظيمية.",
+      "تحديد مجالات التحسين في الإجراءات الداخلية.",
+      "تقديم توصيات لتعزيز الامتثال والحوكمة.",
+      "5\\. الاستشارات التجارية والاستراتيجية:",
+      "دعم القرارات ذات الأثر التجاري.",
+      "تحديد فرص تحسين العمليات وتقليل المخاطر.",
+      "تقديم توصيات تتناسب مع مرحلة نمو المنشأة وأهدافها."
+    ],
+    "requirements_en": [
+      "Commercial registration and a short description of the business, activities and ownership structure.",
+      "Existing key contracts, company documents, policies and any current legal or regulatory notices.",
+      "Appointment of one primary contact who can coordinate requests and approvals.",
+      "Availability of relevant managers when an issue requires operational or financial context."
+    ],
+    "requirements_ar": [
+      "السجل التجاري والبيانات الأساسية للمنشأة.",
+      "تحديد ممثل معتمد للتواصل.",
+      "توفير العقود والمستندات ذات الصلة.",
+      "شرح طبيعة النشاط والاحتياجات القانونية والتجارية.",
+      "إتاحة المعلومات اللازمة لفهم المسائل محل الاستشارة."
+    ],
+    "details_en": "This annual partnership is designed for an operating business that regularly makes commercial, employment, contractual and management decisions and wants a coordinated point of contact. Tasheel reviews the issues that matter to the business, helps management understand the legal and commercial implications, and supports practical next steps. The objective is not simply to answer isolated questions; it is to build a more consistent approach to legal protection, decision-making and business risk.\n\nAnnual hours and monthly entitlements do not roll over unless expressly agreed. Major transactions, litigation, court representation, specialist opinions, extensive investigations, complex regulatory proceedings and work outside the agreed service scope require separate scoping and fees. The service is subject to conflict checks, professional obligations and written engagement terms.",
+    "details_ar": "برنامج دعم قانوني وتجاري سنوي مصمم للمنشآت التي تحتاج إلى مرجعية مهنية مستمرة دون تحمل تكاليف توظيف فريق قانوني وإداري داخلي متكامل. تعمل تسهيل من خلال فريق يجمع بين الخبرة القانونية والاستشارات التجارية والإدارية، بما يتيح التعامل مع المسائل القانونية في سياقها التشغيلي والتجاري والاستراتيجي.\n\n- إجمالي الساعات المتاحة: 60 ساعة سنوياً. - مراجعة ما يصل إلى 4 عقود شهرياً. - ما يصل إلى 4 استشارات اعتيادية شهرياً. - ملخص مخاطر ربع سنوي. - لا تشمل الباقة الترافع أمام المحاكم أو التحكيم أو القضايا المعقدة أو الأعمال التنفيذية والمشاريع الاستشارية المستقلة، ما لم يتم الاتفاق عليها بشكل منفصل."
+  },
+  "Government Violations Cases": {
+    "description_en": "Bring scattered government violations and financial penalties under one coordinated resolution strategy. Tasheel reviews the notices, deadlines, evidence and regulatory history, identifies available response routes and prioritizes the cases that present the greatest financial or operational exposure. The engagement is designed for companies facing multiple violations or penalties and needing a structured approach to objections, appeals, correction plans and communication with the relevant authorities.",
+    "description_ar": "برنامج متخصص لمراجعة المخالفات والغرامات الحكومية، وتحليل أسبابها ومستنداتها، وتقييم الخيارات النظامية للاعتراض أو التسوية أو طلب إعادة النظر، مع إعداد استراتيجية لمعالجة المخالفة والحد من آثارها المالية والتنظيمية والتشغيلية.",
+    "outcomes_en": [
+      "Consolidated register of notices, violations, penalties, issuing authorities, amounts and deadlines.",
+      "Review of the available notices, supporting evidence and relevant company records.",
+      "Assessment of procedural and substantive response grounds for each agreed case.",
+      "Prioritized objection, appeal, correction or settlement strategy, as available under the applicable framework.",
+      "Preparation or review of agreed submissions and a status tracker for the covered matters."
+    ],
+    "outcomes_ar": [
+      "1\\. تحليل المخالفة:",
+      "مراجعة إشعار المخالفة والقرار والغرامة.",
+      "دراسة الجهة المختصة والأساس النظامي.",
+      "مراجعة المدد والإجراءات النظامية للاعتراض.",
+      "2\\. دراسة الأدلة والمستندات:",
+      "مراجعة السجلات والمراسلات والتراخيص.",
+      "تحليل الوقائع والأدلة المؤيدة لموقف المنشأة.",
+      "تحديد أوجه القصور أو الأخطاء الإجرائية المحتملة.",
+      "3\\. الاستراتيجية القانونية:",
+      "تقييم إمكانية الاعتراض أو التظلم أو التسوية.",
+      "تحديد المسار النظامي المناسب.",
+      "إعداد المذكرات والمخاطبات اللازمة ضمن النطاق المتفق عليه.",
+      "4\\. إدارة الأثر التجاري:",
+      "تقييم الأثر المالي والتشغيلي للمخالفة.",
+      "تحديد المخاطر المرتبطة بتكرارها.",
+      "وضع توصيات لمعالجة أسباب المخالفة.",
+      "5\\. الوقاية والامتثال:",
+      "تحديد الإجراءات الداخلية التي تحتاج إلى تحسين.",
+      "تقديم توصيات للحد من المخالفات المستقبلية.",
+      "اقتراح آليات متابعة للالتزامات التنظيمية."
+    ],
+    "requirements_en": [
+      "All violation notices, penalty decisions, inspection reports and authority correspondence.",
+      "Relevant licenses, permits, policies, operating records, photographs, transaction records and prior submissions.",
+      "A chronology of events and details of any previous objections, payments or settlement discussions.",
+      "Access to the responsible compliance, finance and operational personnel."
+    ],
+    "requirements_ar": [
+      "إشعار المخالفة والقرار الصادر.",
+      "تفاصيل الغرامة والمبالغ المستحقة.",
+      "جميع الاعتراضات أو المراسلات السابقة.",
+      "التراخيص والسجلات والمستندات ذات الصلة.",
+      "وصف الإجراءات والظروف التي أدت إلى المخالفة.",
+      "تفويض مناسب عند الحاجة.",
+      "آلية الأتعاب",
+      "الأتعاب الأساسية 15,000 ريال. ويمكن الاتفاق على أتعاب نجاح إضافية وفق طبيعة القضية والنتيجة المحددة وآلية احتسابها، بعد التحقق من توافقها مع الأنظمة والقواعد المهنية ذات الصلة.",
+      "لا تضمن الباقة إلغاء المخالفة أو تخفيض الغرامة، وإنما تضمن تنفيذ نطاق العمل المهني المتفق عليه."
+    ],
+    "details_en": "Receiving a government violation is not always the end of the matter. The correct response depends on the authority, the applicable regulation, the notice, the evidence, the procedural deadlines and the company's actual conduct. Tasheel organizes the case portfolio, assesses the available legal and administrative options, and develops a prioritized plan to address each matter. The focus is on defensible submissions, timely action and practical resolution, not unsupported promises of cancellation or reduction.\n\nThe initial fee covers only the defined number and category of cases stated in the engagement. Additional cases, hearings, expert reports, litigation and specialist work may require separate fees. No cancellation, reduction, waiver, suspension or favorable decision is guaranteed; decisions remain with the competent authority or court. Any success-based component must be separately reviewed for legal and professional compliance before it is offered.",
+    "details_ar": "تتعامل تسهيل مع المخالفات الحكومية باعتبارها مسألة قانونية وتجارية وإدارية قد تؤثر في استمرارية المنشأة وسمعتها وتدفقاتها المالية. لا يقتصر العمل على تقديم اعتراض، بل يشمل دراسة أصل المخالفة والظروف التي أدت إليها، وتحديد الإجراءات المناسبة لمعالجتها ومنع تكرارها."
+  },
+  "Problems Technology Cure": {
+    "description_en": "Bring Tasheel a business challenge that is affecting performance, increasing cost, creating legal exposure or limiting growth. We assess the issue from legal, commercial, operational and technology perspectives, identify where process redesign, automation, artificial intelligence or digital systems may help, and prepare a practical roadmap. The qualifying initial assessment is complimentary where the proposed solution involves technology deployment; implementation and related professional work are separately scoped.",
+    "description_ar": "هل تواجه منشأتك مشكلة قانونية أو تشغيلية أو تجارية معقدة؟ نقدم تشخيصاً أولياً متكاملاً للمشكلة، يجمع بين التحليل القانوني والإداري والتجاري والتقني، وينتهي بخارطة طريق واضحة لمعالجتها. التشخيص مجاني للمشكلات المؤهلة، بينما يتم تسعير تطوير الحلول التقنية وتنفيذها بشكل مستقل. عن المبادرة تبدأ الحلول الفعالة من فهم المشكلة الحقيقية، وليس من افتراض أن التقنية هي الحل دائماً. تعمل تسهيل على تحليل المشكلات المؤسسية من عدة زوايا، تشمل الجوانب القانونية والتنظيمية، والعمليات والإجراءات، والنموذج التجاري، والقدرات التقنية، ثم تحديد الحل الأنسب. مراحل التشخيص 1\\. فهم المشكلة: - تحديد طبيعة المشكلة وأسبابها. - مراجعة الوضع الحالي والإجراءات القائمة. - تحديد الأطراف والأنظمة المتأثرة. 2\\. التحليل القانوني والتنظيمي: - تحديد الالتزامات والمخاطر القانونية. - مراجعة العقود والسياسات والإجراءات ذات الصلة. - تحديد متطلبات الامتثال والحوكمة. 3\\. التحليل التجاري والتشغيلي: - تقييم أثر المشكلة على الأداء والتكاليف والإيرادات. - تحديد الاختناقات التشغيلية. - دراسة فرص تحسين نموذج العمل. 4\\. التقييم التقني: - تحديد مدى ملاءمة الحلول التقنية. - تقييم إمكانية الأتمتة والتكامل والتحول الرقمي. - تحديد المتطلبات التقنية والبيانات والبنية التحتية. 5\\. خارطة طريق المعالجة: - تحديد الحلول المقترحة. - ترتيب الأولويات. - تحديد مراحل التنفيذ ومؤشرات قياس النجاح. - تقديم توصية بشأن الموارد والتكلفة التقديرية عند توفر المعلومات اللازمة.",
+    "outcomes_en": [
+      "Assessment of the stated problem and its legal, regulatory, commercial and operational dimensions.",
+      "Identification of opportunities to reduce cost, mitigate risk, improve processes and use automation or AI appropriately.",
+      "High-level solution options and recommended priorities.",
+      "A written roadmap outlining proposed workstreams, dependencies, expected benefits and investment considerations.",
+      "An initial discussion of implementation options, including development, licensing, integration and support where relevant."
+    ],
+    "outcomes_ar": [],
+    "requirements_en": [
+      "A clear problem statement describing the issue, its background, current impact and desired outcome.",
+      "Relevant contracts, correspondence, policies, reports, regulatory notices, operational records and system information.",
+      "Meetings with senior leadership and relevant legal, finance, operations and technology stakeholders.",
+      "Reasonable access to the information and personnel needed to validate the problem and test assumptions."
+    ],
+    "requirements_ar": [
+      "وصف واضح للمشكلة والتحدي القائم.",
+      "المستندات والبيانات المتعلقة بالمشكلة.",
+      "إتاحة الاجتماعات مع الإدارة العليا وأصحاب العلاقة.",
+      "الوصول إلى المعلومات والأنظمة ذات الصلة، بالقدر المسموح به.",
+      "تحديد الأهداف والنتائج المتوقعة.",
+      "توفير أي معلومات إضافية تظهر ضرورتها أثناء التقييم.",
+      "ما الذي يحصل عليه العميل؟",
+      "تقرير تشخيصي يتضمن فهم المشكلة، وأسبابها، والمخاطر المرتبطة بها، والحلول المقترحة، وخارطة طريق عملية للمعالجة.",
+      "ملاحظة مهمة",
+      "التشخيص الأولي مجاني بعد قبول الحالة ضمن معايير التأهيل. ولا يشمل ذلك تطوير البرمجيات أو شراء الأنظمة أو تنفيذ التكاملات أو توفير البنية التحتية أو إدارة المشروع التنفيذي. يتم تقديم عرض مستقل لهذه الأعمال عند الحاجة.",
+      "أنصح بحذف المقارنة السعرية السابقة التي تشير إلى أن هذا النوع من التحليل يكلف عادة 130,000 إلى 200,000 ريال، ما لم تتوفر دراسات أو عروض موثقة تدعم هذا الرقم."
+    ],
+    "details_en": "Many business problems cannot be solved by technology alone. A process may be inefficient because of unclear responsibilities, weak contracts, regulatory constraints, fragmented data or an unsuitable system. Tasheel brings together legal expertise, executive business advisory and technology capabilities to understand the underlying problem before recommending a solution. The assessment considers what is happening today, what the business needs to achieve, and whether a technology-enabled intervention is commercially and legally appropriate.\n\nAdditional information, interviews or technical discovery may be requested after the initial review. The complimentary assessment is not unlimited consulting, legal representation, a full technical audit, a detailed software specification or implementation work. Technology development, licenses, integrations, data migration, cybersecurity testing, ongoing support and any separate legal mandate are priced and agreed independently. Confidentiality, data access and security arrangements must be agreed before sensitive information is shared.",
+    "details_ar": ""
+  },
+  "Individual Legal Protection": {
+    "description_en": "Get a clear, practical path forward when a personal legal issue affects your rights, property, family or financial interests. This package brings an initial legal consultation, review of one agreed document or issue set, and a written action summary into one coordinated engagement. It is intended to help individuals understand their position, available options and next steps before making an important decision.",
+    "description_ar": "حماية قانونية شخصية تساعد الأفراد على فهم حقوقهم والتزاماتهم، ومراجعة المستندات والاتفاقيات المهمة، وتقييم المخاطر قبل اتخاذ القرارات أو الدخول في الالتزامات القانونية.",
+    "outcomes_en": [
+      "One initial consultation within the agreed time limit.",
+      "Review of one defined document or a related set of short documents.",
+      "Written summary of key issues, options and recommended next steps.",
+      "Identification of any further legal work that may require a separate engagement."
+    ],
+    "outcomes_ar": [
+      "دراسة المسألة القانونية وتحديد الحقوق والالتزامات.",
+      "مراجعة عقد أو اتفاقية ضمن النطاق المتفق عليه.",
+      "تحليل المخاطر القانونية والمالية المرتبطة بالقرار.",
+      "إعداد التوصيات والمراسلات القانونية عند الحاجة.",
+      "تقديم إرشادات عملية لتجنب النزاعات المستقبلية."
+    ],
+    "requirements_en": [
+      "Government-issued identification and contact details.",
+      "The relevant contract, notice, correspondence or other supporting documents.",
+      "A short chronology and a clear description of the outcome sought."
+    ],
+    "requirements_ar": [
+      "الهوية أو بيانات العميل اللازمة للتعاقد.",
+      "شرح واضح للموضوع.",
+      "العقود والمراسلات والمستندات ذات الصلة.",
+      "أي قرارات أو إشعارات رسمية متعلقة بالموضوع."
+    ],
+    "details_en": "An individual-focused legal assessment that clarifies the facts, identifies the relevant legal questions and explains practical options. Depending on the issue, Tasheel may review a contract, correspondence, notice or supporting record and provide a written summary of risks and recommended next steps.\n\nWill drafting, marriage-contract review, powers of attorney, property transactions, court representation, filings, notarization and specialist opinions are not automatically included. These may be separately scoped, subject to applicable law, authority requirements and conflict checks.",
+    "details_ar": "رأي قانوني وتوصيات عملية، مع مراجعة المستندات المحددة ضمن نطاق الباقة."
+  },
+  "Regulatory Penalty Management": {
+    "description_en": "Understand where your business may be exposed before the next inspection, notice or penalty arrives. This package organizes key regulatory obligations and existing penalty exposure across the agreed business activities, identifies recurring compliance gaps and gives management a prioritized action plan. It is designed for businesses that need a practical compliance view rather than a one-off objection letter.",
+    "description_ar": "برنامج يساعد المنشآت على تحديد التزاماتها النظامية، ومراجعة المخاطر التنظيمية، وتقييم الغرامات المحتملة، وتحسين إجراءات الامتثال لتقليل التعرض للمخالفات وتعزيز الاستقرار التشغيلي.",
+    "outcomes_en": [
+      "Regulatory exposure and obligations map for the agreed activities.",
+      "Register of existing violations and penalties supplied by the customer.",
+      "Review of selected policies, licenses, permits and compliance records.",
+      "Prioritized compliance improvement and penalty-management plan.",
+      "Management briefing on the most material risks and recommended controls."
+    ],
+    "outcomes_ar": [
+      "مراجعة الأنشطة والتراخيص والالتزامات التنظيمية.",
+      "تحديد الجهات الحكومية ذات العلاقة بالنشاط.",
+      "تحليل المخاطر القانونية والتنظيمية.",
+      "مراجعة الإجراءات الداخلية المتعلقة بالامتثال.",
+      "تحديد أوجه القصور ومجالات التحسين.",
+      "إعداد سجل أولي للمخاطر والالتزامات.",
+      "وضع توصيات عملية لمعالجة الثغرات.",
+      "تحديد مؤشرات لمتابعة مستوى الالتزام."
+    ],
+    "requirements_en": [
+      "Commercial registration, activity list, licenses and permits.",
+      "Existing violation notices, inspection findings and penalty history.",
+      "Relevant policies, procedures, registers and records.",
+      "Access to compliance and operational owners for clarification."
+    ],
+    "requirements_ar": [
+      "السجل التجاري والتراخيص.",
+      "وصف الأنشطة والخدمات.",
+      "السياسات والإجراءات الحالية.",
+      "الإشعارات والمخالفات السابقة إن وجدت.",
+      "بيانات المسؤولين عن الامتثال والعمليات."
+    ],
+    "details_en": "Tasheel reviews the company's regulatory footprint, available notices and relevant operating practices to identify the main compliance risks. The engagement distinguishes urgent deadlines from structural weaknesses and helps management prioritize corrective actions, internal ownership and follow-up.\n\nFormal objections, appeals, litigation, technical inspections, certification, remediation projects and ongoing compliance monitoring require separate scope unless expressly included. The package does not guarantee that no future violation will occur.",
+    "details_ar": "تقرير تقييم أولي للامتثال والمخاطر، يتضمن التوصيات وخطة التحسين ذات الأولوية."
+  },
+  "Annual Legal Support 1": {
+    "description_en": "Secure flexible access to legal support without committing to a broad annual partnership. The Annual Legal Support Plan provides a prepaid allocation of 10 professional hours that can be used across eligible legal services during a six-month period. It is suited to businesses with occasional but recurring legal needs that want a clear budget and the flexibility to allocate time as issues arise.",
+    "description_ar": "رصيد استشاري مسبق الدفع يتيح للشركات الاستفادة من خدمات قانونية متنوعة وفق احتياجاتها، دون الحاجة إلى التعاقد على دعم سنوي كامل. مناسب للمنشآت التي تحتاج إلى استشارات ومراجعات قانونية متفرقة.",
+    "outcomes_en": [
+      "10 prepaid professional hours available over six months.",
+      "Use across eligible consultations, routine document reviews and agreed legal advisory tasks.",
+      "Time-use statements showing assignments and remaining balance.",
+      "Initial prioritization of requests to help use the hours effectively."
+    ],
+    "outcomes_ar": [
+      "استشارات قانونية وتجارية.",
+      "مراجعة العقود والاتفاقيات.",
+      "تحليل الالتزامات التعاقدية.",
+      "مراجعة المراسلات والإشعارات.",
+      "تقديم توصيات بشأن المخاطر القانونية.",
+      "دعم القرارات التجارية التي تتطلب تقييماً قانونياً."
+    ],
+    "requirements_en": [
+      "Company details and primary contact.",
+      "A list of anticipated legal needs and any urgent deadlines.",
+      "Relevant documents for each assignment, supplied in an agreed format."
+    ],
+    "requirements_ar": [
+      "بيانات المنشأة.",
+      "تحديد الشخص المخول بطلب الخدمات.",
+      "وصف المسألة وإرفاق المستندات ذات العلاقة."
+    ],
+    "details_en": "The customer purchases a defined block of professional time that can be applied to eligible advisory, document review and routine legal assignments. Tasheel confirms the time estimate before starting each assignment and tracks usage against the prepaid balance.\n\nHours expire at the end of the six-month validity period unless otherwise agreed. Litigation, hearings, major transactions, extensive drafting, specialist opinions and third-party costs are excluded unless separately approved. Work proceeds only after confirming that the assignment is eligible and sufficient hours remain.",
+    "details_ar": "الاستفادة من الرصيد المتاح في الخدمات المحددة، مع بيان الأعمال والساعات المستهلكة.\n\n- رصيد يصل إلى 10 ساعات استشارية. - صلاحية الاستخدام 6 أشهر. - يتم خصم الساعات وفق طبيعة العمل والوقت الفعلي المستغرق. - يتم الاتفاق مسبقاً على الأعمال التي تتطلب نطاقاً مستقلاً."
+  },
+  "IP & Technology Protection": {
+    "description_en": "Protect the business assets that distinguish your company, including its brand, proprietary information, software, data, technology and commercial know-how. Tasheel helps identify what the company owns or controls, where protection gaps exist and which legal or contractual measures should be prioritized. The result is a coordinated protection plan rather than disconnected filings or generic templates.",
+    "description_ar": "برنامج لحماية الأصول الفكرية والتقنية للمنشأة، يشمل تقييم حقوق الملكية الفكرية، وتنظيم ملكية المنتجات والبرمجيات والعلامات التجارية، وتعزيز حماية المعلومات والابتكارات والعلاقات التقنية والتجارية.",
+    "outcomes_en": [
+      "IP and technology asset inventory for the agreed business scope.",
+      "Ownership and protection-gap assessment.",
+      "Prioritized protection roadmap covering registrations, contracts, confidentiality and data-related controls.",
+      "Review of selected IP, SaaS, licensing or technology agreements.",
+      "Management summary of urgent risks and recommended actions."
+    ],
+    "outcomes_ar": [
+      "تحديد الأصول الفكرية والتقنية ذات القيمة.",
+      "مراجعة ملكية العلامات التجارية والمحتوى والبرمجيات.",
+      "تقييم اتفاقيات نقل الحقوق والترخيص.",
+      "مراجعة عقود المطورين والموردين والشركاء التقنيين.",
+      "تنظيم حقوق الاستخدام والتطوير والتعديل.",
+      "مراجعة أحكام السرية وعدم الإفصاح.",
+      "تقييم المخاطر المرتبطة باستخدام أصول الغير.",
+      "إعداد توصيات لحماية الأصول الفكرية."
+    ],
+    "requirements_en": [
+      "Brand names, logos, product descriptions and registration records.",
+      "Software, product, development and licensing agreements.",
+      "Employee, contractor and partner IP assignment arrangements.",
+      "Data flows, privacy notices and relevant technology policies."
+    ],
+    "requirements_ar": [
+      "قائمة بالأصول الفكرية والتقنية.",
+      "العقود مع المطورين والموردين.",
+      "مستندات تسجيل العلامات والحقوق إن وجدت.",
+      "سياسات السرية وحماية المعلومات.",
+      "وصف المنتجات أو الحلول التقنية."
+    ],
+    "details_en": "The engagement begins with an inventory of relevant intellectual property and technology-related assets, ownership arrangements and current use. Tasheel assesses selected risks involving trademarks, copyright, inventions, confidential information, data use, software and technology contracts, then recommends appropriate protection measures.\n\nTrademark or patent filing fees, official charges, patent-agent services, technical searches, litigation, cybersecurity testing and extensive PDPL implementation are separate unless expressly included. Registrability and enforceability depend on applicable law and authority decisions.",
+    "details_ar": "تقييم قانوني للأصول الفكرية والتقنية، وتوصيات لحمايتها وتنظيم ملكيتها واستغلالها تجارياً."
+  },
+  "Workforce Protection Program": {
+    "description_en": "Reduce employment-related legal exposure across the employee lifecycle, from hiring and contracting to performance management, workplace issues and separation. This package helps management identify weaknesses in employment documentation, HR practices and applicable labor obligations, then prioritize practical improvements that support a more consistent and defensible workforce framework.",
+    "description_ar": "برنامج متكامل لمراجعة العلاقة بين المنشأة والعاملين، وتعزيز الامتثال لنظام العمل، وتحسين إدارة الموارد البشرية والعقود والسياسات، والحد من النزاعات والتكاليف المرتبطة بالقوى العاملة.",
+    "outcomes_en": [
+      "Workforce legal-risk assessment for the agreed employee population or sample.",
+      "Review of selected employment contracts and HR policies.",
+      "Saudization and employment-documentation compliance snapshot.",
+      "Prioritized recommendations for policy, contract and process improvements.",
+      "Management briefing on significant employment risks."
+    ],
+    "outcomes_ar": [
+      "مراجعة عقود العمل والالتزامات التعاقدية.",
+      "مراجعة سياسات الموارد البشرية واللوائح الداخلية.",
+      "تقييم إجراءات التوظيف وإنهاء العلاقة العمالية.",
+      "مراجعة الالتزامات المتعلقة بالأجور والإجازات والمزايا.",
+      "دراسة المخاطر المرتبطة بالنزاعات العمالية.",
+      "مراجعة إجراءات الإنذارات والتحقيقات الداخلية.",
+      "تقديم توصيات لتحسين الحوكمة والإجراءات.",
+      "دعم إعداد إطار لإدارة الالتزامات العمالية."
+    ],
+    "requirements_en": [
+      "Employee headcount and workforce structure, including relevant nationalities and roles.",
+      "Employment contracts, HR policies, job descriptions and disciplinary procedures.",
+      "Available Qiwa, GOSI and Saudization-related reports, where relevant and lawfully accessible.",
+      "Details of current disputes, complaints, investigations or terminations."
+    ],
+    "requirements_ar": [
+      "بيانات العاملين ذات الصلة.",
+      "نماذج عقود العمل.",
+      "اللوائح والسياسات الداخلية.",
+      "عينة من الملفات العمالية.",
+      "بيانات النزاعات أو المخالفات القائمة."
+    ],
+    "details_en": "Tasheel reviews the agreed workforce records and selected HR practices against applicable Saudi employment requirements. The assessment considers employment contracts, policies, employee records, Saudization-related exposure and procedures for handling workplace issues.\n\nMass contract remediation, individual employee disputes, formal investigations, litigation, government representation and ongoing HR outsourcing require separate scope. Employment and Saudization requirements can change; the assessment is based on the law and information available at the time of the engagement.",
+    "details_ar": "تقرير تقييم قانوني وتشغيلي للقوى العاملة، مع توصيات للتحسين والامتثال."
+  },
+  "Business Recovery Program": {
+    "description_en": "Act early when cash-flow pressure, creditor demands or mounting liabilities threaten business continuity. Tasheel helps management understand the legal and commercial position, organize creditor and contractual exposure, identify urgent deadlines and evaluate available restructuring or negotiated-resolution options before the situation deteriorates.",
+    "description_ar": "برنامج لمعالجة التحديات المالية والتشغيلية التي تواجه المنشآت، وتحليل الالتزامات والمطالبات والتدفقات النقدية، ووضع خيارات لإعادة الهيكلة وتحسين الاستدامة وحماية المصالح التجارية.",
+    "outcomes_en": [
+      "Urgent legal and deadline triage.",
+      "Review of selected creditor, liability and contractual records.",
+      "High-level assessment of business continuity and restructuring options.",
+      "Creditor engagement and negotiation strategy, where appropriate.",
+      "Written action plan identifying priorities, dependencies and professional support required."
+    ],
+    "outcomes_ar": [
+      "تحليل الالتزامات المالية والتعاقدية.",
+      "مراجعة المطالبات والديون المستحقة.",
+      "تقييم المخاطر القانونية المرتبطة بالتعثر.",
+      "دراسة الوضع التشغيلي والمالي.",
+      "تحليل العقود والالتزامات طويلة الأجل.",
+      "تقييم فرص إعادة التفاوض مع الدائنين والموردين.",
+      "دراسة خيارات إعادة الهيكلة التشغيلية والتجارية.",
+      "وضع خارطة طريق للمعالجة والاستدامة."
+    ],
+    "requirements_en": [
+      "Recent financial statements, cash-flow forecasts and management accounts.",
+      "Creditor schedules, loan documents, guarantees, security documents and overdue notices.",
+      "Material customer, supplier, lease and financing contracts.",
+      "Details of pending litigation, enforcement, tax or regulatory matters."
+    ],
+    "requirements_ar": [
+      "القوائم المالية المتاحة.",
+      "قائمة الدائنين والمدينين.",
+      "العقود والالتزامات الرئيسية.",
+      "بيانات التدفقات النقدية.",
+      "تفاصيل المطالبات والنزاعات القائمة.",
+      "معلومات عن العمليات والموارد الأساسية."
+    ],
+    "details_en": "The engagement combines legal triage with a practical business review. Tasheel examines key liabilities, creditor relationships, contractual obligations, security interests and material disputes, then develops a prioritized action plan for management and relevant professional advisers.\n\nFormal bankruptcy procedures, court-appointed roles, insolvency practitioner work, financial audit, valuation and investment raising are not included unless separately agreed and delivered by appropriately qualified professionals. The package does not promise debt forgiveness or creditor acceptance.",
+    "details_ar": "تقرير تشخيصي وخيارات لإعادة الهيكلة، مع توصيات قانونية وتجارية وتشغيلية."
+  },
+  "Dispute & Claims Management": {
+    "description_en": "Make informed decisions about a commercial dispute before committing substantial time and money to a contested process. Tasheel assesses the facts, contractual position, evidence, procedural options and commercial objectives, then develops a dispute strategy designed to protect the client's position and pursue a proportionate resolution.",
+    "description_ar": "إدارة متكاملة للمنازعات والمطالبات التجارية، تبدأ بتحليل الموقف القانوني والأدلة والالتزامات، وتمتد إلى وضع استراتيجية تفاوض وتسوية أو اتخاذ الإجراءات النظامية المناسبة لحماية حقوق المنشأة.",
+    "outcomes_en": [
+      "Case assessment and review of the agreed evidence set.",
+      "Written dispute strategy and options memorandum.",
+      "Assessment of contractual rights, defenses, remedies and key deadlines.",
+      "Settlement or negotiation approach, where appropriate.",
+      "Defined next-step plan and estimated workstreams for any further proceedings."
+    ],
+    "outcomes_ar": [
+      "دراسة الوقائع والمستندات والعقود.",
+      "تحليل الموقف القانوني وقوة المطالبة.",
+      "تحديد الالتزامات والإخلالات التعاقدية.",
+      "تقييم المخاطر والتكاليف والخيارات.",
+      "إعداد استراتيجية التفاوض والتسوية.",
+      "إعداد المطالبات والمخاطبات القانونية.",
+      "تنظيم ملف الأدلة والمستندات.",
+      "تقديم التوصيات بشأن الإجراءات النظامية التالية."
+    ],
+    "requirements_en": [
+      "Relevant contracts, amendments, purchase orders and correspondence.",
+      "Chronology of events, invoices, payment records and evidence of loss.",
+      "Notices, pleadings, judgments or previous settlement communications.",
+      "Names of parties and related entities for conflict checks."
+    ],
+    "requirements_ar": [
+      "العقود والاتفاقيات.",
+      "المراسلات والإشعارات.",
+      "الفواتير والمستخلصات والمطالبات.",
+      "محاضر الاجتماعات والتسليم.",
+      "أي أحكام أو قرارات سابقة."
+    ],
+    "details_en": "The engagement is structured around one identified dispute or claim. Tasheel reviews the relevant agreements and evidence, assesses strengths and weaknesses, identifies deadlines and potential remedies, and recommends negotiation, settlement, arbitration or litigation pathways as appropriate.\n\nArbitration, court representation, expert evidence, appeals, enforcement and additional claims require separate engagement terms unless expressly included. No outcome can be guaranteed; litigation decisions rest with the competent tribunal or court.",
+    "details_ar": "ملف قانوني منظم، واستراتيجية لمعالجة النزاع، وتوصيات بالإجراءات المناسبة."
+  },
+  "Corporate Governance Program": {
+    "description_en": "Build a governance framework that helps owners, boards and management make decisions with clearer authority, accountability and legal oversight. Tasheel reviews the company's governance arrangements, constitutional documents, board and shareholder processes, delegated authorities and selected compliance controls, then provides a prioritized improvement plan.",
+    "description_ar": "برنامج لتطوير الإطار المؤسسي والحوكمي للمنشأة، وتنظيم الصلاحيات والمسؤوليات وآليات اتخاذ القرار، وتعزيز الامتثال والشفافية وإدارة المخاطر لدعم النمو والاستدامة.",
+    "outcomes_en": [
+      "Governance health check and gap assessment.",
+      "Review of Articles of Association, bylaws and selected board/shareholder records.",
+      "Assessment of decision rights, delegations and approval processes.",
+      "Prioritized governance improvement report.",
+      "Recommended policy and documentation workstreams."
+    ],
+    "outcomes_ar": [
+      "مراجعة الهيكل القانوني والتنظيمي.",
+      "تقييم الأدوار والمسؤوليات والصلاحيات.",
+      "مراجعة النظام الأساس والوثائق التأسيسية.",
+      "تطوير مصفوفة الصلاحيات.",
+      "مراجعة آليات اتخاذ القرار.",
+      "إعداد أو تحسين السياسات المؤسسية.",
+      "تطوير إطار لإدارة المخاطر والامتثال.",
+      "تقديم توصيات لتحسين أداء مجالس الإدارة واللجان."
+    ],
+    "requirements_en": [
+      "Commercial registration, Articles of Association and ownership structure.",
+      "Board and shareholder minutes, resolutions and delegations.",
+      "Existing governance policies, compliance registers and organization chart.",
+      "Management and board-level interviews as agreed."
+    ],
+    "requirements_ar": [
+      "السجل التجاري والنظام الأساس.",
+      "الهيكل التنظيمي.",
+      "مصفوفة الصلاحيات الحالية.",
+      "السياسات والإجراءات.",
+      "محاضر اجتماعات الإدارة أو مجلس الإدارة عند الحاجة."
+    ],
+    "details_en": "The engagement examines how the company is structured and how key decisions are authorized, documented and monitored. It is intended for companies preparing for growth, investment, ownership changes or more formal board oversight.\n\nDrafting a full shareholder agreement, establishing a board secretariat, enterprise-wide AML/PDPL implementation, internal audit and ongoing company secretarial services are separately scoped unless specified in the engagement.",
+    "details_ar": "تقييم الحوكمة المؤسسية، ومصفوفة توصيات، وإطار لتحسين الصلاحيات والامتثال."
+  },
+  "Real Estate Transaction Program": {
+    "description_en": "Protect the legal and commercial position behind a property acquisition, disposal, lease or real estate portfolio decision. Tasheel reviews the transaction structure, ownership information, contractual obligations, payment arrangements and material risks so the customer can make an informed decision before committing or completing the transaction.",
+    "description_ar": "برنامج لحماية المعاملات والاستثمارات العقارية، يشمل مراجعة الملكيات والعقود والالتزامات، وتقييم المخاطر النظامية والتجارية، وتنظيم العلاقة بين الملاك والمستثمرين والمطورين والأطراف ذات الصلة.",
+    "outcomes_en": [
+      "Legal-risk review for one defined property, transaction or agreed portfolio.",
+      "Review of ownership and registration documents supplied by the customer.",
+      "Review of selected sale, purchase or commercial lease terms.",
+      "Identification of material conditions, liabilities and completion risks.",
+      "Written recommendations and transaction action list."
+    ],
+    "outcomes_ar": [
+      "مراجعة مستندات الملكية والصكوك والقيود.",
+      "مراجعة اتفاقيات البيع والشراء والتطوير.",
+      "تحليل الالتزامات التعاقدية.",
+      "مراجعة عقود الاستثمار والشراكات العقارية.",
+      "تقييم مخاطر التسجيل والتراخيص.",
+      "مراجعة الالتزامات المرتبطة بالوساطة والتسويق العقاري.",
+      "دراسة النزاعات والمطالبات المتعلقة بالمعاملات.",
+      "تقديم توصيات لحماية الاستثمار العقاري."
+    ],
+    "requirements_en": [
+      "Property registration deed/title documents and available registry information.",
+      "Draft sale, purchase, lease or development agreements.",
+      "Property details, location, use, valuation and payment arrangements.",
+      "Relevant approvals, encumbrances, mortgages and correspondence."
+    ],
+    "requirements_ar": [
+      "صكوك ومستندات الملكية.",
+      "العقود والاتفاقيات.",
+      "بيانات الأطراف ذات العلاقة.",
+      "التراخيص والموافقات.",
+      "تفاصيل المشروع أو المعاملة العقارية."
+    ],
+    "details_en": "The package is designed around one defined property transaction or a specified portfolio. Tasheel reviews the available title and registration documents, transaction agreements and key commercial terms, identifies legal issues and recommends protective steps.\n\nTechnical inspection, engineering survey, valuation, brokerage, financing, tax advice, registration fees, conveyancing charges and litigation are not included unless separately agreed. Ownership and registration conclusions depend on official records and competent authority processes.",
+    "details_ar": "تقييم قانوني وتجاري للمعاملة أو المحفظة العقارية، مع توصيات لحماية الحقوق وتقليل المخاطر."
+  },
+  "Closed Joint Stock Company": {
+    "description_en": "Establish or convert to a closed joint-stock company with a structure designed for the company's ownership, governance and growth plans. Tasheel coordinates the legal structuring, constitutional documentation, share arrangements and governance readiness so founders and shareholders understand the implications before the company proceeds through the relevant registration process.",
+    "description_ar": "برنامج لتأسيس أو تحويل وهيكلة الشركة المساهمة غير المدرجة، وتنظيم رأس المال والأسهم وحقوق المساهمين والحوكمة، مع إعداد الوثائق اللازمة وفق المتطلبات النظامية ذات الصلة.",
+    "outcomes_en": [
+      "Entity-structure and ownership assessment.",
+      "Share-capital and governance design within the agreed scope.",
+      "Preparation or review of Articles of Association and related corporate documents.",
+      "Board and shareholder governance-readiness checklist.",
+      "Defined support for the agreed formation or conversion milestones."
+    ],
+    "outcomes_ar": [
+      "دراسة الشكل القانوني الأنسب.",
+      "مراجعة متطلبات التأسيس والتحول.",
+      "تنظيم رأس المال وهيكل المساهمين.",
+      "إعداد أو مراجعة النظام الأساس.",
+      "تنظيم حقوق والتزامات المساهمين.",
+      "تطوير إطار الحوكمة والصلاحيات.",
+      "إعداد اتفاقيات المساهمين عند الحاجة.",
+      "تقديم التوجيه بشأن المتطلبات النظامية والإجرائية."
+    ],
+    "requirements_en": [
+      "Founder and shareholder identification and corporate documents.",
+      "Proposed ownership percentages, capital and business activities.",
+      "Proposed board structure, decision rights and company name options.",
+      "Required approvals, licenses and source documents for corporate shareholders."
+    ],
+    "requirements_ar": [
+      "بيانات المؤسسين والمساهمين.",
+      "هيكل الملكية المقترح.",
+      "رأس المال.",
+      "النشاط والأهداف التجارية.",
+      "الوثائق التأسيسية الحالية إن وجدت."
+    ],
+    "details_en": "The engagement starts by assessing the proposed ownership, capital, business activities and governance model. Tasheel recommends a suitable structure, prepares or coordinates the agreed corporate documents and supports the customer through the applicable Ministry of Commerce and Saudi Business Center procedures.\n\nGovernment fees, capital contributions, tax and accounting setup, specialist regulatory approvals, complex shareholder negotiations and post-formation company secretarial services are separate unless expressly included. The appropriate company form must be confirmed against the current Companies Law and the company's objectives.",
+    "details_ar": "هيكل قانوني مقترح ووثائق تأسيس أو تحول ضمن النطاق المتفق عليه."
+  },
+  "Contractor Protection Program": {
+    "description_en": "Protect the contractor's commercial position across projects rather than reacting to each dispute separately. Tasheel reviews the agreed project portfolio, key contracts, payment exposure, variations, delay risks, subcontracting arrangements and regulatory obligations, then provides management with a consolidated view of priority risks and protective actions.",
+    "description_ar": "برنامج متخصص لحماية المقاولين وإدارة المخاطر المرتبطة بالمشاريع، يشمل العقود والمطالبات والمستخلصات والتغييرات والتأخيرات والتزامات المقاولين الفرعيين، مع دعم القرارات التجارية والتشغيلية.",
+    "outcomes_en": [
+      "Baseline exposure review across the agreed project portfolio.",
+      "Review of selected main contracts and subcontracting arrangements.",
+      "Executive project-risk register and priority recommendations.",
+      "Assessment of payment, variation, delay, retention and claims exposure.",
+      "Consolidated management report and follow-up priorities."
+    ],
+    "outcomes_ar": [
+      "مراجعة عقود المقاولات والمقاولين الفرعيين.",
+      "تحليل شروط الدفع والمستخلصات.",
+      "دراسة التغييرات والأوامر التغييرية.",
+      "مراجعة شروط التأخير والجزاءات.",
+      "تحليل مطالبات التمديد والتعويض.",
+      "مراجعة الضمانات والتأمينات.",
+      "تقييم مخاطر التعاقد والتنفيذ.",
+      "تقديم توصيات لتحسين إدارة العقود والمشاريع."
+    ],
+    "requirements_en": [
+      "Project list, contract values, client and employer details.",
+      "Main contracts, subcontracts, variations, notices and payment records.",
+      "Project schedules, progress reports, delay records and correspondence.",
+      "Details of claims, disputes, guarantees, bonds and regulatory notices."
+    ],
+    "requirements_ar": [
+      "عقود المشاريع.",
+      "جداول الكميات والمواصفات.",
+      "أوامر التغيير.",
+      "المستخلصات والمطالبات.",
+      "محاضر الاجتماعات والمراسلات.",
+      "بيانات المقاولين الفرعيين."
+    ],
+    "details_en": "The engagement is designed for contractors managing multiple projects, clients and subcontractors. It connects contract administration and legal risk with project delivery realities, helping management identify where notices, records, approvals or commercial decisions may affect entitlement and liability.\n\nQuantity surveying, delay analysis, engineering expert reports, claims quantification, arbitration and litigation are separate unless specifically included. The package does not guarantee recovery of disputed sums or acceptance of claims.",
+    "details_ar": "تقييم للمخاطر التعاقدية والتجارية، وتوصيات لحماية حقوق المقاول وتحسين إدارة المشروع."
+  },
+  "Family Business Succession": {
+    "description_en": "Protect continuity, ownership clarity and family relationships by addressing governance and succession before a major transition or disagreement. Tasheel helps family business owners examine ownership arrangements, management roles, decision-making, family participation and succession options, then develops a practical framework for the next stage of the business.",
+    "description_ar": "برنامج لمساعدة الشركات العائلية على تنظيم الملكية والإدارة والعلاقة بين أفراد العائلة، وتطوير الحوكمة وآليات اتخاذ القرار، والتخطيط للتعاقب القيادي وحماية استمرارية الأعمال عبر الأجيال.",
+    "outcomes_en": [
+      "Family business governance diagnostic.",
+      "Review of ownership structure and selected constitutional documents.",
+      "Proposed family governance and decision-making framework.",
+      "Succession and ownership-transition roadmap.",
+      "Recommendations for family charter, shareholder arrangements and dispute-prevention mechanisms."
+    ],
+    "outcomes_ar": [
+      "تحليل هيكل الملكية والإدارة.",
+      "مراجعة العلاقة بين الملكية والإدارة التنفيذية.",
+      "تطوير إطار حوكمة الشركة العائلية.",
+      "تنظيم صلاحيات أفراد العائلة.",
+      "دراسة خيارات انتقال الملكية والتعاقب.",
+      "مراجعة اتفاقيات الشركاء والمساهمين.",
+      "تطوير سياسات التعامل مع تضارب المصالح.",
+      "تقديم توصيات لحماية استمرارية المنشأة."
+    ],
+    "requirements_en": [
+      "Ownership chart, company documents and relevant shareholder agreements.",
+      "Family and management roles, succession objectives and key concerns.",
+      "Existing wills, estate-planning documents or transfer arrangements, where relevant and appropriate.",
+      "Availability of relevant family stakeholders for structured discussions."
+    ],
+    "requirements_ar": [
+      "هيكل الملكية.",
+      "بيانات الشركاء وأدوارهم.",
+      "الوثائق التأسيسية.",
+      "الهيكل الإداري.",
+      "التحديات الحالية وخطط النمو والتعاقب."
+    ],
+    "details_en": "The engagement combines legal structuring with business and governance advisory. It considers the distinction between family ownership and company management, the needs of active and non-active family members, continuity planning and mechanisms for handling disagreements.\n\nTax, inheritance, estate administration, valuation, transfer execution, family mediation and litigation require separate advice or engagement as applicable. Sensitive family information will be handled under agreed confidentiality arrangements.",
+    "details_ar": "إطار حوكمة للشركة العائلية وخارطة طريق للتعاقب والاستدامة."
+  },
+  "International Business Partner": {
+    "description_en": "Give your international business a coordinated starting point for evaluating and entering the Saudi market. Tasheel brings together legal structuring, regulatory pathway assessment, commercial planning and local operating considerations to help you understand what is required before committing capital or entering into local arrangements.",
+    "description_ar": "برنامج لدراسة وهيكلة الشراكات الدولية، وتقييم الشركاء والفرص التجارية، وتنظيم العلاقة القانونية والتجارية، وتحديد متطلبات دخول السوق السعودي بما يدعم بناء شراكات مستدامة ومتوافقة مع الأنظمة.",
+    "outcomes_en": [
+      "Initial assessment of the proposed Saudi activity and market-entry objectives.",
+      "Preliminary legal structure and investment-registration pathway review.",
+      "Licensing and regulatory requirements map for the identified activities.",
+      "Commercial and contractual risk assessment.",
+      "Milestone-based market-entry roadmap."
+    ],
+    "outcomes_ar": [
+      "دراسة نموذج الشراكة المقترح.",
+      "تحليل الأدوار والمساهمات والالتزامات.",
+      "تقييم المخاطر التجارية والقانونية.",
+      "دراسة خيارات تأسيس الكيان أو التعاون التعاقدي.",
+      "مراجعة اتفاقيات السرية والتعاون.",
+      "إعداد أو مراجعة مذكرات التفاهم.",
+      "تطوير إطار تفاوضي للشراكة.",
+      "تحديد المتطلبات التنظيمية والتشغيلية لدخول السوق."
+    ],
+    "requirements_en": [
+      "Corporate documents and ownership information for the foreign investor.",
+      "Description of intended activities, products, services and target customers.",
+      "Available business plan, investment assumptions and expected operating model.",
+      "Information on proposed local partners, distributors, employees or premises."
+    ],
+    "requirements_ar": [
+      "بيانات الشريك الدولي.",
+      "وصف النشاط والمنتجات والخدمات.",
+      "نموذج الشراكة المستهدف.",
+      "بيانات الاستثمار والتمويل.",
+      "المسودات والاتفاقيات السابقة."
+    ],
+    "details_en": "The engagement examines the proposed Saudi activity, investor profile, ownership structure, market assumptions and regulatory requirements. Tasheel develops a practical market-entry assessment and identifies the registrations, licenses, contracts and local arrangements that may be required.\n\nGovernment approvals, investment registration, licenses, incorporation fees, tax structuring, local partner negotiations and implementation are separately scoped. Requirements depend on the activity, investor profile and current restrictions; no approval is guaranteed.",
+    "details_ar": "هيكل مقترح للشراكة، وتقييم للمخاطر، وخارطة طريق للدخول والتشغيل."
+  },
+  "Major Projects Structuring": {
+    "description_en": "Establish a stronger legal and commercial foundation for a major project before risks become expensive disputes. Tasheel reviews the project's contractual structure, delivery model, responsibilities, payment mechanisms and key risk allocations, then develops a practical risk baseline and action plan covering the agreed project.",
+    "description_ar": "برنامج لحماية المشاريع الكبرى من المخاطر القانونية والتجارية والتنفيذية، من خلال مراجعة الهيكل التعاقدي، وتنظيم العلاقة بين الأطراف، وتحسين إدارة الالتزامات والمطالبات والتغييرات والمخاطر.",
+    "outcomes_en": [
+      "Legal and contractual baseline review for one named project.",
+      "Review of selected main project contract and key related agreements.",
+      "Project risk register covering scope, delay, variation, payment, retention and subcontracting.",
+      "Identification of notice, approval and documentation requirements.",
+      "Executive recommendations for risk allocation and project controls."
+    ],
+    "outcomes_ar": [
+      "مراجعة الهيكل القانوني والتجاري للمشروع.",
+      "تحليل العقود الرئيسية والفرعية.",
+      "مراجعة توزيع المسؤوليات والمخاطر.",
+      "دراسة شروط الدفع والضمانات والتأمينات.",
+      "مراجعة آليات إدارة التغيير والمطالبات.",
+      "تقييم مخاطر التأخير والتعثر.",
+      "تطوير إطار للحوكمة وإدارة العقود.",
+      "تقديم توصيات لدعم التنفيذ وحماية المصالح."
+    ],
+    "requirements_en": [
+      "Project brief, scope, delivery model and stakeholder map.",
+      "Main contract, tender documents, specifications and key subcontracts.",
+      "Project schedule, payment milestones, bonds, guarantees and insurance details.",
+      "Known claims, variations, delays, notices and material correspondence."
+    ],
+    "requirements_ar": [
+      "وصف المشروع وأهدافه.",
+      "العقود والاتفاقيات.",
+      "هيكل الأطراف المشاركة.",
+      "الميزانية والجدول الزمني.",
+      "مصفوفة المخاطر.",
+      "بيانات المطالبات والتغييرات القائمة."
+    ],
+    "details_en": "The package is designed for complex construction, infrastructure, industrial, technology or other high-value projects. It considers the relationships among the project owner, contractor, consultants, suppliers, financiers and other stakeholders, with attention to contractual interfaces and project governance.\n\nTechnical engineering review, quantity surveying, project controls, independent certification, expert analysis, dispute proceedings and full contract administration are separate unless expressly agreed.",
+    "details_ar": "تقييم قانوني وتجاري للمشروع، وإطار لحماية العقود وإدارة المخاطر."
+  },
+  "Saudi Market Entry Program": {
+    "description_en": "Move from market-entry planning to a properly structured Saudi business presence. Tasheel coordinates the legal and regulatory pathway for the proposed activity, helping the customer understand the appropriate entity or branch structure, investment requirements, licensing dependencies and first-stage operating obligations.",
+    "description_ar": "برنامج متكامل لدعم المنشآت الراغبة في دخول السوق السعودي، يبدأ بدراسة النشاط والهيكل القانوني ومتطلبات الاستثمار والترخيص، ويمتد إلى تخطيط التأسيس والامتثال والاستعداد التشغيلي والتجاري.",
+    "outcomes_en": [
+      "Market-entry and entity-structure assessment.",
+      "Investment-registration and licensing pathway map, where applicable.",
+      "Formation and registration milestone plan.",
+      "Review of key establishment documents and proposed local arrangements.",
+      "First-stage compliance and operating-readiness checklist."
+    ],
+    "outcomes_ar": [
+      "دراسة نموذج العمل والنشاط المستهدف.",
+      "تقييم خيارات التأسيس والهيكل القانوني.",
+      "تحديد متطلبات الاستثمار والتسجيل.",
+      "تحديد التراخيص والموافقات المطلوبة.",
+      "مراجعة الالتزامات الضريبية والتنظيمية ذات الصلة.",
+      "وضع خارطة طريق للتأسيس.",
+      "دعم إعداد الوثائق القانونية والتجارية.",
+      "تقديم التوجيه بشأن الحوكمة والتشغيل.",
+      "تقييم فرص الشراكات المحلية والتوسع."
+    ],
+    "requirements_en": [
+      "Parent-company documents, ownership chart and shareholder information.",
+      "Proposed Saudi activities, business plan and operating model.",
+      "Proposed name, capital, address and management details.",
+      "Relevant professional, sectoral or technical licenses and approvals, if required."
+    ],
+    "requirements_ar": [
+      "بيانات المستثمر أو الشركة الأم.",
+      "وصف النشاط.",
+      "هيكل الملكية.",
+      "خطة الاستثمار.",
+      "المنتجات أو الخدمات المستهدفة.",
+      "التوقعات التشغيلية والتجارية."
+    ],
+    "details_en": "The engagement maps the sequence from investment and entity structuring through the relevant registrations and activity-specific approvals. It is designed to reduce avoidable sequencing errors and give the customer one coordinated view of legal, commercial and operational readiness.\n\nGovernment fees, translation, attestation, capital, office lease, recruitment, tax services and sector-specific licensing are separate. The pathway is subject to current MISA, Ministry of Commerce and other authority requirements.",
+    "details_ar": "خارطة طريق قانونية وتجارية لدخول السوق السعودي، مع تحديد المتطلبات والإجراءات والأولويات."
+  },
+  "IPO Readiness Package": {
+    "description_en": "Identify governance, financial, legal and disclosure gaps before a company commits to a public offering process. Tasheel conducts a preliminary readiness assessment for a potential listing on the Saudi Exchange Main Market or Nomu, then provides a prioritized roadmap for strengthening the company's structure and documentation.",
+    "description_ar": "برنامج لتقييم جاهزية المنشأة للطرح والإدراج، ومراجعة هيكلها القانوني والحوكمي، وتحديد الفجوات في الإفصاح والامتثال والوثائق والسياسات، ووضع خارطة طريق للاستعداد لمتطلبات السوق المالية.",
+    "outcomes_en": [
+      "Preliminary legal and governance readiness assessment.",
+      "Review of selected constitutional, shareholder and material commercial documents.",
+      "High-level disclosure and legal-risk gap report.",
+      "Readiness roadmap with priority actions and dependencies.",
+      "Coordination points for financial advisers, auditors and other capital-market professionals."
+    ],
+    "outcomes_ar": [
+      "تقييم الهيكل القانوني والملكية.",
+      "مراجعة الحوكمة ومجلس الإدارة واللجان.",
+      "مراجعة اتفاقيات المساهمين.",
+      "تقييم السياسات والإجراءات.",
+      "مراجعة الالتزامات التنظيمية والإفصاح.",
+      "تحديد الفجوات القانونية والحوكمية.",
+      "تقييم الجاهزية المؤسسية.",
+      "إعداد خارطة طريق لمعالجة الفجوات."
+    ],
+    "requirements_en": [
+      "Corporate structure, shareholder register and historical corporate records.",
+      "Audited financial statements and relevant management reports.",
+      "Material contracts, litigation schedules and regulatory correspondence.",
+      "Existing governance policies, board records and internal controls."
+    ],
+    "requirements_ar": [
+      "القوائم المالية.",
+      "النظام الأساس.",
+      "هيكل الملكية.",
+      "سياسات الحوكمة.",
+      "بيانات مجلس الإدارة واللجان.",
+      "العقود والالتزامات الجوهرية."
+    ],
+    "details_en": "The engagement examines the company's corporate governance, ownership, material contracts, legal disputes, regulatory position and readiness to support due diligence and disclosure. It helps management understand the workstreams that may need to be completed before engaging in a formal offering process.\n\nThis is a preliminary readiness service, not an underwriting, financial audit, valuation, investment recommendation, securities offer or guarantee of CMA approval or listing. Formal transaction documentation and regulated capital-market services require appropriately licensed advisers and separate engagements.",
+    "details_ar": "تقرير جاهزية أولي وخارطة طريق للتحسين والاستعداد للطرح أو الإدراج. ملاحظة لا تمثل هذه الباقة ضماناً لقبول طلب الإدراج، ولا تشمل خدمات الترتيب أو التعهد بالتغطية أو الأعمال التي تتطلب ترخيصاً مستقلاً."
+  },
+  "Strategic Investment Program": {
+    "description_en": "Approach a significant investment, acquisition, disposal or joint venture with a clear legal and commercial plan. Tasheel supports the early transaction structure, key terms, due diligence planning and negotiation priorities so the customer can understand the risks and decision points before progressing toward completion.",
+    "description_ar": "برنامج لدعم قرارات الاستثمار والاستحواذ والشراكات الاستراتيجية، يشمل دراسة الهيكل المقترح، وتقييم المخاطر، ومراجعة اتفاقيات الاستثمار، وتنظيم حقوق الأطراف والالتزامات وآليات التنفيذ.",
+    "outcomes_en": [
+      "Initial transaction-structure assessment.",
+      "Preparation or review of a term sheet or letter of intent.",
+      "Due diligence scope and document-request checklist.",
+      "Preliminary legal and commercial risk map.",
+      "Transaction milestone and negotiation roadmap."
+    ],
+    "outcomes_ar": [
+      "تحليل الفرصة الاستثمارية.",
+      "دراسة الهيكل القانوني والتجاري.",
+      "دعم إعداد ورقة الشروط.",
+      "مراجعة اتفاقيات السرية.",
+      "تحديد نطاق الفحص النافي للجهالة.",
+      "مراجعة المخاطر والالتزامات الجوهرية.",
+      "إعداد أو مراجعة اتفاقيات الاستثمار والاستحواذ.",
+      "تنظيم حقوق المساهمين والإدارة.",
+      "تطوير هيكل الشراكة أو المشروع المشترك."
+    ],
+    "requirements_en": [
+      "Target or counterparty information and proposed transaction rationale.",
+      "Available financial, corporate, operational and legal information.",
+      "Proposed valuation, consideration, funding and ownership structure.",
+      "Known approvals, consents, disputes and third-party dependencies."
+    ],
+    "requirements_ar": [
+      "معلومات الأطراف.",
+      "وصف الفرصة الاستثمارية.",
+      "البيانات المالية المتاحة.",
+      "هيكل الملكية.",
+      "ورقة الشروط أو المسودات.",
+      "المعلومات المتعلقة بالأصول والالتزامات."
+    ],
+    "details_en": "The package is built around one identified transaction or target. It begins with the customer's objectives and proposed deal structure, then develops the initial transaction framework and identifies the legal, commercial, regulatory and operational questions that require investigation.\n\nFull legal, financial, tax, technical or environmental due diligence, SPA drafting, regulatory filings, financing, valuation and completion support are separately scoped. Investment decisions remain with the customer; no transaction outcome is guaranteed.",
+    "details_ar": "هيكل استثماري مقترح، وتقييم قانوني وتجاري، ووثائق تعاقدية ضمن النطاق المتفق عليه."
+  },
+  "Saudi Entity Setup Program": {
+    "description_en": "A coordinated two-year establishment and compliance program for foreign shareholders and companies setting up a Saudi entity or branch. The engagement covers the agreed formation pathway, key registration milestones and a defined first-stage compliance framework, helping the customer move from structure selection to an organized operating presence.",
+    "description_ar": "برنامج تأسيس ومتابعة مؤسسية لمدة عامين، يشمل دعم اختيار الهيكل القانوني، وإجراءات التأسيس، والتراخيص، وتنظيم الالتزامات النظامية والحوكمة، ومتابعة جاهزية المنشأة خلال مرحلة الانطلاق والتشغيل.",
+    "outcomes_en": [
+      "Entity or branch structure assessment.",
+      "Investment-registration and incorporation pathway, where applicable.",
+      "Preparation or review of core formation documents.",
+      "Milestone coordination for agreed government registrations and licenses.",
+      "Defined compliance calendar and periodic status reviews during the agreed term."
+    ],
+    "outcomes_ar": [
+      "دراسة الهيكل القانوني المناسب.",
+      "دعم إجراءات التأسيس والتسجيل.",
+      "تحديد متطلبات التراخيص والموافقات.",
+      "مراجعة الوثائق التأسيسية.",
+      "دعم تنظيم الحوكمة والصلاحيات.",
+      "مراجعة العقود التجارية الأساسية.",
+      "تحديد الالتزامات النظامية الدورية.",
+      "تقديم الاستشارات القانونية والتجارية خلال فترة البرنامج.",
+      "إعداد مراجعات دورية للامتثال والمخاطر.",
+      "دعم تطوير الإجراءات المؤسسية."
+    ],
+    "requirements_en": [
+      "Parent-company constitutional documents and commercial registration.",
+      "Shareholder, director and authorized-signatory information.",
+      "Proposed Saudi activities, address, capital and operating plan.",
+      "Required attestations, translations, powers of attorney and sector approvals."
+    ],
+    "requirements_ar": [
+      "بيانات المؤسسين أو المستثمرين.",
+      "هيكل الملكية.",
+      "النشاط.",
+      "رأس المال.",
+      "خطة التشغيل.",
+      "بيانات التراخيص والموافقات المطلوبة."
+    ],
+    "details_en": "Tasheel coordinates the legal workstreams required to establish the selected Saudi presence and supports the customer in understanding the obligations that follow formation. The two-year period is governed by defined deliverables, milestones and service limits rather than unlimited representation.\n\nGovernment charges, capital, office costs, tax filings, bookkeeping, payroll, recruitment, immigration fees and third-party services are excluded unless expressly itemized. The two-year term does not mean that all authority renewals or future regulatory projects are included.",
+    "details_ar": "كيان مؤسس وفق النطاق المعتمد، وإطار للحوكمة والامتثال، ودعم استشاري لمدة عامين وفق حدود الخدمة المتفق عليها. تنبيه مهم يجب تحديد عدد الساعات والاستشارات ومراجعات العقود خلال العامين في العقد النهائي، حتى لا تتحول الباقة إلى التزام مفتوح غير محدد."
+  },
+  "Business Legal Partner": {
+    "description_en": "Give an active and growing company a deeper level of ongoing legal and business support as its contracts, workforce, operations and commercial relationships become more complex. This extended partnership combines a defined annual allocation of professional hours with regular issue tracking, management reviews and coordinated legal and business advice.",
+    "description_ar": "شراكة متقدمة للمنشآت التي تحتاج إلى دعم قانوني وإداري واستراتيجي متواصل، تشمل الحوكمة والامتثال وإدارة المخاطر والعقود والقرارات التجارية، مع ربط المعالجة القانونية بالأداء المؤسسي والنمو والاستدامة.",
+    "outcomes_en": [
+      "Up to 120 professional hours annually, subject to agreed allocation and service rules.",
+      "Up to 10 contract reviews and five labor or commercial assessments per month, subject to complexity limits.",
+      "Monthly legal and business issues register.",
+      "Quarterly management review and priority recommendations.",
+      "Ongoing advisory on agreed corporate, commercial, employment and regulatory matters."
+    ],
+    "outcomes_ar": [
+      "مراجعة الهيكل القانوني والمؤسسي.",
+      "تطوير إطار الحوكمة والصلاحيات.",
+      "دعم الإدارة في القرارات القانونية والتجارية.",
+      "مراجعة العقود والاتفاقيات الجوهرية.",
+      "تقييم المخاطر والالتزامات.",
+      "دعم إدارة المنازعات والمطالبات ضمن الحدود المتفق عليها.",
+      "تطوير السياسات والإجراءات.",
+      "دراسة فرص تحسين العمليات.",
+      "تقديم توصيات استراتيجية للنمو والاستدامة.",
+      "مراجعة دورية للأداء القانوني والمؤسسي."
+    ],
+    "requirements_en": [
+      "Company structure, business plan and key management contacts.",
+      "Existing contracts, policies, claims, regulatory notices and workforce information.",
+      "Appointment of a primary relationship manager and authorized requesters.",
+      "Participation in scheduled management reviews."
+    ],
+    "requirements_ar": [
+      "بيانات المنشأة.",
+      "الهيكل التنظيمي والملكية.",
+      "السياسات والوثائق.",
+      "العقود الجوهرية.",
+      "بيانات العمليات والمخاطر.",
+      "تحديد فريق التواصل والإدارة المعنية."
+    ],
+    "details_en": "The engagement is intended for companies that have outgrown occasional legal support and need a more structured relationship. Tasheel works with management to prioritize matters, monitor emerging risks and support agreed commercial and operational decisions.\n\nHigh-value transactions, litigation, court appearances, extensive investigations, specialist technical advice and work exceeding agreed hours or document limits require separate fees. Monthly limits must be reconciled with the annual hour allocation and expressly stated in the final contract.",
+    "details_ar": "برنامج دعم مؤسسي متكامل، يتضمن تقييمات دورية وتوصيات تنفيذية، وفق نطاق زمني وساعات عمل محددة في العقد."
+  },
+  "Technology Localization Program": {
+    "description_en": "Help a technology company adapt its offering for the Saudi market and build a practical route to local commercial adoption. The program combines legal and regulatory assessment, localization planning, customer and partner strategy, product-readiness guidance and ongoing advisory support for the agreed one-year period.",
+    "description_ar": "برنامج متخصص لدعم شركات التقنية الراغبة في توطين منتجاتها وحلولها في المملكة، يشمل دراسة السوق، والهيكل القانوني والتجاري، ومتطلبات الامتثال، وحقوق الملكية الفكرية، والشراكات المحلية، وخطة الدخول والتوسع.",
+    "outcomes_en": [
+      "Saudi market and target-sector assessment.",
+      "Technology localization and regulatory considerations roadmap.",
+      "Review of selected customer, reseller, licensing and partnership arrangements.",
+      "Product and operating-model readiness recommendations.",
+      "Defined advisory support and milestone reviews during the one-year term."
+    ],
+    "outcomes_ar": [
+      "تقييم نموذج العمل والحل التقني.",
+      "دراسة السوق والفرص التجارية.",
+      "تحديد متطلبات التوطين.",
+      "دراسة الهيكل القانوني والاستثماري.",
+      "تقييم متطلبات التراخيص والامتثال.",
+      "مراجعة الملكية الفكرية ونقل التقنية.",
+      "إعداد إطار للشراكات المحلية.",
+      "مراجعة عقود الترخيص والتوزيع والتطوير.",
+      "تقييم فرص التعامل مع القطاعين العام والخاص.",
+      "إعداد خارطة طريق للتوسع التجاري والتشغيلي."
+    ],
+    "requirements_en": [
+      "Product description, technical architecture and target-sector information.",
+      "Existing licenses, IP ownership records, privacy and data documentation.",
+      "Commercial model, pricing, target customers and partnership objectives.",
+      "Relevant product demonstrations and access to product, legal and commercial leads."
+    ],
+    "requirements_ar": [
+      "ملف الشركة الأم.",
+      "وصف المنتج أو التقنية.",
+      "حقوق الملكية الفكرية.",
+      "نموذج الإيرادات.",
+      "بيانات العملاء المستهدفين.",
+      "خطة الاستثمار والتوطين.",
+      "الاتفاقيات والشراكات القائمة."
+    ],
+    "details_en": "The engagement considers whether the product, operating model, data practices, contracts and go-to-market approach are suitable for the target Saudi sectors. It identifies localization requirements and potential partnerships while keeping regulatory and commercial dependencies visible.\n\nCustomer introductions are not guaranteed and do not constitute a promise of contracts or revenue. Product engineering, certification, cybersecurity testing, localization development, cloud hosting and regulatory approvals are separately scoped unless explicitly included.",
+    "details_ar": "استراتيجية دخول وتوطين، وهيكل قانوني وتجاري مقترح، وخارطة طريق للتنفيذ."
+  },
+  "Manufacturing Establishment": {
+    "description_en": "Structure a manufacturing investment in Saudi Arabia from initial feasibility and site considerations through establishment planning and key investment workstreams. Tasheel coordinates legal, commercial and regulatory advisory so the investor can evaluate the proposed facility, understand dependencies and progress through a structured implementation plan.",
+    "description_ar": "برنامج متكامل لدعم المستثمرين في تأسيس المنشآت الصناعية، يشمل دراسة الهيكل الاستثماري والقانوني، ومتطلبات التراخيص، وتنظيم العقود والشراكات، وتقييم المخاطر، والتخطيط للتشغيل والتوسع والاستدامة.",
+    "outcomes_en": [
+      "Manufacturing investment and establishment roadmap.",
+      "Initial entity, investment and industrial licensing pathway assessment.",
+      "Legal review of proposed land, site, lease or acquisition arrangements.",
+      "Commercial and legal structuring of proposed equity or strategic partnerships.",
+      "Coordination plan for financing, technical feasibility and project implementation advisers."
+    ],
+    "outcomes_ar": [
+      "دراسة نموذج الاستثمار الصناعي.",
+      "تقييم الهيكل القانوني والملكية.",
+      "تحديد المتطلبات التنظيمية والتراخيص.",
+      "مراجعة خيارات الموقع والأرض الصناعية.",
+      "تنظيم العقود مع الموردين والمقاولين.",
+      "مراجعة عقود التقنية والمعدات.",
+      "تقييم الالتزامات البيئية والتشغيلية ذات الصلة.",
+      "دراسة متطلبات التوظيف وسلاسل الإمداد.",
+      "تنظيم الشراكات الاستثمارية ونقل التقنية.",
+      "تطوير إطار الحوكمة والامتثال.",
+      "إعداد خارطة طريق للتأسيس والتشغيل."
+    ],
+    "requirements_en": [
+      "Product and manufacturing process description, capacity and technology requirements.",
+      "Investor ownership, funding profile and proposed capital structure (SIDF, PIF, and others).",
+      "Site preferences, land documents and utility requirements (Industrial Land form RCJY or others).",
+      "Feasibility study, environmental and technical information, if available.",
+      "Proposed partners, equipment suppliers and key contractors."
+    ],
+    "requirements_ar": [
+      "دراسة الجدوى.",
+      "بيانات المستثمرين.",
+      "نوع النشاط الصناعي.",
+      "الطاقة الإنتاجية المستهدفة.",
+      "بيانات الموقع والأرض.",
+      "قائمة المعدات والتقنيات.",
+      "خطة التمويل.",
+      "التراخيص والموافقات المتاحة."
+    ],
+    "details_en": "The engagement brings together entity and investment structuring, site and land considerations, industrial licensing pathways, financing preparation, partner arrangements and key project contracts. The precise workstreams depend on the manufacturing activity, location, capacity and regulatory classification.\n\nLand purchase, construction, equipment, environmental studies, engineering, financing, government charges, industrial licenses and third-party feasibility work are not included in the professional fee unless expressly itemized. Financing and partner introductions do not guarantee funding or investment.",
+    "details_ar": "إطار استثماري وقانوني وتشغيلي متكامل لتأسيس المنشأة الصناعية، مع خطة تنفيذ وفق النطاق والمرحلة المتفق عليهما."
+  },
+  "Import-Export Compliance": {
+    "description_en": "Prepare your Saudi import or export operation to move goods across borders with fewer avoidable documentation and compliance problems. Tasheel reviews the product and trading model, identifies relevant customs and regulatory requirements, and helps organize the documentation and clearance pathway for the agreed product line or shipment profile.",
+    "description_ar": "برنامج لتنظيم عمليات الاستيراد والتصدير، ومراجعة المتطلبات الجمركية والتنظيمية، وتصنيف المنتجات، وتقييم المستندات والشهادات اللازمة، وتقليل مخاطر التأخير والمخالفات والتكاليف غير المتوقعة.",
+    "outcomes_en": [
+      "Initial import/export compliance assessment for the agreed product line.",
+      "HS classification review based on product information supplied.",
+      "Checklist of customs documents and product-specific approval questions.",
+      "FASAH process and responsibility map.",
+      "Recommendations for broker coordination and shipment-document controls."
+    ],
+    "outcomes_ar": [
+      "مراجعة نموذج الاستيراد أو التصدير.",
+      "دراسة تصنيف المنتجات والرموز الجمركية.",
+      "تحديد المستندات المطلوبة.",
+      "مراجعة متطلبات الشهادات والموافقات.",
+      "تقييم الالتزامات الجمركية والتنظيمية.",
+      "مراجعة شروط التوريد والشحن.",
+      "تقييم المخاطر المرتبطة بالتخليص والتأخير.",
+      "تقديم توصيات لتحسين الإجراءات."
+    ],
+    "requirements_en": [
+      "Product descriptions, technical specifications, composition and intended use.",
+      "Supplier invoices, packing lists, bills of lading and certificates of origin, where available.",
+      "Existing HS codes, customs declarations and previous clearance records.",
+      "Information on applicable product registrations or conformity certificates."
+    ],
+    "requirements_ar": [
+      "قائمة المنتجات.",
+      "بلد المنشأ.",
+      "بلد التصدير أو الاستيراد.",
+      "الفواتير والمستندات التجارية.",
+      "شهادات المنشأ والمطابقة إن وجدت.",
+      "بيانات المورد وشركة الشحن."
+    ],
+    "details_en": "The package considers product classification, customs documentation, origin information, product-specific approvals and the practical steps required before goods arrive at the port. It is designed for importers, exporters, distributors and manufacturers that need a more reliable compliance process.\n\nFinal tariff classification and admissibility depend on the product facts and competent authority determinations. Customs duties, VAT, inspections, laboratory tests, broker fees, freight and government charges are separate. Tasheel does not act as a customs broker unless separately authorized and qualified.",
+    "details_ar": "تقييم أولي للامتثال الجمركي والتنظيمي، وقائمة بالمتطلبات والإجراءات ذات الأولوية."
+  },
+  "Distribution & Agency Agreement": {
+    "description_en": "Protect the commercial relationship before appointing a distributor, agent or reseller. Tasheel structures or reviews the proposed arrangement to clarify territory, exclusivity, sales targets, pricing controls, intellectual property, reporting, compliance, termination and post-termination rights.",
+    "description_ar": "برنامج لإعداد ومراجعة اتفاقيات التوزيع والوكالة التجارية، وتنظيم العلاقة بين المورد والموزع والوكيل، وحماية الحقوق التجارية، وتحديد المناطق والمنتجات والأسعار والالتزامات وآليات إنهاء العلاقة.",
+    "outcomes_en": [
+      "Drafting or review of one distribution, agency or reseller agreement.",
+      "Review of territory, exclusivity, minimum purchase and performance terms.",
+      "Assessment of pricing, brand, IP, compliance and reporting provisions.",
+      "Termination, renewal, dispute and post-termination protections.",
+      "One negotiation issues memorandum."
+    ],
+    "outcomes_ar": [
+      "دراسة نموذج التوزيع أو الوكالة.",
+      "تحديد نطاق المنتجات والأسواق.",
+      "تنظيم الحصرية وعدم المنافسة عند جوازها.",
+      "مراجعة التزامات التسويق والمبيعات.",
+      "تنظيم الأسعار والعمولات.",
+      "تحديد التزامات التوريد والمخزون.",
+      "تنظيم الضمانات وخدمات ما بعد البيع.",
+      "تنظيم الإنهاء وتسوية المستحقات.",
+      "مراجعة المتطلبات النظامية ذات العلاقة."
+    ],
+    "requirements_en": [
+      "Details of the parties and proposed relationship.",
+      "Product list, territory, channels and commercial targets.",
+      "Existing term sheets, draft agreements and related correspondence.",
+      "Any regulatory or registration requirements known to the customer."
+    ],
+    "requirements_ar": [
+      "بيانات المورد والموزع.",
+      "قائمة المنتجات.",
+      "الأسواق المستهدفة.",
+      "نموذج العلاقة التجارية.",
+      "مسودة الاتفاقية إن وجدت."
+    ],
+    "details_en": "The engagement focuses on one defined cross-border or domestic distribution relationship. Tasheel examines the commercial model and negotiates the legal framework so the parties understand their obligations and the consequences of underperformance, exclusivity and exit.\n\nComplex multi-country distribution networks, competition-law opinions, formal agency registration, tax advice, litigation and extensive negotiation rounds require separate scope. The appropriate legal characterization of an agency or distribution relationship must be assessed under the applicable law.",
+    "details_ar": "اتفاقية منظمة للعلاقة التجارية، مع توصيات لحماية المصالح وتقليل المخاطر."
+  },
+  "GCC Trade Expansion Advisory": {
+    "description_en": "Choose a practical route into GCC markets before committing to expansion costs. Tasheel assesses the proposed product or service, target countries, distribution model and regulatory dependencies, then recommends a prioritized market-entry sequence and identifies the legal and commercial questions that must be resolved.",
+    "description_ar": "برنامج لدراسة التوسع التجاري في دول مجلس التعاون الخليجي، يشمل تقييم الأسواق والفرص، ودراسة خيارات الدخول والشراكات، وتحليل المتطلبات القانونية والتنظيمية، وإعداد خارطة طريق للتوسع الإقليمي.",
+    "outcomes_en": [
+      "Initial GCC expansion assessment for the agreed product or service.",
+      "High-level comparison of selected GCC target markets.",
+      "Review of customs, origin, product-registration and local-market considerations.",
+      "Recommended market-entry sequence and next-step roadmap.",
+      "Identification of local legal, tax, customs and commercial specialists needed for implementation."
+    ],
+    "outcomes_ar": [
+      "دراسة السوق المستهدف.",
+      "تقييم نموذج الدخول التجاري.",
+      "تحديد المتطلبات القانونية والتنظيمية.",
+      "دراسة خيارات التأسيس أو التوزيع أو الشراكة.",
+      "مراجعة المخاطر التجارية والتعاقدية.",
+      "تقييم الالتزامات الضريبية والجمركية ذات الصلة.",
+      "إعداد إطار للشراكات المحلية.",
+      "وضع خارطة طريق للتوسع."
+    ],
+    "requirements_en": [
+      "Product or service description and HS classification, if applicable.",
+      "Current Saudi operating model, customer base and export history.",
+      "Target countries, expected volumes and distribution preferences.",
+      "Existing distributor, agency or logistics arrangements."
+    ],
+    "requirements_ar": [
+      "وصف المنتجات والخدمات.",
+      "الأسواق المستهدفة.",
+      "بيانات الشركة.",
+      "نموذج العمل.",
+      "بيانات الشركاء المحتملين.",
+      "خطة التوسع والاستثمار."
+    ],
+    "details_en": "The engagement compares selected GCC markets at a high level, focusing on the customer's product, customer base, customs and origin considerations, local establishment or registration requirements and channel strategy.\n\nCountry-specific legal opinions, local incorporation, tax advice, customs brokerage, product certification, market research fieldwork and partner introductions are separate unless agreed. GCC-wide rules do not eliminate all national requirements; country-specific review remains necessary.",
+    "details_ar": "تقييم للسوق المستهدف، وخيارات دخول مناسبة، وخارطة طريق قانونية وتجارية للتوسع."
+  }
+}

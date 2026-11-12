@@ -1,0 +1,74 @@
+[
+  {
+    "name_en": "Import-Export Compliance",
+    "name_ar": "باقة الامتثال والترخيص للاستيراد والتصدير",
+    "description_en": "Get your HS classification and customs paperwork right before a shipment is held at the port. Registration and documentation support for a Saudi import or export operation: FASAH platform setup, correct HS-code classification for your product line, and a customs-compliance checklist, for traders, distributors and manufacturers moving goods across the border.",
+    "description_ar": "اضبط التصنيف الجمركي ومستندات الاستيراد والتصدير قبل أن تحتجز شحنتك في الميناء. دعم تسجيل وتوثيق لعملية استيراد أو تصدير سعودية: إعداد الحساب على منصة فسح، وتصنيف جمركي صحيح لخط منتجاتك، وقائمة فحص للامتثال الجمركي، للتجار والموزعين والمصنعين الذين ينقلون بضائع عبر الحدود.",
+    "outcomes_en": [
+      "A FASAH platform account set up and verified for your entity",
+      "Correct HS-code classification for your product line",
+      "A customs-compliance checklist covering permits and restricted-goods rules",
+      "A written list of required certificates of origin and conformity marks"
+    ],
+    "outcomes_ar": [
+      "حساب مفعل وموثق على منصة فسح باسم منشأتك",
+      "تصنيف جمركي صحيح لخط منتجاتك",
+      "قائمة فحص للامتثال الجمركي تغطي التصاريح وقواعد البضائع المقيدة",
+      "قائمة مكتوبة بشهادات المنشأ وعلامات المطابقة المطلوبة"
+    ],
+    "details_en": "Most shipment delays at Saudi ports trace back to one of two things: a misclassified HS code or a missing certificate the importer did not know was required. This package puts both in order before you ship, not after a container is already sitting in customs. Scope is registration and documentation support only; customs clearance decisions and duty assessments rest with Saudi Customs.",
+    "details_ar": "معظم تأخيرات الشحن في الموانئ السعودية تعود إلى أحد أمرين: تصنيف جمركي خاطئ أو شهادة مفقودة لم يكن المستورد يعلم أنها مطلوبة. تضبط هذه الباقة الأمرين قبل الشحن، لا بعد احتجاز الحاوية في الجمارك. يقتصر نطاق العمل على دعم التسجيل والتوثيق، وتبقى قرارات التخليص الجمركي وتقدير الرسوم بيد الجمارك السعودية.",
+    "price_sar": 9000,
+    "validity_days": 90,
+    "max_seats": 1,
+    "active": true
+  },
+  {
+    "name_en": "Distribution & Agency Agreement",
+    "name_ar": "باقة عقد التوزيع والوكالة التجارية عبر الحدود",
+    "description_en": "Protect your exclusivity and exit rights before you sign with a foreign partner, not after a dispute over territory. Drafting or review of a distribution, agency or reseller agreement for a cross-border trade relationship, covering exclusivity, minimum purchase commitments, territory and termination, with one negotiation memo.",
+    "description_ar": "احم حصريتك وحقوق الخروج قبل التوقيع مع شريك أجنبي، لا بعد نزاع على النطاق الجغرافي. صياغة أو مراجعة اتفاقية توزيع أو وكالة أو إعادة بيع لعلاقة تجارية عابرة للحدود، تغطي الحصرية والتزامات الحد الأدنى للشراء والنطاق الجغرافي والإنهاء، مع مذكرة تفاوض واحدة.",
+    "outcomes_en": [
+      "A drafted or reviewed distribution/agency agreement in Arabic and English",
+      "Exclusivity, territory and minimum-purchase clauses matched to your deal",
+      "One written negotiation memo flagging the clauses most worth pushing back on",
+      "One revision round after your counterparty responds"
+    ],
+    "outcomes_ar": [
+      "عقد توزيع أو وكالة مصاغ أو مراجع بالعربية والإنجليزية",
+      "شروط حصرية ونطاق جغرافي وحد أدنى للشراء مطابقة لصفقتك",
+      "مذكرة تفاوض مكتوبة واحدة تحدد البنود الأكثر استحقاقا للتفاوض عليها",
+      "جولة تعديل واحدة بعد رد الطرف الآخر"
+    ],
+    "details_en": "Saudi commercial agency rules carry real registration requirements and termination restrictions that a generic foreign-drafted agreement usually misses. This package is written for whichever side of the table you're on, principal or distributor, so the exit clause protects you specifically rather than whichever party's lawyer drafted the template.",
+    "details_ar": "تحمل أنظمة الوكالة التجارية السعودية متطلبات تسجيل وقيود إنهاء فعلية يغفل عنها عادة عقد أجنبي عام الصياغة. تكتب هذه الباقة وفق موقعك من الصفقة، سواء كنت المورد أو الموزع، بحيث يحميك بند الخروج تحديدا لا الطرف الذي صاغ العقد النموذجي أولا.",
+    "price_sar": 12000,
+    "validity_days": 120,
+    "max_seats": 1,
+    "active": true
+  },
+  {
+    "name_en": "GCC Trade Expansion Advisory",
+    "name_ar": "باقة استشارات التوسع التجاري في دول مجلس التعاون",
+    "description_en": "Know which Gulf market actually fits your product before spending on expansion that doesn't. Advisory review of market-entry options across GCC states for a Saudi-based product or service, covering the GCC Customs Union rules of origin, local-registration requirements and one recommended entry sequence.",
+    "description_ar": "اعرف أي سوق خليجي يناسب منتجك فعلا قبل الإنفاق على توسع لا يناسبه. مراجعة استشارية لخيارات دخول الأسواق في دول مجلس التعاون الخليجي لمنتج أو خدمة مقرها السعودية، تغطي قواعد المنشأ في الاتحاد الجمركي الخليجي ومتطلبات التسجيل المحلي وتسلسل دخول موصى به.",
+    "outcomes_en": [
+      "A comparison of 2-3 target GCC markets against your product or service",
+      "A rules-of-origin assessment for GCC Customs Union duty-free movement",
+      "A local-registration and distributor-requirement summary per market",
+      "One recommended entry sequence with rough timeline"
+    ],
+    "outcomes_ar": [
+      "مقارنة بين 2-3 أسواق خليجية مستهدفة وفق منتجك أو خدمتك",
+      "تقييم لقواعد المنشأ للاستفادة من الحركة المعفاة من الرسوم في الاتحاد الجمركي الخليجي",
+      "ملخص لمتطلبات التسجيل المحلي والموزع لكل سوق",
+      "تسلسل دخول موصى به مع جدول زمني تقريبي"
+    ],
+    "details_en": "The GCC Customs Union can move goods between member states duty-free, but only when the rules of origin are actually met, a detail most Saudi exporters price in only after a shipment gets re-taxed at the border. This advisory gives you that answer before you commit to a market, plus which of the 2-3 candidate countries is worth the trip. Advisory and planning scope only; local licensing in the destination country is a separate engagement.",
+    "details_ar": "يسمح الاتحاد الجمركي الخليجي بحركة البضائع بين الدول الأعضاء دون رسوم، لكن فقط عند استيفاء قواعد المنشأ فعلا، وهو تفصيل يكتشفه معظم المصدرين السعوديين بعد إعادة فرض الرسوم عند الحدود لا قبله. تمنحك هذه الاستشارة هذه الإجابة قبل الالتزام بسوق معين، إضافة إلى أي من الدول المرشحة الـ2-3 يستحق الاستثمار فيها. يقتصر النطاق على الاستشارة والتخطيط، أما الترخيص المحلي في بلد الوجهة فيعد تكليفا منفصلا.",
+    "price_sar": 15000,
+    "validity_days": 120,
+    "max_seats": 1,
+    "active": true
+  }
+]

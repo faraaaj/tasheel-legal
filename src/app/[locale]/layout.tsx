@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import "../globals.css";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import { CartProvider } from "@/context/CartContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import {
   direction,
   getDictionary,
@@ -74,9 +76,13 @@ export default async function LocaleLayout({
           {dict.a11y.skip}
         </a>
 
-        <Header locale={locale} dict={dict} />
-        <main id="main">{children}</main>
-        <Footer locale={locale} dict={dict} />
+        <CurrencyProvider>
+          <CartProvider>
+            <Header locale={locale} dict={dict} />
+            <main id="main">{children}</main>
+            <Footer locale={locale} dict={dict} />
+          </CartProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );

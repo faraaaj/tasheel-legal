@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import AboutFirm from "@/components/sections/AboutFirm";
-import ContactSection from "@/components/sections/ContactSection";
 import CoreValues from "@/components/sections/CoreValues";
 import Hero from "@/components/sections/Hero";
 import Insights from "@/components/sections/Insights";
@@ -53,10 +52,6 @@ export default async function HomePage({ params }: HomePageProps) {
       {SEPARATOR}
       <SectionReveal>
         <Insights dict={dict} />
-      </SectionReveal>
-      {SEPARATOR}
-      <SectionReveal>
-        <ContactSection locale={locale} dict={dict} />
       </SectionReveal>
     </>
   );

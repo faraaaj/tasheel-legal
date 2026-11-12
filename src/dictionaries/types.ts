@@ -59,9 +59,12 @@ export interface Dictionary {
     home: string;
     about: string;
     practice: string;
+    packages: string;
     team: string;
+    marketplace: string;
     insights: string;
     contact: string;
+    login: string;
   };
   a11y: { skip: string; menu: string; close: string; nav: string };
   lang: { label: string; switchTo: "en" | "ar" };
@@ -111,6 +114,13 @@ export interface Dictionary {
     viewProfile: string;
     comingSoon: string;
     members: TeamMember[];
+  };
+  store: {
+    eyebrow: string;
+    headline: string;
+    subtitle: string;
+    purchase: string;
+    noPackages: string;
   };
   insights: {
     eyebrow: string;

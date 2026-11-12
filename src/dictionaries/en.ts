@@ -16,10 +16,13 @@ export const en: Dictionary = {
     companyName: "TASHEEL LEGAL",
     home: "Home",
     about: "About",
-    practice: "Practice Areas",
+    practice: "Practices",
+    packages: "Packages",
     team: "Team",
+    marketplace: "Marketplace",
     insights: "Insights",
     contact: "Contact",
+    login: "Login / Register",
   },
   a11y: {
     skip: "Skip to content",
@@ -204,6 +207,13 @@ export const en: Dictionary = {
           "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=80",
       },
     ],
+  },
+  store: {
+    eyebrow: "Packages",
+    headline: "Innovative Legal Services",
+    subtitle: "Legal solutions for our institutional and individual clients. Choose a program or prepaid package that fits your needs.",
+    purchase: "Add to Cart",
+    noPackages: "No packages available yet.",
   },
   insights: {
     eyebrow: "Insights",

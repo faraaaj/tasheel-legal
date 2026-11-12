@@ -35,3 +35,5 @@ next-env.d.ts
 
 # backup files
 *.zip
+.env*
+/backups/
