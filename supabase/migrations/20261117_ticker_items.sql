@@ -1,16 +1,23 @@
--- Ticker items table for the news ticker.
+-- AI-powered ticker items table.
 --
 -- Run this in the Supabase Dashboard -> SQL Editor.
-create table if not exists public.ticker_items (
+-- WARNING: This drops the existing ticker_items table. Back up data first.
+
+drop table if exists public.ticker_items cascade;
+
+create table public.ticker_items (
   id uuid primary key default gen_random_uuid(),
   headline_en text not null,
   headline_ar text not null,
-  summary_en text,
-  summary_ar text,
+  teaser_en text,
+  teaser_ar text,
+  ai_summary_en text,
+  ai_summary_ar text,
   source_url text,
   source_name text,
   category text default 'legal',
   is_active boolean default true,
+  ai_generated boolean default false,
   sort_order int default 0,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
@@ -18,12 +25,10 @@ create table if not exists public.ticker_items (
 
 alter table public.ticker_items enable row level security;
 
-drop policy if exists "Public can view active ticker items" on public.ticker_items;
 create policy "Public can view active ticker items"
   on public.ticker_items for select
   using (is_active = true);
 
-drop policy if exists "Admins can manage ticker items" on public.ticker_items;
 create policy "Admins can manage ticker items"
   on public.ticker_items for all
   using (
@@ -34,11 +39,100 @@ create policy "Admins can manage ticker items"
     )
   );
 
--- Seed data
-insert into public.ticker_items (headline_en, headline_ar, summary_en, summary_ar, source_url, source_name, category, is_active, sort_order) values
-('New Saudi Companies Law: Key Changes for International Investors', 'نظام الشركات السعودي الجديد: التغييرات الرئيسية للمستثمرين الدوليين', 'The new Companies Law introduces significant changes to corporate structuring, shareholder rights, and foreign investment requirements.', 'يقدم نظام الشركات الجديد تغييرات كبيرة في هيكلة الشركات وحقوق المساهمين ومتطلبات الاستثمار الأجنبي.', 'https://mc.gov.sa', 'Ministry of Commerce', 'legal', true, 1),
-('Vision 2030: New Incentives for Tech Localization', 'رؤية 2030: حوافز جديدة لتوطين التقنية', 'The Saudi government has announced new incentives for technology companies that localize their operations in the Kingdom.', 'أعلنت الحكومة السعودية عن حوافز جديدة للشركات التقنية التي توطن عملياتها في المملكة.', 'https://vision2030.gov.sa', 'Vision 2030', 'business', true, 2),
-('Tasheel Legal Expands Cross-Border M&A Advisory', 'تسهيل للمحاماة توسع خدماتها الاستشارية للاندماج والاستحواذ العابر للحدود', 'Tasheel Legal has expanded its M&A advisory services to support international clients entering the Saudi market.', 'وسعت شركة تسهيل للمحاماة خدماتها الاستشارية للاندماج والاستحواذ لدعم العملاء الدوليين الداخلين إلى السوق السعودي.', 'https://tasheel.law', 'Tasheel Legal', 'insight', true, 3),
-('RHQ Framework: What Multinationals Need to Know', 'إطار المقار الإقليمية: ما تحتاج الشركات متعددة الجنسيات معرفته', 'The Regional Headquarters (RHQ) program offers significant benefits for multinationals establishing their regional base in Riyadh.', 'يوفر برنامج المقار الإقليمية (RHQ) مزايا كبيرة للشركات متعددة الجنسيات التي تؤسس قاعدتها الإقليمية في الرياض.', 'https://misa.gov.sa', 'MISA', 'legal', true, 4),
-('Contractor Compliance: New Penalties for Violations', 'امتثال المقاولين: عقوبات جديدة للمخالفات', 'New regulatory penalties have been introduced for contractors that fail to comply with classification and licensing requirements.', 'تم إدخال عقوبات تنظيمية جديدة على المقاولين الذين لا يلتزمون بمتطلبات التصنيف والترخيص.', 'https://sbc.gov.sa', 'Saudi Contractors Authority', 'legal', true, 5)
-on conflict do nothing;
+-- Seed data with teasers and AI summaries
+insert into public.ticker_items (headline_en, headline_ar, teaser_en, teaser_ar, ai_summary_en, ai_summary_ar, source_url, source_name, category, is_active, sort_order) values
+(
+  'New Saudi Companies Law: Key Changes for International Investors',
+  'نظام الشركات السعودي الجديد: التغييرات الرئيسية للمستثمرين الدوليين',
+  'The new Companies Law introduces significant changes to corporate structuring, shareholder rights, and foreign investment requirements. Click to request a legal analysis.',
+  'يقدم نظام الشركات الجديد تغييرات كبيرة في هيكلة الشركات وحقوق المساهمين ومتطلبات الاستثمار الأجنبي. انقر لطلب تحليل قانوني.',
+  'Legal Analysis: New Saudi Companies Law
+
+This development comes amid rapid regulatory changes in the Kingdom of Saudi Arabia, aimed at enhancing the business environment and attracting investment. From a legal perspective, companies operating in this sector must review their contractual and regulatory obligations to ensure compliance with new regulations. Tasheel Legal recommends conducting a comprehensive legal risk assessment, updating contracts and agreements, and engaging with legal counsel to ensure alignment with regulatory requirements. We also advise regularly monitoring regulatory updates and preparing for future changes that may impact business operations.
+
+---
+*This summary was generated by AI. It is for informational purposes only and does not constitute legal advice. Tasheel Legal is not responsible for any reliance on this information.*',
+  'تحليل قانوني: نظام الشركات السعودي الجديد
+
+يأتي هذا التطور في إطار التغيرات التنظيمية المتسارعة في المملكة العربية السعودية، والتي تهدف إلى تعزيز بيئة الأعمال وجذب الاستثمارات. من الناحية القانونية، يتعين على الشركات العاملة في هذا القطاع مراجعة التزاماتها التعاقدية والتنظيمية لضمان الامتثال للأنظمة الجديدة. يوصي فريق تسهيل للمحاماة بإجراء تقييم شامل للمخاطر القانونية، وتحديث العقود والاتفاقيات، والتعاون مع المستشارين القانونيين لضمان التوافق مع المتطلبات النظامية. كما ننصح بمتابعة التحديثات التنظيمية بشكل دوري، والاستعداد للتغييرات المستقبلية التي قد تؤثر على العمليات التجارية.
+
+---
+*تم إنشاء هذا الملخص بواسطة الذكاء الاصطناعي. وهو لأغراض المعلومات فقط ولا يشكل مشورة قانونية. شركة تسهيل للمحاماة غير مسؤولة عن أي اعتماد على هذه المعلومات.*',
+  'https://mc.gov.sa', 'Ministry of Commerce', 'legal', true, 1
+),
+(
+  'Vision 2030: New Incentives for Tech Localization',
+  'رؤية 2030: حوافز جديدة لتوطين التقنية',
+  'The Saudi government has announced new incentives for technology companies that localize their operations in the Kingdom. Click to request a legal analysis.',
+  'أعلنت الحكومة السعودية عن حوافز جديدة للشركات التقنية التي توطن عملياتها في المملكة. انقر لطلب تحليل قانوني.',
+  'Legal Analysis: Vision 2030 Tech Localization
+
+This development comes amid rapid regulatory changes in the Kingdom of Saudi Arabia, aimed at enhancing the business environment and attracting investment. From a legal perspective, companies operating in this sector must review their contractual and regulatory obligations to ensure compliance with new regulations. Tasheel Legal recommends conducting a comprehensive legal risk assessment, updating contracts and agreements, and engaging with legal counsel to ensure alignment with regulatory requirements. We also advise regularly monitoring regulatory updates and preparing for future changes that may impact business operations.
+
+---
+*This summary was generated by AI. It is for informational purposes only and does not constitute legal advice. Tasheel Legal is not responsible for any reliance on this information.*',
+  'تحليل قانوني: رؤية 2030 توطين التقنية
+
+يأتي هذا التطور في إطار التغيرات التنظيمية المتسارعة في المملكة العربية السعودية، والتي تهدف إلى تعزيز بيئة الأعمال وجذب الاستثمارات. من الناحية القانونية، يتعين على الشركات العاملة في هذا القطاع مراجعة التزاماتها التعاقدية والتنظيمية لضمان الامتثال للأنظمة الجديدة. يوصي فريق تسهيل للمحاماة بإجراء تقييم شامل للمخاطر القانونية، وتحديث العقود والاتفاقيات، والتعاون مع المستشارين القانونيين لضمان التوافق مع المتطلبات النظامية. كما ننصح بمتابعة التحديثات التنظيمية بشكل دوري، والاستعداد للتغييرات المستقبلية التي قد تؤثر على العمليات التجارية.
+
+---
+*تم إنشاء هذا الملخص بواسطة الذكاء الاصطناعي. وهو لأغراض المعلومات فقط ولا يشكل مشورة قانونية. شركة تسهيل للمحاماة غير مسؤولة عن أي اعتماد على هذه المعلومات.*',
+  'https://vision2030.gov.sa', 'Vision 2030', 'business', true, 2
+),
+(
+  'Tasheel Legal Expands Cross-Border M&A Advisory',
+  'تسهيل للمحاماة توسع خدماتها الاستشارية للاندماج والاستحواذ العابر للحدود',
+  'Tasheel Legal has expanded its M&A advisory services to support international clients entering the Saudi market. Click to request a legal analysis.',
+  'وسعت شركة تسهيل للمحاماة خدماتها الاستشارية للاندماج والاستحواذ لدعم العملاء الدوليين الداخلين إلى السوق السعودي. انقر لطلب تحليل قانوني.',
+  'Legal Analysis: Cross-Border M&A Advisory
+
+This development comes amid rapid regulatory changes in the Kingdom of Saudi Arabia, aimed at enhancing the business environment and attracting investment. From a legal perspective, companies operating in this sector must review their contractual and regulatory obligations to ensure compliance with new regulations. Tasheel Legal recommends conducting a comprehensive legal risk assessment, updating contracts and agreements, and engaging with legal counsel to ensure alignment with regulatory requirements. We also advise regularly monitoring regulatory updates and preparing for future changes that may impact business operations.
+
+---
+*This summary was generated by AI. It is for informational purposes only and does not constitute legal advice. Tasheel Legal is not responsible for any reliance on this information.*',
+  'تحليل قانوني: استشارات الاندماج والاستحواذ
+
+يأتي هذا التطور في إطار التغيرات التنظيمية المتسارعة في المملكة العربية السعودية، والتي تهدف إلى تعزيز بيئة الأعمال وجذب الاستثمارات. من الناحية القانونية، يتعين على الشركات العاملة في هذا القطاع مراجعة التزاماتها التعاقدية والتنظيمية لضمان الامتثال للأنظمة الجديدة. يوصي فريق تسهيل للمحاماة بإجراء تقييم شامل للمخاطر القانونية، وتحديث العقود والاتفاقيات، والتعاون مع المستشارين القانونiens لضمان التوافق مع المتطلبات النظامية. كما ننصح بمتابعة التحديثات التنظيمية بشكل دوري، والاستعداد للتغييرات المستقبلية التي قد تؤثر على العمليات التجارية.
+
+---
+*تم إنشاء هذا الملخص بواسطة الذكاء الاصطناعي. وهو لأغراض المعلومات فقط ولا يشكل مشورة قانونية. شركة تسهيل للمحاماة غير مسؤولة عن أي اعتماد على هذه المعلومات.*',
+  'https://tasheel.law', 'Tasheel Legal', 'insight', true, 3
+),
+(
+  'RHQ Framework: What Multinationals Need to Know',
+  'إطار المقار الإقليمية: ما تحتاج الشركات متعددة الجنسيات معرفته',
+  'The Regional Headquarters (RHQ) program offers significant benefits for multinationals establishing their regional base in Riyadh. Click to request a legal analysis.',
+  'يوفر برنامج المقار الإقليمية (RHQ) مزايا كبيرة للشركات متعددة الجنسيات التي تؤسس قاعدتها الإقليمية في الرياض. انقر لطلب تحليل قانوني.',
+  'Legal Analysis: RHQ Framework
+
+This development comes amid rapid regulatory changes in the Kingdom of Saudi Arabia, aimed at enhancing the business environment and attracting investment. From a legal perspective, companies operating in this sector must review their contractual and regulatory obligations to ensure compliance with new regulations. Tasheel Legal recommends conducting a comprehensive legal risk assessment, updating contracts and agreements, and engaging with legal counsel to ensure alignment with regulatory requirements. We also advise regularly monitoring regulatory updates and preparing for future changes that may impact business operations.
+
+---
+*This summary was generated by AI. It is for informational purposes only and does not constitute legal advice. Tasheel Legal is not responsible for any reliance on this information.*',
+  'تحليل قانوني: إطار المقار الإقليمية
+
+يأتي هذا التطور في إطار التغيرات التنظيمية المتسارعة في المملكة العربية السعودية، والتي تهدف إلى تعزيز بيئة الأعمال وجذب الاستثمارات. من الناحية القانونية، يتعين على الشركات العاملة في هذا القطاع مراجعة التزاماتها التعاقدية والتنظيمية لضمان الامتثال للأنظمة الجديدة. يوصي فريق تسهيل للمحاماة بإجراء تقييم شامل للمخاطر القانونية، وتحديث العقود والاتفاقيات، والتعاون مع المستشارين القانونiens لضمان التوافق مع المتطلبات النظامية. كما ننصح بمتابعة التحديثات التنظيمية بشكل دوري، والاستعداد للتغييرات المستقبلية التي قد تؤثر على العمليات التجارية.
+
+---
+*تم إنشاء هذا الملخص بواسطة الذكاء الاصطناعي. وهو لأغراض المعلومات فقط ولا يشكل مشورة قانونية. شركة تسهيل للمحاماة غير مسؤولة عن أي اعتماد على هذه المعلومات.*',
+  'https://misa.gov.sa', 'MISA', 'legal', true, 4
+),
+(
+  'Contractor Compliance: New Penalties for Violations',
+  'امتثال المقاولين: عقوبات جديدة للمخالفات',
+  'New regulatory penalties have been introduced for contractors that fail to comply with classification and licensing requirements. Click to request a legal analysis.',
+  'تم إدخال عقوبات تنظيمية جديدة على المقاولين الذين لا يلتزمون بمتطلبات التصنيف والترخيص. انقر لطلب تحليل قانوني.',
+  'Legal Analysis: Contractor Compliance
+
+This development comes amid rapid regulatory changes in the Kingdom of Saudi Arabia, aimed at enhancing the business environment and attracting investment. From a legal perspective, companies operating in this sector must review their contractual and regulatory obligations to ensure compliance with new regulations. Tasheel Legal recommends conducting a comprehensive legal risk assessment, updating contracts and agreements, and engaging with legal counsel to ensure alignment with regulatory requirements. We also advise regularly monitoring regulatory updates and preparing for future changes that may impact business operations.
+
+---
+*This summary was generated by AI. It is for informational purposes only and does not constitute legal advice. Tasheel Legal is not responsible for any reliance on this information.*',
+  'تحليل قانوني: امتثال المقاولين
+
+يأتي هذا التطور في إطار التغيرات التنظيمية المتسارعة في المملكة العربية السعودية، والتي تهدف إلى تعزيز بيئة الأعمال وجذب الاستثمارات. من الناحية القانونية، يتعين على الشركات العاملة في هذا القطاع مراجعة التزاماتها التعاقدية والتنظيمية لضمان الامتثال للأنظمة الجديدة. يوصي فريق تسهيل للمحاماة بإجراء تقييم شامل للمخاطر القانونية، وتحديث العقود والاتفاقيات، والتعاون مع المستشارين القانونiens لضمان التوافق مع المتطلبات النظامية. كما ننصح بمتابعة التحديثات التنظيمية بشكل دوري، والاستعداد للتغييرات المستقبلية التي قد تؤثر على العمليات التجارية.
+
+---
+*تم إنشاء هذا الملخص بواسطة الذكاء الاصطناعي. وهو لأغراض المعلومات فقط ولا يشكل مشورة قانونية. شركة تسهيل للمحاماة غير مسؤولة عن أي اعتماد على هذه المعلومات.*',
+  'https://sbc.gov.sa', 'Saudi Contractors Authority', 'legal', true, 5
+);
