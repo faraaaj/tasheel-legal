@@ -41,10 +41,13 @@ export default function DashboardPage() {
         return;
       }
 
-      // Defense in depth: even if someone reaches this page with a live
-      // Supabase session, never show dashboard content unless both email
-      // and phone OTP verification are complete.
-      if (!profile.email_verified || !profile.phone_verified) {
+      // Defense in depth: pending accounts must never show dashboard content
+      // unless both email and phone OTP verification are complete. Approved
+      // accounts are trusted and bypass this gate.
+      if (
+        !profile.is_approved &&
+        (!profile.email_verified || !profile.phone_verified)
+      ) {
         // Hard rule: never show dashboard content to an account that
         // hasn't finished both OTP steps. We keep the existing Supabase
         // session alive (no plaintext password to re-authenticate with

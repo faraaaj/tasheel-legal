@@ -70,6 +70,38 @@ export default function RegisterPage() {
       JSON.stringify({ email, password, phone, userId: data.userId }),
     );
 
+    // Layer 1: silently capture device metadata. Best-effort only — the
+    // registration must never fail because analytics could not be stored.
+    if (data.captureToken) {
+      const device = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        languages: navigator.languages ? [...navigator.languages] : [],
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        screen: `${window.screen.width}x${window.screen.height}`,
+        viewport: `${window.innerWidth}x${window.innerHeight}`,
+        colorDepth: window.screen.colorDepth,
+        devicePixelRatio: window.devicePixelRatio,
+        touch: navigator.maxTouchPoints > 0,
+        webdriver: navigator.webdriver === true,
+        hardwareConcurrency: navigator.hardwareConcurrency ?? null,
+      };
+
+      await fetch("/api/auth/capture-metadata", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: data.userId,
+          captureToken: data.captureToken,
+          device,
+          referrer: document.referrer || null,
+        }),
+      }).catch(() => {
+        /* silent: analytics must not block registration */
+      });
+    }
+
     router.push(`/${locale}/verify`);
   };
 

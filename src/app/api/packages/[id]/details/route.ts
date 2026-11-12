@@ -34,13 +34,16 @@ export async function GET(
     return NextResponse.json({ error: "Profile not found" }, { status: 403 });
   }
 
-  if (!profile.is_approved || !profile.email_verified || !profile.phone_verified) {
+  // Approved accounts are trusted and bypass the OTP verification gate.
+  if (!profile.is_approved) {
     return NextResponse.json({ error: "Account not approved" }, { status: 403 });
   }
 
   const { data: pkg, error: pkgError } = await supabaseAdmin
     .from("service_packages")
-    .select("outcomes_en, outcomes_ar, requirements_en, requirements_ar, details_en, details_ar")
+    .select(
+      "outcomes_en, outcomes_ar, requirements_en, requirements_ar, details_en, details_ar, details_json_en, details_json_ar",
+    )
     .eq("id", id)
     .eq("active", true)
     .single();
@@ -56,5 +59,7 @@ export async function GET(
     requirementsAr: pkg.requirements_ar ?? null,
     detailsEn: pkg.details_en ?? null,
     detailsAr: pkg.details_ar ?? null,
+    detailsJsonEn: pkg.details_json_en ?? null,
+    detailsJsonAr: pkg.details_json_ar ?? null,
   });
 }

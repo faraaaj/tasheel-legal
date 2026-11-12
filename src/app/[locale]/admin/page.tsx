@@ -14,6 +14,11 @@ import {
 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import { roleLabel } from "@/lib/admin";
+import {
+  statusTone,
+  verificationStatusLabel,
+  type VerificationStatus,
+} from "@/lib/verification";
 
 type Stats = {
   totalUsers: number;
@@ -28,12 +33,23 @@ type RecentUser = {
   email: string | null;
   role: string;
   isApproved: boolean;
+  verificationStatus: VerificationStatus;
+  isOpen: boolean;
   createdAt: string;
 };
 
 type StatsResponse = {
   stats: Stats;
+  pendingUsers: RecentUser[];
   recentUsers: RecentUser[];
+};
+
+const TONE_CLASSES: Record<string, string> = {
+  green: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300",
+  amber: "border-amber-500/40 bg-amber-500/10 text-amber-300",
+  red: "border-red-500/40 bg-red-500/10 text-red-300",
+  blue: "border-sky-500/40 bg-sky-500/10 text-sky-300",
+  violet: "border-violet-500/40 bg-violet-500/10 text-violet-300",
 };
 
 function formatDate(value: string, isAr: boolean): string {
@@ -166,6 +182,88 @@ export default function AdminOverviewPage() {
       <section className="border border-white/10 bg-[#0A1120]">
         <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+            {isAr ? "طلبات الموافقة المعلقة" : "Pending Approvals"}
+          </h3>
+          <Link
+            href={`/${locale}/admin/users`}
+            className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#C5A880] hover:text-gold"
+          >
+            {isAr ? "مراجعة الكل" : "Review all"}
+          </Link>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] text-start text-sm">
+            <thead>
+              <tr className="border-b border-white/10 text-[10px] uppercase tracking-[0.14em] text-gray-500">
+                <th className="px-5 py-3 text-start font-semibold">
+                  {isAr ? "الاسم" : "Name"}
+                </th>
+                <th className="px-5 py-3 text-start font-semibold">
+                  {isAr ? "البريد الإلكتروني" : "Email"}
+                </th>
+                <th className="px-5 py-3 text-start font-semibold">
+                  {isAr ? "الحالة" : "Status"}
+                </th>
+                <th className="px-5 py-3 text-start font-semibold">
+                  {isAr ? "تاريخ التسجيل" : "Registered"}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {!data && !error && (
+                <tr>
+                  <td
+                    colSpan={4}
+                    className="px-5 py-8 text-center text-gray-400"
+                  >
+                    {isAr ? "جارٍ التحميل..." : "Loading..."}
+                  </td>
+                </tr>
+              )}
+
+              {data && data.pendingUsers.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={4}
+                    className="px-5 py-8 text-center text-gray-400"
+                  >
+                    {isAr ? "لا توجد طلبات معلقة." : "No pending approvals."}
+                  </td>
+                </tr>
+              )}
+
+              {data?.pendingUsers.map((user) => (
+                <tr
+                  key={user.id}
+                  className="border-b border-white/5 last:border-0"
+                >
+                  <td className="px-5 py-3.5 text-white">
+                    {user.fullName || "—"}
+                  </td>
+                  <td className="px-5 py-3.5 text-gray-300" dir="ltr">
+                    {user.email || "—"}
+                  </td>
+                  <td className="px-5 py-3.5">
+                    <span
+                      className={`inline-flex border px-2 py-1 text-[10px] font-bold uppercase tracking-wider ${TONE_CLASSES[statusTone(user.verificationStatus)]}`}
+                    >
+                      {verificationStatusLabel(user.verificationStatus, locale)}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3.5 text-gray-400">
+                    {formatDate(user.createdAt, isAr)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="border border-white/10 bg-[#0A1120]">
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
             {isAr ? "أحدث المستخدمين" : "Recent Users"}
           </h3>
           <span className="text-[10px] uppercase tracking-[0.16em] text-gray-500">
@@ -233,19 +331,9 @@ export default function AdminOverviewPage() {
                   </td>
                   <td className="px-5 py-3.5">
                     <span
-                      className={
-                        user.isApproved
-                          ? "inline-flex border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-300"
-                          : "inline-flex border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-300"
-                      }
+                      className={`inline-flex border px-2 py-1 text-[10px] font-bold uppercase tracking-wider ${TONE_CLASSES[statusTone(user.verificationStatus)]}`}
                     >
-                      {user.isApproved
-                        ? isAr
-                          ? "معتمد"
-                          : "Approved"
-                        : isAr
-                          ? "معلق"
-                          : "Pending"}
+                      {verificationStatusLabel(user.verificationStatus, locale)}
                     </span>
                   </td>
                   <td className="px-5 py-3.5 text-gray-400">

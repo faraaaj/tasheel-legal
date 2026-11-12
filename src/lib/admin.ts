@@ -22,6 +22,13 @@ export function canManageUsers(role: string | null | undefined): boolean {
   return !!role && (USER_MANAGEMENT_ROLES as readonly string[]).includes(role);
 }
 
+export function isSuperAdmin(role: string | null | undefined): boolean {
+  return role === "superadmin";
+}
+
+export const SUPERADMIN_PROTECTED_MESSAGE =
+  "The SuperAdmin account cannot be modified.";
+
 export const ROLE_LABELS: Record<string, { en: string; ar: string }> = {
   client: { en: "Client", ar: "عميل" },
   superadmin: { en: "Super Admin", ar: "مدير عام" },

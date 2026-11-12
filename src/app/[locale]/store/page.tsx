@@ -65,7 +65,7 @@ export default async function StorePage({ params }: StorePageProps) {
   const { data: packages } = await supabase
     .from("service_packages")
     .select(
-      "id, name_en, name_ar, description_en, description_ar, price_sar, validity_days, max_seats, active",
+      "id, name_en, name_ar, description_en, description_ar, price_sar, original_price_sar, discount_label_en, discount_label_ar, validity_days, max_seats, active",
     )
     .eq("active", true)
     .order("id", { ascending: true });
@@ -109,6 +109,16 @@ export default async function StorePage({ params }: StorePageProps) {
       priceSar,
       priceLabelEn,
       priceLabelAr,
+      originalPriceSar:
+        pkg.original_price_sar != null
+          ? Number(pkg.original_price_sar)
+          : undefined,
+      discountLabelEn: pkg.discount_label_en
+        ? String(pkg.discount_label_en)
+        : undefined,
+      discountLabelAr: pkg.discount_label_ar
+        ? String(pkg.discount_label_ar)
+        : undefined,
       validityDays: Number(pkg.validity_days ?? 365),
       maxSeats: Number(pkg.max_seats ?? 1),
       featured: true,
@@ -133,6 +143,16 @@ export default async function StorePage({ params }: StorePageProps) {
     // Gated fields (outcomes/requirements/details) come from the protected
     // details API, not from the public store query.
     priceSar: Number(pkg.price_sar ?? 0),
+    originalPriceSar:
+      pkg.original_price_sar != null
+        ? Number(pkg.original_price_sar)
+        : undefined,
+    discountLabelEn: pkg.discount_label_en
+      ? String(pkg.discount_label_en)
+      : undefined,
+    discountLabelAr: pkg.discount_label_ar
+      ? String(pkg.discount_label_ar)
+      : undefined,
     validityDays: Number(pkg.validity_days ?? 365),
     maxSeats: Number(pkg.max_seats ?? 1),
     featured: false,
@@ -218,7 +238,7 @@ export default async function StorePage({ params }: StorePageProps) {
   const disclaimer =
     locale === "ar"
       ? "جميع الباقات أعلاه هي رسوم أتعاب مهنية فقط. أي رسوم حكومية أو رسوم توثيق أو رسوم تقديم لدى جهة رسمية أو تكاليف طرف ثالث أو أي مستحقات لجهة أخرى تبقى مسؤولية العميل وحده، وتسدد مباشرة وبالكامل من العميل إلى تلك الجهة. لا تقوم شركة تسهيل للمحاماة والاستشارات القانونية بدفع أو تسبيق أو تحصيل هذه المبالغ نيابة عن العميل كجزء من رسوم أي باقة، وحيثما كان التنسيق مفيدا، يقوم العميل بسداد كل فاتورة أو رسم مباشرة بناء على المستندات التي نقدمها."
-      : "All packages above are professional service fees only. Any government fees, notarization charges, authority filing fees, third-party costs, or other payments due to a separate entity are the client's own responsibility and must be settled directly and in full by the client to that entity. Tasheel Law Company does not advance, prepay, or collect such third-party amounts on the client's behalf as part of any package fee; where coordination is useful, the client pays each invoice or charge directly against documentation we provide.";
+      : "All packages above are professional fees only. Any government fees, notarization fees, filing fees with an official authority, third-party costs, or any amounts due to another party remain the sole responsibility of the client and are paid directly and in full by the client to that party. Tasheel Legal does not pay, advance, or collect these amounts on behalf of the client as part of any package fee. Where coordination is helpful, the client pays each invoice or fee directly based on the documents we provide.";
 
   return (
     <div className="pt-20 lg:pt-24">
@@ -337,7 +357,7 @@ export default async function StorePage({ params }: StorePageProps) {
           ) : null}
 
           <div className="mx-auto mt-20 max-w-3xl text-center">
-            <p className="mt-8 text-[14px] leading-[1.8] text-white font-medium border-t border-white/10 pt-6">
+            <p className="mt-8 text-[17px] leading-[1.8] text-white font-medium border-t border-white/10 pt-6">
               {disclaimer}
             </p>
           </div>

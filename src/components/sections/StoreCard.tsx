@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ArrowRight, CheckCircle2, Lock } from "lucide-react";
+import { DiscountBanner } from "@/components/ui/DiscountBanner";
 import type { Locale } from "@/lib/dictionaries";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -23,6 +24,9 @@ export type StorePackage = {
   priceSar: number;
   priceLabelEn?: string;
   priceLabelAr?: string;
+  originalPriceSar?: number;
+  discountLabelEn?: string;
+  discountLabelAr?: string;
   validityDays?: number;
   maxSeats?: number;
   featured?: boolean;
@@ -52,6 +56,8 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
     outcomesEn?: string[]; outcomesAr?: string[];
     requirementsEn?: string[]; requirementsAr?: string[];
     detailsEn?: string; detailsAr?: string;
+    detailsJsonEn?: { sections?: { heading?: string | null; items?: string[] }[] } | null;
+    detailsJsonAr?: { sections?: { heading?: string | null; items?: string[] }[] } | null;
   } | null>(null);
   const [gatedLoading, setGatedLoading] = useState(false);
   const [gatedError, setGatedError] = useState(false);
@@ -87,6 +93,7 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
   const title = isAr ? pkg.nameAr : pkg.nameEn;
   const description = isAr ? pkg.descriptionAr : pkg.descriptionEn;
   const details = isAr ? gatedContent?.detailsAr : gatedContent?.detailsEn;
+  const detailsJson = isAr ? gatedContent?.detailsJsonAr : gatedContent?.detailsJsonEn;
   const outcomes = isAr ? gatedContent?.outcomesAr : gatedContent?.outcomesEn;
   const requirements = isAr ? gatedContent?.requirementsAr : gatedContent?.requirementsEn;
   // The front card always shows the final, clean price only. Any discount,
@@ -143,6 +150,14 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
             : "border-white/10 bg-[#0A1120] hover:border-[#C5A880]/50 hover:shadow-[0_24px_60px_-18px_rgba(197,168,128,0.3)]"
         }`}
       >
+        {pkg.originalPriceSar && pkg.originalPriceSar > pkg.priceSar && (
+          <DiscountBanner
+            label={locale === "ar" ? (pkg.discountLabelAr ?? "") : (pkg.discountLabelEn ?? "")}
+            originalPrice={pkg.originalPriceSar}
+            discountedPrice={pkg.priceSar}
+            locale={locale}
+          />
+        )}
         {/* Top accent bar: reveals left-to-right on hover */}
         <span
           aria-hidden
@@ -227,6 +242,8 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
                         requirementsAr: json.requirementsAr ?? undefined,
                         detailsEn: json.detailsEn ?? undefined,
                         detailsAr: json.detailsAr ?? undefined,
+                        detailsJsonEn: json.detailsJsonEn ?? undefined,
+                        detailsJsonAr: json.detailsJsonAr ?? undefined,
                       });
                     } catch {
                       setGatedError(true);
@@ -365,7 +382,45 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
                       </motion.div>
                     ) : null}
 
-                    {details ? (
+                    {detailsJson && Array.isArray(detailsJson.sections) && detailsJson.sections.length > 0 ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.22, duration: 0.3 }}
+                        className="mt-8 border-t border-white/10 pt-8"
+                      >
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C5A880] rtl:tracking-normal">
+                          {valueHeading}
+                        </p>
+                        <div className="mt-4 space-y-6">
+                          {detailsJson.sections.map((section, idx) => (
+                            <div key={idx}>
+                              {section?.heading ? (
+                                <h4 className="text-lg font-bold text-white mb-2">
+                                  {section.heading}
+                                </h4>
+                              ) : null}
+                              {Array.isArray(section?.items) && section.items.length > 0 ? (
+                                <ul className="space-y-2">
+                                  {section.items.map((item, i) => (
+                                    <li
+                                      key={i}
+                                      className="flex items-start gap-2 text-sm leading-[1.8] text-gray-300"
+                                    >
+                                      <CheckCircle2
+                                        size={16}
+                                        className="mt-0.5 shrink-0 text-[#C5A880]"
+                                      />
+                                      <span>{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : null}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    ) : details ? (
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}

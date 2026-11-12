@@ -47,7 +47,7 @@ export default function LoginPage() {
     // Supabase password credentials are valid. Check profiles directly.
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("phone, email_verified, phone_verified")
+      .select("phone, email_verified, phone_verified, is_approved")
       .eq("id", user.id)
       .single();
 
@@ -58,7 +58,9 @@ export default function LoginPage() {
       return;
     }
 
-    if (!profile.email_verified || !profile.phone_verified) {
+    // Approved accounts are trusted and bypass the OTP verification gate.
+    // Pending accounts must finish BOTH email and phone OTP verification.
+    if (!profile.is_approved && (!profile.email_verified || !profile.phone_verified)) {
       // Don't leave a half-verified session active. Sign out immediately,
       // stash what the verify page needs, and send them to finish OTP.
       await supabase.auth.signOut();

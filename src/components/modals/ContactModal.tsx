@@ -52,22 +52,28 @@ export default function ContactModal({
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.target as HTMLFormElement);
-    formData.append("access_key", "8c9c78fe-dd3a-4b2b-82b6-5b3363bfcf5a");
-    formData.append("subject", "New Consultation Request - Tasheel Legal");
-    formData.append("from_name", "Tasheel Legal Website");
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          expertise: form.expertise,
+          message: form.message,
+        }),
       });
+
       const data = await response.json();
+
       if (data.success) {
         setSubmitted(true);
+      } else {
+        alert(isAr ? "حدث خطأ. يرجى المحاولة مرة أخرى." : "Something went wrong. Please try again.");
       }
     } catch {
-      // noop
+      alert(isAr ? "حدث خطأ. يرجى التواصل عبر واتساب." : "Error sending message. Please try WhatsApp instead.");
     } finally {
       setIsSubmitting(false);
     }
