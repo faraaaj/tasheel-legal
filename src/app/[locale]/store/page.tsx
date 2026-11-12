@@ -286,7 +286,7 @@ export default async function StorePage({ params }: StorePageProps) {
             </div>
             <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-3">
               {premiumPackages.map((pkg) => (
-                <StoreCard key={pkg.id} pkg={pkg} locale={locale} />
+                <StoreCard key={pkg.id} pkg={pkg} locale={locale} packageNumber={pkg.cardNumber} />
               ))}
             </div>
           </div>
@@ -308,7 +308,7 @@ export default async function StorePage({ params }: StorePageProps) {
             ) : (
               <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {cataloguePackages.map((pkg) => (
-                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} />
+                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} packageNumber={pkg.cardNumber} />
                 ))}
               </div>
             )}
@@ -329,7 +329,7 @@ export default async function StorePage({ params }: StorePageProps) {
               </div>
               <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {tradePackages.map((pkg) => (
-                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} />
+                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} packageNumber={pkg.cardNumber} />
                 ))}
               </div>
             </div>
@@ -350,7 +350,7 @@ export default async function StorePage({ params }: StorePageProps) {
               </div>
               <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {realEstatePackages.map((pkg) => (
-                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} />
+                  <StoreCard key={pkg.id} pkg={pkg} locale={locale} packageNumber={pkg.cardNumber} />
                 ))}
               </div>
             </div>

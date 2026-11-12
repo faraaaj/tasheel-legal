@@ -38,9 +38,10 @@ export type StorePackage = {
 type StoreCardProps = {
   pkg: StorePackage;
   locale: Locale;
+  packageNumber?: number;
 };
 
-export default function StoreCard({ pkg, locale }: StoreCardProps) {
+export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps) {
   const [selected, setSelected] = useState(false);
   // Detailed popup content (outcomes, requirements, scope/conditions) is
   // IP-sensitive and is gated behind a verified, approved customer account.
@@ -307,6 +308,16 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
                 <X size={20} />
               </button>
 
+              {(packageNumber ?? pkg.cardNumber) ? (
+                <div
+                  className={`absolute top-4 ${isAr ? "left-4" : "right-16"} z-10`}
+                >
+                  <span className="text-[24px] font-black text-yellow-400 tracking-widest">
+                    {String(packageNumber ?? pkg.cardNumber).padStart(2, "0")}
+                  </span>
+                </div>
+              ) : null}
+
               <div className="scrollbar-hide overflow-y-auto p-8 md:p-10 text-start">
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
@@ -404,18 +415,31 @@ export default function StoreCard({ pkg, locale }: StoreCardProps) {
                               ) : null}
                               {Array.isArray(section?.items) && section.items.length > 0 ? (
                                 <ul className="space-y-2">
-                                  {section.items.map((item, i) => (
-                                    <li
-                                      key={i}
-                                      className="flex items-start gap-2 text-sm leading-[1.8] text-gray-300"
-                                    >
-                                      <CheckCircle2
-                                        size={16}
-                                        className="mt-0.5 shrink-0 text-[#C5A880]"
-                                      />
-                                      <span>{item}</span>
-                                    </li>
-                                  ))}
+                                  {section.items.map((item, i) => {
+                                    const isNumberedHeading = /^[\d٠-٩]+\.\s/.test(item);
+                                    if (isNumberedHeading) {
+                                      return (
+                                        <h5
+                                          key={i}
+                                          className="text-[16px] font-bold text-white mt-4 mb-2"
+                                        >
+                                          {item}
+                                        </h5>
+                                      );
+                                    }
+                                    return (
+                                      <li
+                                        key={i}
+                                        className="flex items-start gap-2 text-sm leading-[1.8] text-gray-300"
+                                      >
+                                        <CheckCircle2
+                                          size={16}
+                                          className="mt-0.5 shrink-0 text-[#C5A880]"
+                                        />
+                                        <span>{item}</span>
+                                      </li>
+                                    );
+                                  })}
                                 </ul>
                               ) : null}
                             </div>

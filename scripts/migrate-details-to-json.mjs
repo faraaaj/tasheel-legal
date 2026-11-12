@@ -66,6 +66,7 @@ const PRICE_BREAKDOWNS = {
 function isHeading(line) {
   const trimmed = line.trim();
   if (!trimmed) return false;
+  if (/^[\d٠-٩]+\.\s/.test(trimmed)) return true;
   if (trimmed.endsWith(":") || trimmed.endsWith("：")) return true;
   if (trimmed.length < 60 && trimmed === trimmed.toUpperCase() && /[A-Z]/.test(trimmed)) return true;
   return false;

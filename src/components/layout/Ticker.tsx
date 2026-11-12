@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, EyeOff, Settings2, X } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 import type { Dictionary, Locale } from "@/lib/dictionaries";
 
 type TickerProps = {
@@ -70,26 +71,47 @@ export default function Ticker({ locale, dict }: TickerProps) {
     return () => document.removeEventListener("mousedown", onDocClick);
   }, [settingsOpen]);
 
+  const [discountItems, setDiscountItems] = useState<
+    { text: string; href: string; isDiscount: boolean }[]
+  >([]);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const { data } = await supabase
+          .from("service_packages")
+          .select("id, name_en, name_ar, price_sar, original_price_sar")
+          .not("original_price_sar", "is", null)
+          .eq("active", true);
+        if (!active || !data) return;
+        const items = data
+          .filter((p: any) => p.original_price_sar && p.original_price_sar > p.price_sar)
+          .map((p: any) => ({
+            text: `${locale === "ar" ? p.name_ar : p.name_en} — ${Number(p.price_sar).toLocaleString()} SAR`,
+            href: `/${locale}/store`,
+            isDiscount: true,
+          }));
+        setDiscountItems(items);
+      } catch {
+        /* ignore */
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [locale]);
+
   const updates = [
-    {
-      en: "New Saudi Companies Law: What international investors need to know.",
-      ar: "نظام الشركات السعودي الجديد: ما يجب أن يعرفه المستثمرون الدوليون.",
-    },
-    {
-      en: "Vision 2030 update: New incentives for tech localization.",
-      ar: "تحديثات رؤية 2030: حوافز جديدة لتوطين التقنية.",
-    },
-    {
-      en: "Tasheel Legal expands advisory services for cross-border M&A.",
-      ar: "شركة تسهيل للمحاماة والاستشارات القانونية توسّع خدماتها الاستشارية لعمليات الاندماج والاستحواذ العابرة للحدود.",
-    },
-    {
-      en: "Strategic legal framework for regional headquarters (RHQ) in Riyadh.",
-      ar: "الإطار القانوني الاستراتيجي للمقار الإقليمية (RHQ) في الرياض.",
-    },
+    { en: "New Saudi Companies Law: What international investors need to know.", ar: "نظام الشركات السعودي الجديد: ما يجب أن يعرفه المستثمرون الدوليون." },
+    { en: "Vision 2030 update: New incentives for tech localization.", ar: "تحديثات رؤية 2030: حوافز جديدة لتوطين التقنية." },
+    { en: "Tasheel Legal expands advisory services for cross-border M&A.", ar: "شركة تسهيل للمحاماة والاستشارات القانونية توسّع خدماتها الاستشارية لعمليات الاندماج والاستحواذ العابرة للحدود." },
+    { en: "Strategic legal framework for regional headquarters (RHQ) in Riyadh.", ar: "الإطار القانوني الاستراتيجي للمقار الإقليمية (RHQ) في الرياض." },
   ];
 
-  const content = updates.map((u) => u[locale]).join("  •  ");
+  const newsItems = updates.map((u) => ({ text: u[locale], href: `/${locale}#insights`, isDiscount: false }));
+  const allItems = [...newsItems, ...discountItems];
+  const content = allItems.map((i) => i.text).join("  •  ");
 
   const patch = (partial: Partial<TickerSettings>) =>
     setSettings((current) => ({ ...current, ...partial }));
@@ -137,7 +159,14 @@ export default function Ticker({ locale, dict }: TickerProps) {
       </div>
 
       {/* Scroll content */}
-      <div className="relative z-0 w-full overflow-hidden py-2">
+      <div
+        className="relative z-0 w-full overflow-hidden py-2 cursor-pointer"
+        onClick={() => {
+          if (discountItems.length > 0) {
+            window.location.href = `/${locale}/store`;
+          }
+        }}
+      >
         <div
           /* Remount on speed/locale change so the CSS animation restarts
              with the new duration and direction. */

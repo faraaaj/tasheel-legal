@@ -26,6 +26,7 @@ export default function Header({ locale, dict }: HeaderProps) {
   const [mounted, setMounted] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
   const { cartItems } = useCart();
   const cartCount = cartItems.length;
 
@@ -51,6 +52,7 @@ export default function Header({ locale, dict }: HeaderProps) {
         setIsAdmin(
           !!data?.role && (ADMIN_ROLES as readonly string[]).includes(data.role),
         );
+        setIsSuperAdmin(data?.role === "superadmin");
       }
     };
 
@@ -200,6 +202,16 @@ export default function Header({ locale, dict }: HeaderProps) {
                 </span>
               )}
             </button>
+
+            {/* SuperAdmin: direct link to Admin Dashboard */}
+            {isSuperAdmin && (
+              <Link
+                href={`/${locale}/admin`}
+                className="hidden lg:inline-flex items-center justify-center h-[40px] px-3 border border-[#C5A880]/50 text-[#C5A880] text-[10px] font-bold uppercase tracking-widest hover:bg-[#C5A880]/10 transition-all whitespace-nowrap"
+              >
+                Admin
+              </Link>
+            )}
 
             {/* Desktop CTA */}
             <Link
