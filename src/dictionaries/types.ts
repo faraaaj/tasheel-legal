@@ -90,6 +90,9 @@ export interface Dictionary {
     quoteAuthor: string;
     headline: string;
     body: string;
+    missionLabel: string;
+    mission: string;
+    supportingStatement: string;
     credentialsLabel: string;
     credentials: string[];
   };

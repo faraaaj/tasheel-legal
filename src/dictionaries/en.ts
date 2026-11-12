@@ -73,12 +73,15 @@ export const en: Dictionary = {
     ],
   },
   aboutFirm: {
-    eyebrow: "The Firm",
+    eyebrow: "ABOUT THE COMPANY",
     quote:
       "We transform complex statutory mandates into actionable, commercially profitable pathways for our partners.",
     quoteAuthor: "Institutional Leadership",
-    headline: "Institutional Legal Architecture.",
-    body: "Headquartered in Riyadh, Tasheel Legal is a licensed professional company delivering end-to-end legal solutions across corporate, commercial, transactional, and dispute-resolution disciplines. We advise corporate chairs, boards, and executive directors on rights, statutory liabilities, and market maneuvers. Our work spans daily operations through multi-billion-SAR corporate workouts, infrastructure concessions, and high-value arbitrations.",
+    headline: "We make the way forward easier for your business, helping you overcome challenges before they escalate.",
+    body: "Tasheel is more than a name. It is the principle behind everything we believe in and the way we serve our clients.\n\nAt Tasheel Legal, we believe that legal matters should be easier to understand, business decisions should be better informed, and companies should have a clearer and more secure path to managing their affairs and protecting their interests.\n\nWe believe the true value of legal counsel begins long before a problem arises. It lies in anticipating risks, establishing sound legal and regulatory foundations, strengthening governance, reviewing contractual relationships and obligations, and reducing the likelihood of disputes that can disrupt business operations.\n\nBy combining legal expertise with a practical understanding of business, we turn complex legal and regulatory matters into clear guidance and actionable solutions. We help business owners, boards, and executive teams navigate their obligations, make confident decisions, and pursue opportunities for sustainable growth.\n\nWe do not wait for problems to escalate before taking action. We focus on anticipating challenges, reducing exposure, and helping businesses remain prepared, protected, and positioned to move forward.",
+    missionLabel: "OUR MISSION",
+    mission: "To make legal and business challenges easier to navigate by providing practical legal protection, clear guidance, and actionable solutions that allow our clients to focus on managing their businesses and pursuing sustainable growth with confidence.",
+    supportingStatement: "Our approach begins with anticipating challenges, understanding risks, and developing practical legal solutions before complexity becomes an obstacle to business.",
     credentialsLabel: "Credentials",
     credentials: [
       "Ministry of Justice Licensed Firm",

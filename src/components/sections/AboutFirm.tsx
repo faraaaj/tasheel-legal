@@ -18,7 +18,7 @@ export default function AboutFirm({ dict }: AboutFirmProps) {
       <div className="shell">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           
-          {/* Left Column - Quote */}
+          {/* Left Column - Quote & Supporting Statement */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,6 +38,13 @@ export default function AboutFirm({ dict }: AboutFirmProps) {
                 {dict.aboutFirm.quoteAuthor || "Institutional Leadership"}
               </span>
             </div>
+
+            {/* Supporting statement */}
+            <div className="mt-10 border-l-2 border-gold/40 ps-6 rtl:border-l-0 rtl:border-r-2 rtl:ps-0 rtl:pe-6">
+              <p className="text-[15px] leading-[1.9] text-cream/60 italic">
+                {dict.aboutFirm.supportingStatement}
+              </p>
+            </div>
           </motion.div>
 
           {/* Right Column - Content */}
@@ -53,11 +60,21 @@ export default function AboutFirm({ dict }: AboutFirmProps) {
             <h2 className="mt-4 font-serif-en text-4xl leading-tight lg:text-5xl">
               {dict.aboutFirm.headline}
             </h2>
-            <p className="mt-8 text-[16px] leading-[1.9] text-cream/70 text-left rtl:text-right">
+            <p className="mt-8 text-[16px] leading-[1.9] text-cream/70 text-left rtl:text-right whitespace-pre-line">
               {dict.aboutFirm.body}
             </p>
 
-            <ul className="mt-10 space-y-4">
+            {/* Mission */}
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold/80">
+                {dict.aboutFirm.missionLabel}
+              </h4>
+              <p className="mt-3 text-[15px] leading-[1.8] text-cream/70">
+                {dict.aboutFirm.mission}
+              </p>
+            </div>
+
+            <ul className="mt-8 space-y-4">
               {dict.aboutFirm.credentials.map((credential, idx) => (
                 <li key={idx} className="flex items-start gap-4">
                   <svg className="mt-1 h-5 w-5 shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
