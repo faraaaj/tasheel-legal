@@ -14,20 +14,19 @@ export function SplashScreen() {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setPhase(1), 500);
-    const timer2 = setTimeout(() => setPhase(2), 1200);
-    const timer3 = setTimeout(() => setPhase(3), 2000);
-    const timer4 = setTimeout(() => {
-      setPhase(4);
-      setTimeout(() => setIsVisible(false), 800);
-    }, 2800);
+    const timers = [
+      setTimeout(() => setPhase(1), 1000),
+      setTimeout(() => setPhase(2), 2000),
+      setTimeout(() => setPhase(3), 3000),
+      setTimeout(() => setPhase(4), 4000),
+      setTimeout(() => setPhase(5), 5000),
+      setTimeout(() => {
+        setPhase(6);
+        setTimeout(() => setIsVisible(false), 1000);
+      }, 6000),
+    ];
 
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-    };
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
@@ -36,72 +35,91 @@ export function SplashScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#070D19] overflow-hidden"
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#070D19] overflow-hidden perspective-[1000px]"
         >
-          {/* Subtle Gold Ambient Glow */}
+          {/* Background Gold Glow */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
             animate={{
-              scale: phase >= 1 ? 3 : 0,
-              opacity: phase >= 1 ? 0.15 : 0,
+              scale: phase >= 2 ? 2.5 : 0,
+              opacity: phase >= 2 ? 0.15 : 0,
             }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            transition={{ duration: 3, ease: "easeOut" }}
             className="absolute w-96 h-96 rounded-full bg-[#C5A880] blur-[100px]"
           />
 
-          {/* Logo Image Reveal */}
+          {/* PHASE 1 & 2: Logo Flying In & Spinning */}
           <motion.div
-            initial={{ scale: 0.85, opacity: 0, y: 20 }}
-            animate={{
-              scale: phase >= 2 ? 1 : 0.85,
-              opacity: phase >= 2 ? 1 : 0,
-              y: phase >= 2 ? 0 : 20,
+            initial={{
+              x: "-100vw",
+              y: "-100vh",
+              rotate: -720,
+              opacity: 0,
             }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            animate={{
+              x: phase >= 1 ? 0 : "-100vw",
+              y: phase >= 1 ? 0 : "-100vh",
+              rotate: phase >= 1 ? 0 : -720,
+              opacity: phase >= 1 ? 1 : 0,
+              scale: phase >= 5 ? 1.2 : 1,
+            }}
+            transition={{
+              duration: 1.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="relative z-10"
           >
             <Image
-              src={isAr ? "/logo-ar.png" : "/logo-en.png"}
-              alt="Tasheel Legal"
-              width={280}
-              height={280}
-              className="object-contain drop-shadow-[0_0_30px_rgba(197,168,128,0.3)]"
+              src="/new-t-icon.png"
+              alt="T"
+              width={180}
+              height={180}
+              className="object-contain drop-shadow-[0_0_40px_rgba(197,168,128,0.5)]"
               priority
               unoptimized
             />
           </motion.div>
 
-          {/* Gold Progress Line */}
+          {/* PHASE 3: Arabic Name Sliding from Top */}
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{
+              y: phase >= 3 ? 0 : -100,
+              opacity: phase >= 3 ? 1 : 0,
+            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 mt-8 text-center"
+          >
+            <h2 className="font-serif-en text-3xl text-[#C5A880]">
+              شركة تسهيل للمحاماة والاستشارات القانونية
+            </h2>
+          </motion.div>
+
+          {/* PHASE 4: English Name Sliding from Bottom */}
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{
+              y: phase >= 4 ? 0 : 100,
+              opacity: phase >= 4 ? 1 : 0,
+            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 mt-4 text-center"
+          >
+            <p className="text-[12px] uppercase tracking-[0.5em] text-white/60">
+              TASHEEL LEGAL
+            </p>
+          </motion.div>
+
+          {/* PHASE 5: Final Glow Line */}
           <motion.div
             initial={{ width: 0, opacity: 0 }}
             animate={{
-              width: phase >= 2 ? 200 : 0,
-              opacity: phase >= 2 ? 1 : 0,
+              width: phase >= 5 ? 300 : 0,
+              opacity: phase >= 5 ? 1 : 0,
             }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative z-10 mt-12 h-[2px] bg-[#C5A880]/20 overflow-hidden"
-          >
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: "100%" }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              className="h-full w-1/2 bg-[#C5A880]"
-            />
-          </motion.div>
-
-          {/* Subtitle Reveal */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{
-              opacity: phase >= 3 ? 0.6 : 0,
-              y: phase >= 3 ? 0 : 10,
-            }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 mt-6 text-[9px] uppercase tracking-[0.4em] text-[#C5A880]"
-          >
-            {isAr ? "شركة تسهيل للمحاماة" : "TASHEEL LEGAL"}
-          </motion.p>
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="relative z-10 mt-12 h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent"
+          />
         </motion.div>
       )}
     </AnimatePresence>
