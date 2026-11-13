@@ -46,14 +46,6 @@ export default function Footer({ locale, dict }: FooterProps) {
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-3">
               <Logo size={40} />
-              <div className="flex flex-col leading-tight">
-                <span className="font-serif-en text-xl font-bold tracking-wider text-cream rtl:text-[15px]">
-                  {dict.brand.legalName}
-                </span>
-                <span className="text-[9px] uppercase tracking-[0.2em] text-gold/80 rtl:text-[10px] rtl:tracking-normal rtl:normal-case">
-                  {dict.brand.tagline}
-                </span>
-              </div>
             </div>
             <p className="max-w-sm text-[13px] leading-relaxed text-cream/60">
               {dict.footer.blurb}
