@@ -25,7 +25,6 @@ export function SplashScreen() {
         setTimeout(() => setIsVisible(false), 1000);
       }, 6000),
     ];
-
     return () => timers.forEach(clearTimeout);
   }, []);
 
@@ -70,13 +69,12 @@ export function SplashScreen() {
             className="relative z-10"
           >
             <Image
-              src="/new-t-icon.png"
+              src="/logo-t.png"
               alt="T"
               width={180}
               height={180}
               className="object-contain drop-shadow-[0_0_40px_rgba(197,168,128,0.5)]"
               priority
-              unoptimized
             />
           </motion.div>
 

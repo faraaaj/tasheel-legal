@@ -11,13 +11,12 @@ export default function Logo({ size = 40 }: { size?: number }) {
   return (
     <Link href={`/${locale}`} className="flex items-center gap-3">
       <Image
-        src="/new-t-icon.png"
+        src="/logo-t.png"
         alt="Tasheel Legal"
         width={size}
         height={size}
         className="object-contain"
         priority
-        unoptimized
       />
       <div className="flex flex-col leading-tight">
         <span className="font-serif-en text-lg font-bold tracking-wider text-cream">
