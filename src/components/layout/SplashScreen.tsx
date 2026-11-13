@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 export function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);
@@ -37,14 +36,11 @@ export function SplashScreen() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Image
-              src="/logo-en.png"
-              alt="Tasheel Legal"
-              width={240}
-              height={240}
-              className="object-contain"
-              priority
-            />
+            <svg width={120} height={120} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#0A192F" />
+              <rect x="6" y="6" width="88" height="88" stroke="#C5A880" strokeWidth="2" />
+              <path d="M25 28 H75 M50 28 V78" stroke="#C5A880" strokeWidth="12" strokeLinecap="square" />
+            </svg>
           </motion.div>
 
           <div className="mt-8 w-48 h-0.5 bg-[#C5A880]/20 overflow-hidden rounded-full">
