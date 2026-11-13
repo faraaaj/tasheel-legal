@@ -2,14 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { useParams } from "next/navigation";
 
 export function SplashScreen() {
-  const params = useParams();
-  const locale = (params?.locale as string) || "en";
-  const isAr = locale === "ar";
-
   const [isVisible, setIsVisible] = useState(true);
   const [phase, setPhase] = useState(0);
 
@@ -50,7 +44,7 @@ export function SplashScreen() {
             className="absolute w-96 h-96 rounded-full bg-[#C5A880] blur-[100px]"
           />
 
-          {/* Logo Image Reveal */}
+          {/* Logo Reveal */}
           <motion.div
             initial={{ scale: 0.85, opacity: 0, y: 20 }}
             animate={{
@@ -61,14 +55,11 @@ export function SplashScreen() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10"
           >
-            <Image
-              src={isAr ? "/logo-ar.png" : "/logo-en.png"}
-              alt="Tasheel Legal"
-              width={280}
-              height={280}
-              className="object-contain drop-shadow-[0_0_30px_rgba(197,168,128,0.3)]"
-              priority
-            />
+            <svg width={160} height={160} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#0A192F" />
+              <rect x="6" y="6" width="88" height="88" stroke="#C5A880" strokeWidth="2" />
+              <path d="M25 28 H75 M50 28 V78" stroke="#C5A880" strokeWidth="12" strokeLinecap="square" />
+            </svg>
           </motion.div>
 
           {/* Gold Progress Line */}
@@ -99,7 +90,7 @@ export function SplashScreen() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10 mt-6 text-[9px] uppercase tracking-[0.4em] text-[#C5A880]"
           >
-            {isAr ? "شركة تسهيل للمحاماة" : "TASHEEL LEGAL"}
+            TASHEEL LEGAL
           </motion.p>
         </motion.div>
       )}
