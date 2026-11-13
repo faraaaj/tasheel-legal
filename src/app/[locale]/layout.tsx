@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import "../globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
+import { SplashScreen } from "@/components/layout/SplashScreen";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import {
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
       <body className={locale === "ar" ? "font-sans-ar" : "font-sans-en"}>
         <CurrencyProvider>
           <CartProvider>
+            <SplashScreen />
             <SiteChrome locale={locale} dict={dict}>
               {children}
             </SiteChrome>
