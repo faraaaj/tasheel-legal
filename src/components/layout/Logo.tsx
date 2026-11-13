@@ -19,13 +19,7 @@ export default function Logo({ size = 40 }: { size?: number }) {
         priority
       />
       <div className="flex flex-col leading-tight">
-        <span className="font-serif-en text-lg font-bold tracking-wider text-cream whitespace-nowrap">
-          TASHEEL LEGAL
-        </span>
-        <span className="text-[8px] uppercase tracking-[0.2em] text-[#C5A880] rtl:hidden whitespace-nowrap">
-          Law Firm & Legal Consultancy
-        </span>
-        <span className="hidden text-[10px] tracking-wider text-[#C5A880] rtl:block whitespace-nowrap">
+        <span className="text-[11px] sm:text-[12px] font-bold tracking-wider text-cream whitespace-nowrap">
           شركة تسهيل للمحاماة والاستشارات القانونية
         </span>
       </div>
