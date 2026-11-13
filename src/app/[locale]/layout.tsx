@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "../globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { SplashScreen } from "@/components/layout/SplashScreen";
+import TransitionOverlay from "@/components/layout/TransitionOverlay";
 import { CartProvider } from "@/context/CartContext";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import {
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
         <CurrencyProvider>
           <CartProvider>
             <SplashScreen />
+            <TransitionOverlay locale={locale} />
             <SiteChrome locale={locale} dict={dict}>
               {children}
             </SiteChrome>
