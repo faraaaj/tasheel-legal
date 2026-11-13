@@ -44,7 +44,7 @@ export default function Footer({ locale, dict }: FooterProps) {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 items-start">
           {/* Col 1: Brand */}
           <div className="flex flex-col gap-5">
-            <Link href={`/${locale}`} className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <Logo size={40} />
               <div className="flex flex-col leading-tight">
                 <span className="font-serif-en text-xl font-bold tracking-wider text-cream rtl:text-[15px]">
@@ -54,7 +54,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   {dict.brand.tagline}
                 </span>
               </div>
-            </Link>
+            </div>
             <p className="max-w-sm text-[13px] leading-relaxed text-cream/60">
               {dict.footer.blurb}
             </p>
