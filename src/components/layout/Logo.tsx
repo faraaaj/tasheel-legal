@@ -9,7 +9,7 @@ export default function Logo({ size = 40 }: { size?: number }) {
   const locale = (params?.locale as string) || "en";
 
   return (
-    <Link href={`/${locale}`} dir="rtl" className="flex items-center gap-3">
+    <Link href={`/${locale}`} className="flex items-center gap-3">
       <Image
         src="/logo-t.png"
         alt="Tasheel Legal"
@@ -18,8 +18,8 @@ export default function Logo({ size = 40 }: { size?: number }) {
         className="object-contain shrink-0"
         priority
       />
-      <div className="flex flex-col leading-tight text-right">
-        <span className="font-serif-en text-lg font-bold tracking-wider text-white whitespace-nowrap">
+      <div className="flex flex-col leading-tight">
+        <span className="font-sans-en text-lg font-bold tracking-wider text-white whitespace-nowrap">
           TASHEEL LEGAL
         </span>
         <span className="font-sans-ar text-[10px] tracking-wider text-[#C5A880] whitespace-nowrap">
