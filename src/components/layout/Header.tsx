@@ -140,15 +140,7 @@ export default function Header({ locale, dict }: HeaderProps) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-3 transition-opacity hover:opacity-90 z-50 shrink-0">
-            <Logo size={40} />
-            <div className="flex flex-col leading-tight">
-              <span className="font-serif-en text-lg sm:text-xl font-bold tracking-wider text-cream">TASHEEL LEGAL</span>
-              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-gold/80 rtl:hidden">Law Firm & Legal Consultancy</span>
-              <span className="hidden text-[10px] tracking-wider text-gold/80 rtl:block">شركة تسهيل للمحاماة والاستشارات القانونية</span>
-            </div>
-          </Link>
-
+          <Logo size={40} />
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-5 xl:gap-6 lg:flex">
             {navLinks.map((link) => (
