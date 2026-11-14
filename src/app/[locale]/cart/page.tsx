@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
+import PageHeader from "@/components/layout/PageHeader";
 
 export default function CartPage() {
   const router = useRouter();
@@ -21,19 +22,12 @@ export default function CartPage() {
   };
 
   return (
-    <div className="pt-20 lg:pt-24">
-      <section className="bg-[#070D19] py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
-              {isAr ? "سلة التسوق" : "Your Cart"}
-            </span>
-            <h1 className="mt-4 font-serif-en text-4xl text-white sm:text-5xl">
-              {isAr ? "سلة التسوق" : "Shopping Cart"}
-            </h1>
-          </div>
-
-          {cartItems.length === 0 ? (
+    <PageHeader
+      locale={locale}
+      title={isAr ? "سلة التسوق" : "Shopping Cart"}
+      subtitle={isAr ? "مراجعة العناصر المحددة" : "Review your selected items"}
+    >
+      {cartItems.length === 0 ? (
             <div className="mt-16 flex flex-col items-center justify-center text-center">
               <p className="text-lg text-gray-300">{isAr ? "سلتك فارغة." : "Your cart is empty."}</p>
               <Link
@@ -106,8 +100,6 @@ export default function CartPage() {
               </div>
             </div>
           )}
-        </div>
-      </section>
-    </div>
+        </PageHeader>
   );
 }
