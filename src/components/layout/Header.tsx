@@ -100,7 +100,7 @@ export default function Header({ locale, dict, cartCount = 0 }: HeaderProps) {
 
             <Link
               href={`/${locale}#contact`}
-              className="hidden lg:inline-flex items-center justify-center !px-6 h-[40px] bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-500 transition-all whitespace-nowrap"
+              className="hidden lg:inline-flex items-center justify-center !min-w-[220px] !px-6 h-[40px] bg-yellow-400 text-[#070D19] font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-500 transition-all whitespace-nowrap"
             >
               {dict.cta.consultation}
             </Link>
