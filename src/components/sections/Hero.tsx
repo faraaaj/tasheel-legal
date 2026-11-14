@@ -91,7 +91,7 @@ export default function Hero({ locale, dict }: HeroProps) {
                   animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                   exit={{ opacity: 0, filter: "blur(10px)", y: -20 }}
                   transition={{ duration: 0.8, ease: EASE }}
-                  className="font-serif-en text-[2rem] leading-[1.2] tracking-[-0.01em] text-white sm:text-[2.5rem] lg:text-[3rem] lg:leading-[1.15] rtl:font-sans-ar rtl:text-[1.8rem] rtl:leading-[1.6] sm:rtl:text-[2.2rem] lg:rtl:text-[2.5rem]"
+                  className="font-playfair text-[2rem] leading-[1.2] tracking-[-0.01em] text-white sm:text-[2.5rem] lg:text-[3rem] lg:leading-[1.15] rtl:font-sans-ar rtl:text-[1.8rem] rtl:leading-[1.6] sm:rtl:text-[2.2rem] lg:rtl:text-[2.5rem]"
                 >
                   {headline}
                 </motion.h1>
@@ -99,7 +99,10 @@ export default function Hero({ locale, dict }: HeroProps) {
             </div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="mt-6 w-full max-w-[42rem]">
-              <p className="text-[14px] leading-[1.9] text-cream/80 text-justify rtl:text-justify">
+              <p
+                className="text-[14px] leading-[1.6] text-cream/80 text-justify rtl:text-justify"
+                style={{ maxWidth: "800px", fontSize: "clamp(1.1rem, 1.5vw, 1.25rem)" }}
+              >
                 {dict.hero.subtext}
               </p>
 

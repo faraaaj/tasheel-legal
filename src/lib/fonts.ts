@@ -1,4 +1,12 @@
 import localFont from "next/font/local";
+import { Playfair_Display } from "next/font/google";
+
+export const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-playfair",
+  display: "swap",
+});
 
 /**
  * Self-hosted variable/static subsets, downloaded once from Google Fonts and

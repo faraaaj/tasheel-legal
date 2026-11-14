@@ -56,7 +56,7 @@ export default function Header({ locale, dict, cartCount = 0 }: HeaderProps) {
           scrolled || mobileOpen ? "bg-[#070D19] py-3 shadow-lg" : "bg-transparent py-6"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" dir={locale === "ar" ? "rtl" : "ltr"}>
           
           <div className="flex-shrink-0">
             <Logo size={40} />

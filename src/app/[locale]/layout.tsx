@@ -18,6 +18,7 @@ import {
   inter,
   tajawal,
   tajawalLatin,
+  playfair,
 } from "@/lib/fonts";
 
 type LocaleLayoutProps = {
@@ -67,7 +68,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={direction(locale)}
-      className={`${cormorant.variable} ${inter.variable} ${tajawal.variable} ${tajawalLatin.variable}`}
+      className={`${cormorant.variable} ${inter.variable} ${tajawal.variable} ${tajawalLatin.variable} ${playfair.variable}`}
     >
       <body className={locale === "ar" ? "font-sans-ar" : "font-sans-en"}>
         <CurrencyProvider>

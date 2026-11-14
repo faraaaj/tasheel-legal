@@ -12,6 +12,7 @@ const config: Config = {
       },
       fontFamily: {
         "serif-en": ["var(--font-cormorant)", "serif"],
+    "playfair": ["var(--font-playfair)", "serif"],
         "sans-en": ["var(--font-inter)", "sans-serif"],
         "sans-ar": [
           "var(--font-tajawal)",
