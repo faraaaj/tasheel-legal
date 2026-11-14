@@ -509,16 +509,16 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                           {hasSession ? pendingBody : lockedBody}
                         </p>
                         {!hasSession ? (
-                          <div className="mt-4 flex gap-3">
+                          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                             <a
                               href={`/${locale}/login`}
-                              className="inline-flex h-[38px] items-center justify-center border border-[#C5A880] px-4 text-[10px] font-bold uppercase tracking-widest text-[#C5A880] transition-all hover:bg-[#C5A880] hover:text-[#070D19] rtl:tracking-normal"
+                              className="inline-flex h-[38px] w-full flex-1 items-center justify-center border border-[#C5A880] px-4 text-[10px] font-bold uppercase tracking-widest text-[#C5A880] transition-all hover:bg-[#C5A880] hover:text-[#070D19] rtl:tracking-normal"
                             >
                               {loginLabel}
                             </a>
                             <a
                               href={`/${locale}/register`}
-                              className="inline-flex h-[38px] items-center justify-center bg-yellow-400 px-4 text-[10px] font-bold uppercase tracking-widest text-[#070D19] transition-all hover:bg-yellow-500 rtl:tracking-normal"
+                              className="inline-flex h-[38px] w-full flex-1 items-center justify-center bg-yellow-400 px-4 text-[10px] font-bold uppercase tracking-widest text-[#070D19] transition-all hover:bg-yellow-500 rtl:tracking-normal"
                             >
                               {registerLabel}
                             </a>

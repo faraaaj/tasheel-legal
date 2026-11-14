@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,17 +13,15 @@ export default function Logo({ size = 40 }: { size?: number }) {
     <Link href={`/${locale}`} dir="ltr" className="flex items-center gap-3">
       {isAr ? (
         <>
-          {/* TEXT BLOCK (Renders on the LEFT) */}
           <div className="flex flex-col text-right">
-            <span className="font-sans-ar text-lg font-bold tracking-wider text-white whitespace-nowrap">
+            <span className="font-sans-ar text-sm md:text-lg font-bold tracking-wider text-white whitespace-normal md:whitespace-nowrap line-clamp-2 md:line-clamp-1">
               تسهيل للمحاماة والاستشارات القانونية
             </span>
-            <span className="font-sans-ar text-[10px] tracking-wider text-[#C5A880] whitespace-nowrap">
+            <span className="font-sans-ar text-[9px] md:text-[10px] tracking-wider text-[#C5A880] whitespace-nowrap">
               محاماة واستشارات قانونية
             </span>
           </div>
-          {/* BOXED ICON (Renders on the RIGHT) */}
-          <div className="w-12 h-12 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 md:w-12 md:h-12 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
             <Image
               src="/logo-t.png"
               alt="Tasheel Legal"
@@ -36,8 +34,7 @@ export default function Logo({ size = 40 }: { size?: number }) {
         </>
       ) : (
         <>
-          {/* BOXED ICON (Renders on the LEFT) */}
-          <div className="w-12 h-12 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 md:w-12 md:h-12 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
             <Image
               src="/logo-t.png"
               alt="Tasheel Legal"
@@ -47,7 +44,6 @@ export default function Logo({ size = 40 }: { size?: number }) {
               priority
             />
           </div>
-          {/* TEXT BLOCK (Renders on the RIGHT) */}
           <div className="flex flex-col leading-tight">
             <span className="font-sans-en text-lg font-bold tracking-wider text-white whitespace-nowrap">
               TASHEEL LEGAL

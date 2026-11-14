@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { X, MapPin, Phone, Mail, Clock, Check, Send } from "lucide-react";
 import type { Locale } from "@/lib/dictionaries";
 
@@ -47,6 +48,7 @@ export default function ContactModal({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [popupPhase, setPopupPhase] = useState(0); // 0=hidden, 1=photo, 2=text
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,6 +71,13 @@ export default function ContactModal({
 
       if (data.success) {
         setSubmitted(true);
+        setPopupPhase(1);
+        setTimeout(() => setPopupPhase(2), 2000);
+        setTimeout(() => {
+          setPopupPhase(0);
+          setSubmitted(false);
+          onClose();
+        }, 4000);
       } else {
         alert(isAr ? "حدث خطأ. يرجى المحاولة مرة أخرى." : "Something went wrong. Please try again.");
       }
@@ -120,20 +129,40 @@ export default function ContactModal({
         {/* Left Column: Form */}
         <div className="flex h-full flex-col overflow-y-auto scrollbar-hide p-8 md:p-12 md:w-1/2">
           {submitted ? (
-            <div className="flex min-h-[420px] flex-col items-start justify-center">
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-gold/50 text-gold">
-                <Check size={20} strokeWidth={2} />
-              </span>
-              <p className="mt-6 font-serif-en text-2xl text-white">
-                {isAr ? "تم استلام رسالتك." : "Message received."}
-              </p>
-              <button
-                type="button"
-                onClick={() => setSubmitted(false)}
-                className="mt-8 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#C5A880] hover:text-gold transition-colors"
-              >
-                {isAr ? "إرسال رسالة أخرى" : "Send another message"}
-              </button>
+            <div className="absolute inset-0 z-50 flex items-center justify-center">
+              <AnimatePresence>
+                {popupPhase === 1 && (
+                  <motion.div
+                    key="photo"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src="/5.jpg"
+                      alt="Office"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </motion.div>
+                )}
+                {popupPhase === 2 && (
+                  <motion.div
+                    key="text"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0 flex items-center justify-center bg-[#070D19]"
+                  >
+                    <p className="text-2xl sm:text-3xl font-bold text-white text-center px-8">
+                      {isAr ? "شكراً لك، سنعاود التواصل معك قريباً" : "Thank you, we will revert to you shortly"}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col h-full">
