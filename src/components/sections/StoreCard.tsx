@@ -63,6 +63,7 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
   } | null>(null);
   const [gatedLoading, setGatedLoading] = useState(false);
   const [gatedError, setGatedError] = useState(false);
+  const [cartFeedback, setCartFeedback] = useState<"added" | "already" | null>(null);
   const { addToCart } = useCart();
   const { currency, formatSar } = useCurrency();
   const isAr = locale === "ar";
@@ -133,7 +134,7 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
 
   const handleAdd = () => {
     trackEvent("cart_add", { packageId: pkg.id, locale });
-    addToCart({
+    const added = addToCart({
       id: pkg.id,
       nameEn: pkg.nameEn,
       nameAr: pkg.nameAr,
@@ -141,6 +142,14 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
       validityDays: pkg.validityDays ?? 365,
       maxSeats: pkg.maxSeats ?? 1,
     });
+    if (!added) {
+      // Show "already in cart" feedback
+      setCartFeedback("already");
+      setTimeout(() => setCartFeedback(null), 2000);
+    } else {
+      setCartFeedback("added");
+      setTimeout(() => setCartFeedback(null), 2000);
+    }
   };
 
   return (
@@ -216,6 +225,13 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
             >
               {addLabel}
             </button>
+            {cartFeedback && (
+              <span className={`text-[11px] font-bold ${cartFeedback === "added" ? "text-emerald-400" : "text-amber-400"}`}>
+                {cartFeedback === "added"
+                  ? isAr ? "تمت الإضافة" : "Added to cart"
+                  : isAr ? "موجود في السلة" : "Already in cart"}
+              </span>
+            )}
             <button
               type="button"
               onClick={() => {

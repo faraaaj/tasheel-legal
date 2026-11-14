@@ -14,10 +14,11 @@ export type CartItem = {
 
 type CartContextType = {
   cartItems: CartItem[];
-  addToCart: (pkg: Omit<CartItem, "addedAt">) => void;
+  addToCart: (pkg: Omit<CartItem, "addedAt">) => boolean;
   removeFromCart: (id: string) => void;
   clearCart: () => void;
   totalPrice: number;
+  isInCart: (id: string) => boolean;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -32,7 +33,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       try {
-        setCartItems(JSON.parse(raw));
+        const parsed = JSON.parse(raw) as CartItem[];
+        // Deduplicate by ID — keep the first occurrence
+        const seen = new Set<string>();
+        const deduped = parsed.filter((item) => {
+          if (seen.has(item.id)) return false;
+          seen.add(item.id);
+          return true;
+        });
+        setCartItems(deduped);
       } catch {
         setCartItems([]);
       }
@@ -46,8 +55,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [cartItems, hydrated]);
 
-  const addToCart = (pkg: Omit<CartItem, "addedAt">) => {
-    setCartItems((prev) => [...prev, { ...pkg, addedAt: new Date().toISOString() }]);
+  const addToCart = (pkg: Omit<CartItem, "addedAt">): boolean => {
+    let added = false;
+    setCartItems((prev) => {
+      if (prev.some((item) => item.id === pkg.id)) {
+        // Already in cart — do not add
+        return prev;
+      }
+      added = true;
+      return [...prev, { ...pkg, addedAt: new Date().toISOString() }];
+    });
+    return added;
   };
 
   const removeFromCart = (id: string) => {
@@ -58,6 +76,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCartItems([]);
   };
 
+  const isInCart = (id: string) => cartItems.some((item) => item.id === id);
+
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + (Number(item.priceSar) || 0),
     0
@@ -65,7 +85,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice }}
+      value={{ cartItems, addToCart, removeFromCart, clearCart, totalPrice, isInCart }}
     >
       {children}
     </CartContext.Provider>

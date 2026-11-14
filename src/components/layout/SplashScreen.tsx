@@ -9,6 +9,16 @@ export function SplashScreen() {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
+    // Only show on first visit per language (24h expiry)
+    const key = "splash_seen";
+    const lastSeen = localStorage.getItem(key);
+    const now = Date.now();
+    if (lastSeen && now - Number(lastSeen) < 24 * 60 * 60 * 1000) {
+      setIsVisible(false);
+      return;
+    }
+    localStorage.setItem(key, String(now));
+
     const timers = [
       setTimeout(() => setPhase(1), 1500),
       setTimeout(() => setPhase(2), 3000),
