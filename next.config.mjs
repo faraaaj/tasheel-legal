@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  serverExternalPackages: ["motion"],
+  // serverExternalPackages removed - let Next.js bundle everything
   images: {
     remotePatterns: [
       {

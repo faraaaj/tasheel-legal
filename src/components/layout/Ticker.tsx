@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Sparkles, Lock, Settings, Eye, EyeOff } from "lucide-react";
+import { X, ExternalLink, Sparkles, Lock, Settings, Eye, EyeOff, Mail } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import type { Locale } from "@/lib/dictionaries";
@@ -11,8 +11,8 @@ type TickerItem = {
   id: string;
   headline_en: string;
   headline_ar: string;
-  teaser_en: string | null;
-  teaser_ar: string | null;
+  summary_en: string | null;
+  summary_ar: string | null;
   ai_summary_en: string | null;
   ai_summary_ar: string | null;
   source_url: string | null;
@@ -110,7 +110,7 @@ export default function Ticker({ locale }: { locale: Locale }) {
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#C5A880]">
-                  {isAr ? "إعدادات الشريط" : "Ticker Settings"}
+                  {isAr ? "??????? ??????" : "Ticker Settings"}
                 </span>
                 <button onClick={() => setShowSettings(false)} className="text-white/50 hover:text-white">
                   <X size={14} />
@@ -120,7 +120,7 @@ export default function Ticker({ locale }: { locale: Locale }) {
               <div className="space-y-3">
                 <div>
                   <label className="block text-[9px] uppercase tracking-wider text-gray-400 mb-1">
-                    {isAr ? "السرعة" : "Speed"}
+                    {isAr ? "??????" : "Speed"}
                   </label>
                   <input
                     type="range"
@@ -145,7 +145,7 @@ export default function Ticker({ locale }: { locale: Locale }) {
           className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-[#C5A880] text-[#070D19] px-4 py-2 text-[10px] font-bold uppercase tracking-widest shadow-lg hover:bg-[#B0926D] transition-colors"
         >
           <Eye size={14} />
-          {isAr ? "إظهار الشريط" : "Show Ticker"}
+          {isAr ? "????? ??????" : "Show Ticker"}
         </button>
       )}
 
@@ -175,7 +175,7 @@ export default function Ticker({ locale }: { locale: Locale }) {
               <button
                 onClick={() => setSelectedItem(null)}
                 className="absolute top-4 right-4 text-white/70 hover:text-gold"
-                aria-label={isAr ? "إغلاق" : "Close"}
+                aria-label={isAr ? "?????" : "Close"}
               >
                 <X size={20} />
               </button>
@@ -183,26 +183,13 @@ export default function Ticker({ locale }: { locale: Locale }) {
               <h3 className="mt-6 font-serif-en text-2xl text-white">
                 {isAr ? selectedItem.headline_ar : selectedItem.headline_en}
               </h3>
+
+              {/* Full summary paragraph */}
               <p className="mt-4 text-[15px] leading-[1.8] text-gray-300">
-                {isAr ? selectedItem.teaser_ar : selectedItem.teaser_en}
+                {isAr ? selectedItem.summary_ar : selectedItem.summary_en}
               </p>
 
-              {!showAI ? (
-                <button
-                  onClick={() => setShowAI(true)}
-                  className="mt-6 flex items-center gap-2 bg-[#C5A880] text-[#070D19] px-6 py-3 font-bold uppercase tracking-widest text-[10px]"
-                >
-                  <Sparkles size={14} />
-                  {isAr ? "اطلب تحليلاً قانونياً" : "Request Legal Analysis"}
-                </button>
-              ) : (
-                <div className="mt-6 p-4 bg-[#070D19] border border-[#C5A880]/20">
-                  <p className="text-[14px] leading-[1.8] text-gray-300 text-justify rtl:text-justify">
-                    {isAr ? selectedItem.ai_summary_ar : selectedItem.ai_summary_en}
-                  </p>
-                </div>
-              )}
-
+              {/* Source link */}
               <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
                 <span className="text-[11px] text-gray-500 uppercase tracking-wider">
                   {selectedItem.source_name}
@@ -213,17 +200,53 @@ export default function Ticker({ locale }: { locale: Locale }) {
                 >
                   {isAuthenticated ? (
                     <>
-                      {isAr ? "المصدر" : "Source"}
+                      {isAr ? "??????" : "Source"}
                       <ExternalLink size={12} />
                     </>
                   ) : (
                     <>
-                      {isAr ? "سجل الدخول للمصدر" : "Login to View Source"}
+                      {isAr ? "??? ?????? ??????" : "Login to View Source"}
                       <Lock size={12} />
                     </>
                   )}
                 </button>
               </div>
+
+              {/* Subscribe section */}
+              <div className="mt-4 p-4 bg-[#070D19] border border-[#C5A880]/20">
+                <h4 className="text-[13px] font-bold text-[#C5A880] mb-2">
+                  {isAr ? "???? ??????" : "Subscribe for More"}
+                </h4>
+                <p className="text-[12px] leading-[1.8] text-gray-400 mb-3">
+                  {isAr
+                    ? "???? ??? ?????? ???? ?????????? ?????????? ??????? ???????? ?????? ??????"
+                    : "Register here to receive all updates, daily, weekly, or monthly"}
+                </p>
+                <a
+                  href={`/${locale}/subscribe`}
+                  className="inline-flex items-center gap-2 bg-[#C5A880] text-[#070D19] px-4 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-[#B0926D] transition-colors"
+                >
+                  <Mail size={12} />
+                  {isAr ? "???? ????" : "Subscribe Now"}
+                </a>
+              </div>
+
+              {/* Analyze with AI button */}
+              {!showAI ? (
+                <button
+                  onClick={() => setShowAI(true)}
+                  className="mt-6 flex items-center gap-2 bg-[#C5A880] text-[#070D19] px-6 py-3 font-bold uppercase tracking-widest text-[10px]"
+                >
+                  <Sparkles size={14} />
+                  {isAr ? "???? ??????? ????????" : "Request Legal Analysis"}
+                </button>
+              ) : (
+                <div className="mt-6 p-4 bg-[#070D19] border border-[#C5A880]/20">
+                  <p className="text-[14px] leading-[1.8] text-gray-300 text-justify rtl:text-justify">
+                    {isAr ? selectedItem.ai_summary_ar : selectedItem.ai_summary_en}
+                  </p>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
