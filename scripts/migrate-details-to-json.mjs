@@ -66,10 +66,14 @@ const PRICE_BREAKDOWNS = {
 function isHeading(line) {
   const trimmed = line.trim();
   if (!trimmed) return false;
-  if (/^[\d٠-٩]+\.\s/.test(trimmed)) return true;
+  if (/^[\d٠-٩]+\.\s/.test(trimmed)) return true; // numbered headings
   if (trimmed.endsWith(":") || trimmed.endsWith("：")) return true;
   if (trimmed.length < 60 && trimmed === trimmed.toUpperCase() && /[A-Z]/.test(trimmed)) return true;
   return false;
+}
+
+function stripHeadingNumber(line) {
+  return line.trim().replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
 }
 
 function isBullet(line) {
@@ -104,8 +108,9 @@ function parseDetails(text) {
     for (const raw of blk) {
       const line = raw.trim();
       if (!line) continue;
+      const isNumbered = /^[\d٠-٩]+\.?\s/.test(line);
       if (!started && isHeading(line)) {
-        heading = line.replace(/[:：]$/, "").trim();
+        heading = isNumbered ? stripHeadingNumber(line) : line.replace(/[:：]$/, "").trim();
         started = true;
         continue;
       }

@@ -388,15 +388,26 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                           {outcomesHeading}
                         </p>
                         <ul className="mt-4 space-y-3">
-                          {outcomes.map((item, i) => (
-                            <li key={i} className="flex items-start gap-3 text-sm leading-[1.8] text-gray-200">
-                              <CheckCircle2
-                                size={16}
-                                className="mt-0.5 shrink-0 text-[#C5A880]"
-                              />
-                              <span>{item}</span>
-                            </li>
-                          ))}
+                          {outcomes.map((item, i) => {
+                            const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
+                            if (isNumberedHeading) {
+                              const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+                              return (
+                                <h5 key={i} className="text-[16px] font-bold text-white mt-4 mb-2">
+                                  {cleaned}
+                                </h5>
+                              );
+                            }
+                            return (
+                              <li key={i} className="flex items-start gap-3 text-sm leading-[1.8] text-gray-200">
+                                <CheckCircle2
+                                  size={16}
+                                  className="mt-0.5 shrink-0 text-[#C5A880]"
+                                />
+                                <span>{item}</span>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </motion.div>
                     ) : null}
@@ -412,15 +423,26 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                           {requirementsHeading}
                         </p>
                         <ul className="mt-4 space-y-3">
-                          {requirements.map((item, i) => (
-                            <li key={i} className="flex items-start gap-3 text-sm leading-[1.8] text-gray-200">
-                              <CheckCircle2
-                                size={16}
-                                className="mt-0.5 shrink-0 text-[#C5A880]"
-                              />
-                              <span>{item}</span>
-                            </li>
-                          ))}
+                          {requirements.map((item, i) => {
+                            const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
+                            if (isNumberedHeading) {
+                              const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+                              return (
+                                <h5 key={i} className="text-[16px] font-bold text-white mt-4 mb-2">
+                                  {cleaned}
+                                </h5>
+                              );
+                            }
+                            return (
+                              <li key={i} className="flex items-start gap-3 text-sm leading-[1.8] text-gray-200">
+                                <CheckCircle2
+                                  size={16}
+                                  className="mt-0.5 shrink-0 text-[#C5A880]"
+                                />
+                                <span>{item}</span>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </motion.div>
                     ) : null}
@@ -446,27 +468,28 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                               {Array.isArray(section?.items) && section.items.length > 0 ? (
                                 <ul className="space-y-2">
                                   {section.items.map((item, i) => {
-                                    const isNumberedHeading = /^[\d٠-٩]+\.\s/.test(item);
+                                    const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
                                     if (isNumberedHeading) {
+                                      const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
                                       return (
                                         <h5
                                           key={i}
-                                          className="text-[16px] font-bold text-white mt-4 mb-2"
+                                          className="text-[16px] font-bold text-white mt-5 mb-2"
                                         >
-                                          {item}
+                                          {cleaned}
                                         </h5>
                                       );
                                     }
                                     return (
                                       <li
                                         key={i}
-                                        className="flex items-start gap-2 text-sm leading-[1.8] text-gray-300"
+                                        className="flex items-start gap-2 mb-2"
                                       >
                                         <CheckCircle2
                                           size={16}
                                           className="mt-0.5 shrink-0 text-[#C5A880]"
                                         />
-                                        <span>{item}</span>
+                                        <span className="text-gray-300 text-[15px] leading-[1.8] text-justify rtl:text-justify">{item}</span>
                                       </li>
                                     );
                                   })}
