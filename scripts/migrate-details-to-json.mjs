@@ -73,7 +73,7 @@ function isHeading(line) {
 }
 
 function stripHeadingNumber(line) {
-  return line.trim().replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+  return line.trim().replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").replace(/\//g, "").trim();
 }
 
 function isBullet(line) {
@@ -110,7 +110,7 @@ function parseDetails(text) {
       if (!line) continue;
       const isNumbered = /^[\d٠-٩]+\.?\s/.test(line);
       if (!started && isHeading(line)) {
-        heading = isNumbered ? stripHeadingNumber(line) : line.replace(/[:：]$/, "").trim();
+        heading = isNumbered ? stripHeadingNumber(line) : line.replace(/[:：]$/, "").replace(/\//g, "").trim();
         started = true;
         continue;
       }

@@ -389,9 +389,9 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                         </p>
                         <ul className="mt-4 space-y-3">
                           {outcomes.map((item, i) => {
-                            const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
+                            const isNumberedHeading = !item.endsWith(".") && item.length < 60;
                             if (isNumberedHeading) {
-                              const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+                                      const cleaned = item.trim();
                               return (
                                 <h5 key={i} className="text-[16px] font-bold text-white mt-4 mb-2">
                                   {cleaned}
@@ -424,9 +424,9 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                         </p>
                         <ul className="mt-4 space-y-3">
                           {requirements.map((item, i) => {
-                            const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
+                            const isNumberedHeading = !item.endsWith(".") && item.length < 60;
                             if (isNumberedHeading) {
-                              const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+                                      const cleaned = item.trim();
                               return (
                                 <h5 key={i} className="text-[16px] font-bold text-white mt-4 mb-2">
                                   {cleaned}
@@ -468,9 +468,9 @@ export default function StoreCard({ pkg, locale, packageNumber }: StoreCardProps
                               {Array.isArray(section?.items) && section.items.length > 0 ? (
                                 <ul className="space-y-2">
                                   {section.items.map((item, i) => {
-                                    const isNumberedHeading = /^[\d٠-٩]+\.?\s*/.test(item);
+                                    const isNumberedHeading = !item.endsWith(".") && item.length < 60;
                                     if (isNumberedHeading) {
-                                      const cleaned = item.replace(/^[\d٠-٩]+\.?\s*/, "").replace(/[:：]\s*$/, "").trim();
+                                      const cleaned = item.trim();
                                       return (
                                         <h5
                                           key={i}
